@@ -6,7 +6,7 @@ class VpsAdminPageInitializer{
     }
 
     public function add_video_project_admin_page(){
-        add_menu_page( 'Video Project', 'Video Project', 'manage_options', 'video_project', array( $this, 'video_project_admin_page_callback' ));
+        add_menu_page( 'Video Project', 'Manage Video Projects', 'manage_options', 'video_project', array( $this, 'video_project_admin_page_callback' ));
     }
 
     public function video_project_admin_page_callback(){
