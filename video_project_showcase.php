@@ -14,4 +14,4 @@ via a bespoke dashboard page.
 //check abspath
 if(!defined( 'ABSPATH' )) exit;
 
-$vps_init = new VideoProjectShowcaseInit();
+$vps_admin_page_initializer = new VpsAdminPageInitializer();
