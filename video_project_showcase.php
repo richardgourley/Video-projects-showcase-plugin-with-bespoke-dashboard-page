@@ -14,4 +14,5 @@ via a bespoke dashboard page.
 //check abspath
 if(!defined( 'ABSPATH' )) exit;
 
+require dirname( __FILE__ ) . '/classes/AdminPageInitializer.php';
 $vps_admin_page_initializer = new VpsAdminPageInitializer();
