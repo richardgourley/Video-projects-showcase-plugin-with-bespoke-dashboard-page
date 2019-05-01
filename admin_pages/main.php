@@ -7,12 +7,6 @@
 <h1 class="vps_main_page_header_font">Welcome to your bespoke admin page!</h1>
 </div>
 
-<?php
-/*global $wpdb;
-      $stmt = $wpdb->prepare("SELECT post_content FROM wp_posts WHERE ID = 361", array());
-      $results = $wpdb->get_results($stmt);
-      var_dump($results);*/
-?>
 
 <div><h3>Intro</h3></div>
 <div><p>Here, you can create, update, insert and manage all of your custom post types.</p></div>
