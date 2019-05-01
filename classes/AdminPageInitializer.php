@@ -10,6 +10,19 @@ class VpsAdminPageInitializer{
     }
 
     public function video_project_admin_page_callback(){
+        require_once plugin_dir_path( __DIR__ ) . '/admin_pages/main.php';
 
+        
     }
+
 }
+
+
+
+
+
+
+
+
+
+
