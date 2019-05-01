@@ -1,0 +1,65 @@
+.vps_main_page_div{
+	background-color: white; 
+	padding:17px; 
+	margin-right:17px; 
+	border-radius:10px; 
+	margin-top:10px;
+}
+
+.vps_main_page_greeting{
+	padding:20px; 
+	margin-right:13px;
+	margin-bottom:5px;
+}
+
+.vps_username_box{
+	border-radius:3px;
+	padding:9px;
+	color:white; 
+	background-color: #2e3b48;
+}
+
+.vps_main_page_header{
+	text-align: center; 
+	background-color: #2a4d6e; 
+	padding:10px; 
+	color:white; 
+	border-radius:2px;
+    margin-left:39px; 
+    margin-right:39px; 
+    margin-top:20px; 
+    margin-bottom: 20px;
+}
+
+.vps_main_page_header_font{
+	text-align: center; 
+	color:white; 
+	font-size:220%;
+}
+
+.vps_menu_buttons_wrapper{
+	padding:20px;
+}
+
+.vps_row{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.vps_column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.vps_results_display_div {
+	background-color: white; 
+	padding:24px 23px 23px 39px; 
+	margin-right:17px; 
+	border-radius:10px; 
+	margin-top:10px;
+}
+
