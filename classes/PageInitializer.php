@@ -1,6 +1,6 @@
 <?php
 
-class VpsPageInit{
+class VpsPageInitializer{
     public function __construct(){
 
     }
