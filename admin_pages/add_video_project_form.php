@@ -7,18 +7,28 @@
     <tbody>
         <tr>
         	<th>
-        		Hello
+        		<label for="title">Title</label>
+        		<p><small>Enter the project name or the name of the customer or client.</small></p>
         	</th>
         	<td>
-        		I'm the data
+        		<input class="regular-text" id="title" name="title" type="text">
         	</td>
         </tr>
         <tr>
         	<th>
-        		Hello 2
+        		<label for="location">Location</label>
+        		<p><small>Enter the location of the project.</small></p>
         	</th>
         	<td>
-        		I'm the data2
+        		<input class="regular-text" id="location" name="location" type="text">
+        	</td>
+        </tr>
+        <tr>
+        	<th>
+        		
+        	</th>
+        	<td>
+        		
         	</td>
         </tr>
     </tbody>
