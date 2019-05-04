@@ -29,8 +29,8 @@
         		<label><input type="radio" id="France" name="country" value="France">France</label>
         		<label><input type="radio" id="USA" name="country" value="USA">USA</label>
         	    </div>
-        	    <br><label><input type="radio" id="add_new_country" name="country" value="add_new_country">Other</label>
-        		<label id="new_country_text_input"></label>
+        	    <br><label><input type="radio" id="addNewCountry" name="country" value="add_new_country">Other</label>
+        		<label id="newCountryTextInput"></label>
         	</td>
         </tr>
         <tr>
