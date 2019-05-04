@@ -7,6 +7,7 @@
 *
 */
 
+
 //div that displays country radio boxes
 var countries = document.getElementById("countries");
 //represents new_country radio button
@@ -15,14 +16,13 @@ var addNewCountry = document.getElementById("addNewCountry");
 var newCountryTextInput = document.getElementById("newCountryTextInput");
 
 addNewCountry.onclick = function(){
-    newCountryTextInput.innerHTML = '<input type="text" id="new_country" name="new_country" value="">';
+	newCountryTextInput.innerHTML = '<input type="text" id="new_country" name="new_country" value="">';
 }
 
 countries.onclick = function(){
     newCountryTextInput.innerHTML = '<input type="hidden" id="new_country" name="new_country" value="">';
 }
 
-//=================================================
 
 
 
