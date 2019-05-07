@@ -1,4 +1,4 @@
-.vps_main_page_div{
+.vps-main-page-div{
 	background-color: white; 
 	padding:17px; 
 	margin-right:17px; 
@@ -6,20 +6,20 @@
 	margin-top:10px;
 }
 
-.vps_main_page_greeting{
+.vps-main-page-greeting{
 	padding:20px; 
 	margin-right:13px;
 	margin-bottom:5px;
 }
 
-.vps_username_box{
+.vps-username-box{
 	border-radius:3px;
 	padding:9px;
 	color:white; 
 	background-color: #2e3b48;
 }
 
-.vps_main_page_header{
+.vps-main-page-header{
 	text-align: center; 
 	background-color: #2a4d6e; 
 	padding:10px; 
@@ -31,24 +31,24 @@
     margin-bottom: 20px;
 }
 
-.vps_main_page_header_font{
+.vps-main-page-header-font{
 	text-align: center; 
 	color:white; 
 	font-size:220%;
 }
 
-.vps_menu_buttons_wrapper{
+.vps-menu-buttons-wrapper{
 	padding:20px;
 }
 
-.vps_row{
+.vps-row{
 	display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.vps_column{
+.vps-column{
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
