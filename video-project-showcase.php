@@ -14,21 +14,22 @@ via a bespoke dashboard page.
 //check abspath
 if(!defined( 'ABSPATH' )) exit;
 
-require dirname( __FILE__ ) . '/classes/AdminPageInitializer.php';
-require dirname( __FILE__ ) . '/classes/ScriptsInitializer.php';
-require dirname( __FILE__ ) . '/classes/CustomPostTypeInitializer.php';
-require dirname( __FILE__ ) . '/classes/TaxonomiesInitializer.php';
+require dirname( __FILE__ ) . '/classes/class-vps-admin-page-initializer.php';
+require dirname( __FILE__ ) . '/classes/class-vps-scripts-initializer.php';
+require dirname( __FILE__ ) . '/classes/class-vps-custom-post-type-initializer.php';
+require dirname( __FILE__ ) . '/classes/class-vps-taxonomies-initializer.php';
 
 
 //initializes admin page in dashboard
-$vps_admin_page_initializer = new VpsAdminPageInitializer();
+$vps_admin_page_initializer = new VPS_Admin_Page_Initializer();
 
 //initializes css and js scripts
-$vps_scripts_initializer = new VpsScriptsInitializer();
+$vps_scripts_initializer = new VPS_Scripts_Initializer();
 
 //initializes custom post type
-$vps_custom_post_type_initializer = new VpsCustomPostTypeInitializer();
-
+$vps_custom_post_type_initializer = new VPS_Custom_Post_Type_Initializer();
 
 //initializes taxonomies
-$vps_taxonomies_initializer = new VpsTaxonomiesInitializer();
+$vps_taxonomies_initializer = new VPS_Taxonomies_Initializer();
+
+
