@@ -50,30 +50,6 @@ class VPS_Model{
             //country is from existing terms... add this post to taxonomy term.
         }
 
-        
-        
-        var_dump($date);
-        var_dump($video_url);
-        var_dump($new_country);
-        var_dump($_POST['helloyou!']);
-        var_dump($video_category);
-        var_dump( $_POST );
-        var_dump( taxonomy_exists( 'video_category' ));
-        var_dump( taxonomy_exists( 'country' ));
-        /*if(!$message == ''){
-            echo 'Now we will insert this post into the database';
-            var_dump( $_POST );
-            var_dump( taxonomy_exists('video_category' ));
-        }else{
-            echo 'There were some errors.<br>Some of your fields were left blank.<br>';
-        }*/
-        /*var_dump(taxonomy_exists('country'));
-        var_dump(taxonomy_exists('video_category'));
-        global $wp_taxonomies;
-        var_dump($wp_taxonomies);
-        var_dump(term_exists('Uncategorized', 'category'));*/
-
-        
         //FORM HANDLING
         /*
         1. video_category - a) check term exists b) create term if not c) add to post?
