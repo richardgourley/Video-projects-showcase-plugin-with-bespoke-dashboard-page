@@ -12,30 +12,45 @@ class VPS_Model{
     }
 
     public function insert_video_project( ){
-        //handle insert video project form submission here
+        /*
+        * CHECK FORM FOR ERRORS AND SANITIZE/ VALIDATE
+        */
         $message = $this->check_blank_fields( $_POST );
+        //$message is either blank or not.
 
         $video_category = sanitize_text_field($_POST['video-category']);
-        //video_category - add term to this post
         $country = sanitize_text_field($_POST['country']);
         $new_country = sanitize_text_field($_POST['new-country']);
 
-        if($country === 'add-new-country'){
-            //create new term for country taxonomy.
-            //check for irregular characters such as numbers, hyphens, @! etc.
-        }else{
-            //country is from existing terms... add as post taxonomy term
+        if(!$this->is_a_pure_string($new_country)){
+            $message .= '<br />The new country you added must only contain letters.';
         }
 
         $title = sanitize_text_field($_POST['title']);
+
         if($this->validate_date($_POST['date'])){
             $date = $_POST['date'];
         }else{
             //handle invalid date
+            $message .= '<br />Your date is invalid, please use YYYY-MM-DD format.'; 
         }
         $duration = sanitize_text_field($_POST['duration']);
         $video_url = sanitize_url($_POST['video-url']);
         $video_project_image = sanitize_url($_POST['video-project-url']);
+
+        /*
+        * INSERT NEW POST HERE
+        */
+
+        if($country === 'add-new-country'){
+            //we have checked $new_country already
+            //so we have a $new_country ready to create a new term.
+            
+        }else{
+            //country is from existing terms... add this post to taxonomy term.
+        }
+
+        
         
         var_dump($date);
         var_dump($video_url);
