@@ -10,11 +10,17 @@
         		<label for="video-category">Select a category for this video</label>
         	</th>
         	<td>
-        		<label><input checked type="radio" id="weddings" name="video-category" value="weddings">Weddings
+                <?php
+                $video_category_terms = get_terms( array(
+                    'taxonomy' =>   'video_category',
+                    'hide_empty' => false
+                ));
+                
+                foreach($video_category_terms as $term):
+                ?>
+        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-category" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
                 </label>
-        		<label><input type="radio" id="music-video" name="video-category" value="music-video">Music Video
-                </label>
-        		<label><input type="radio" id="commercial-video" name="video-category" value="commercial-video">Commercial Video</label>
+                <?php endforeach; ?>
         	</td>
         </tr>
         <tr>
@@ -23,13 +29,16 @@
         	</th>
         	<td>
         		<div id="countries">
-        		<label><input checked type="radio" id="ireland" name="country" value="ireland">Ireland</label>
-        		<label><input type="radio" id="australia" name="country" value="australia">Australia</label>
-        		<label><input type="radio" id="spain" name="country" value="spain">Spain</label>
-        		<label><input type="radio" id="germany" name="country" value="germany">Germany</label>
-        		<label><input type="radio" id="morocco" name="country" value="morocco">Morocco</label>
-        		<label><input type="radio" id="france" name="country" value="france">France</label>
-        		<label><input type="radio" id="usa" name="country" value="usa">USA</label>
+                <?php
+                $country_terms = get_terms( array(
+                    'taxonomy' =>   'country',
+                    'hide_empty' => false
+                ));
+
+                foreach($country_terms as $term):
+                ?>
+        		<label><input type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="country" value="usa">USA</label>
+                <?php endforeach ?>
         	    </div>
         	    <br />
                 <label><input type="radio" id="add-new-country" name="country" value="add-new-country">Other</label>
