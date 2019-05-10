@@ -1,42 +1,5 @@
 <div class="vps-main-page-div">
 
-<?php
-/*
-var_dump(taxonomy_exists('category'));
-var_dump(taxonomy_exists('video_category'));
-
-wp_insert_term('Ireland', 'country');
-wp_insert_term('Spain', 'country');
-
-wp_insert_term('Wedding', 'video_category');
-wp_insert_term('Music video', 'video_category');
-wp_insert_term('Commercial', 'video_category');
-
-var_dump(term_exists('music-video'));
-var_dump(term_exists('wedding'));
-var_dump(term_exists('Music Video'));
-var_dump(term_exists('Ireland'));
-var_dump(term_exists('ireland'));
-var_dump(term_exists('Spain'));
-var_dump(term_exists('spain'));
-
-var_dump(taxonomy_exists('Video category'));
-var_dump(taxonomy_exists('video_category'));
-*/
-
-//Practice getting terms and looping the slug name and real name of our terms for specific taxonomies.
-$terms = get_terms( array(
-    'taxonomy' => 'video_category',
-    'hide_empty' => false,
-) );
-var_dump($terms);
-
-foreach($terms as $term){
-	echo "<br>" . $term->name;
-}
-
-?>
-
 <div class="vps-main-page-greeting">
 <h1>Hello there <span class="vps-username-box"><?php echo esc_html(wp_get_current_user()->user_nicename); ?></span></h1>
 </div>
