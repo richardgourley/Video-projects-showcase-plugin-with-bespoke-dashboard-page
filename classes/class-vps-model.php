@@ -15,68 +15,88 @@ class VPS_Model{
         /*
         * CHECK FORM FOR ERRORS AND SANITIZE/ VALIDATE
         */
-        $message = $this->check_blank_fields( $_POST );
-        //$message is either blank or not.
+        var_dump($_POST);
+        $message = "";
+        
+        //ADD TO ERROR MESSAGE AS WE FIND ERRORS
+        $message .= $this->check_field_filled($_POST['video_category'], 'Video category', 'radio');
+        $message .= $this->check_field_filled($_POST['country'], 'Country', 'radio');
+        $message .= $this->check_only_letters($_POST['country']);
+        $message .= $this->check_field_filled($_POST['title'], 'Title', 'text');
+        $message .= $this->check_field_filled($_POST['location'], 'Location', 'text');
+        $message .= $this->check_date_validity($_POST['date']);
+        $message .= $this->check_field_filled($_POST['duration'], 'Duration', 'text');
+        $message .= $this->check_field_filled($_POST['video-project-image'], 'Project Image', 'text');
+        $message .= $this->check_field_filled($_POST['video-url'], 'Video Url', 'text');
 
+        if(!$message == ''){
+            //Return and re-display form with error message
+            echo "<br />There were errors in the form";
+            echo "<br />" . $message;
+            //return redisplay_form( $message ); 
+        }
+
+        //SANITIZE TEXT FIELDS
         $video_category = sanitize_text_field($_POST['video-category']);
         $country = sanitize_text_field($_POST['country']);
-        $new_country = sanitize_text_field($_POST['new-country']);
-
-        if(!$this->is_a_pure_string($new_country)){
-            $message .= '<br />The new country you added must only contain letters.';
-        }
-
         $title = sanitize_text_field($_POST['title']);
-
-        if($this->validate_date($_POST['date'])){
-            $date = $_POST['date'];
-        }else{
-            //handle invalid date
-            $message .= '<br />Your date is invalid, please use YYYY-MM-DD format.'; 
-        }
+        $date = $_POST['date'];
         $duration = sanitize_text_field($_POST['duration']);
+        $video_project_image = sanitize_url($_POST['video-project-image']);
         $video_url = sanitize_url($_POST['video-url']);
-        $video_project_image = sanitize_url($_POST['video-project-url']);
+        
 
         /*
         * INSERT NEW POST HERE
         */
-
-        if($country === 'add-new-country'){
-            //we have checked $new_country already
-            //so we have a $new_country ready to create a new term.
-            
-        }else{
-            //country is from existing terms... add this post to taxonomy term.
-        }
-
-        //FORM HANDLING
-        /*
-        1. video_category - a) check term exists b) create term if not c) add to post?
-        2. country - a) check is add-new-country b) check term exists - if not create term b) check is add-new-country
-        3. new-country - a) create term b) save 
-        4. title - sanitize text field
-        5. date - check is valid date, if not add to error message
-        6. duration - sanitize text field
-        7. video-project-url - sanitize url
-        8. video-url - sanitize url
-        */
+        
+        echo "<br />";
+        echo "<br />" . $video_category;
+        echo "<br />" . $country;
+        echo "<br />" . $title;
+        echo "<br />" . $date;
+        echo "<br />" . $duration;
+        echo "<br />" . $video_url;
+        echo "<br />" . $video_project_image;
+        
+        
     }
 
-    private function check_blank_fields( $post ){
-        $message = "";
-        foreach($post as $k => $v){
-            if($v === ''){
-                $message .= $k . ' field is blank. Please try again<br>';
-            }
+    private function check_field_filled( $var, $name, $type ){
+        if($var === '' && $type == 'radio'){
+            return "<br />$name must be selected.";
+        }else if($var === '' && $type == 'text'){
+            return "<br />$name field must not be blank.";
+        }else{
+            return '';
         }
-        return $message;
     }
     
-    private function validate_date( $date ){
+    private function check_date_validity( $date ){
+    
+        if($date === ''){
+            return "<br />Date field must not be blank";
+        }
+
         $date_arr = explode( '-', $date);
-        var_dump($date_arr);
-        //MM DD YYYY
-        return wp_checkdate($date_arr[1], $date_arr[2], $date_arr[0], $date);
+
+        if(!strlen($date_arr[0]) == 4 || preg_match('/[a-z@,!]/i', $date)){
+            return "<br />Your date is not valid. Check it is in YYYY-MM-DD format";
+        }
+    
+        if(!wp_checkdate($date_arr[1], $date_arr[2], $date_arr[0], $date)){
+            return "<br />Your date is not valid. Check it is in YYYY-MM-DD format";
+        }
+    
+        return '';
+    }
+
+    private function check_only_letters( $country ){
+        //country field is blank already checked, ok if blank
+        if(preg_match('/^[a-z]+$/i', $country) || $country === ''){
+            return '';
+        }else{
+            return "<br />Country field can only contain letters.";
+        }
     }
 }
