@@ -15,13 +15,15 @@ class VPS_Model{
         /*
         * CHECK FORM FOR ERRORS AND SANITIZE/ VALIDATE
         */
-        var_dump($_POST);
         $message = "";
         
         //ADD TO ERROR MESSAGE AS WE FIND ERRORS
         $message .= $this->check_field_filled($_POST['video_category'], 'Video category', 'radio');
         $message .= $this->check_field_filled($_POST['country'], 'Country', 'radio');
-        $message .= $this->check_only_letters($_POST['country']);
+        if($_POST['country'] == 'other'){
+            $message .= $this->check_field_filled($_POST['new-country'], 'Other Country', 'text');
+            $message .= $this->check_only_letters($_POST['new-country']);
+        }
         $message .= $this->check_field_filled($_POST['title'], 'Title', 'text');
         $message .= $this->check_field_filled($_POST['location'], 'Location', 'text');
         $message .= $this->check_date_validity($_POST['date']);
@@ -30,16 +32,15 @@ class VPS_Model{
         $message .= $this->check_field_filled($_POST['video-url'], 'Video Url', 'text');
 
         if(!$message == ''){
-            //Return and re-display form with error message
-            echo "<br />There were errors in the form";
-            echo "<br />" . $message;
-            //return redisplay_form( $message ); 
+            return $this->redisplay_form( $message, $_POST ); 
         }
 
         //SANITIZE TEXT FIELDS
         $video_category = sanitize_text_field($_POST['video-category']);
         $country = sanitize_text_field($_POST['country']);
+        $new_country = sanitize_text_field($_POST['new_country']);
         $title = sanitize_text_field($_POST['title']);
+        $location = sanitize_text_field($_POST['location']);
         $date = $_POST['date'];
         $duration = sanitize_text_field($_POST['duration']);
         $video_project_image = sanitize_url($_POST['video-project-image']);
@@ -53,12 +54,23 @@ class VPS_Model{
         echo "<br />";
         echo "<br />" . $video_category;
         echo "<br />" . $country;
+        echo "<br />" . $new_country;
         echo "<br />" . $title;
         echo "<br />" . $date;
         echo "<br />" . $duration;
         echo "<br />" . $video_url;
         echo "<br />" . $video_project_image;
         
+        /*
+        var_dump($video_category);
+        var_dump($country);
+        var_dump($title);
+        var_dump($location);
+        var_dump($date);
+        var_dump($duration);
+        var_dump($video_url);
+        var_dump($video_project_image);
+        */
         
     }
 
@@ -93,10 +105,14 @@ class VPS_Model{
 
     private function check_only_letters( $country ){
         //country field is blank already checked, ok if blank
-        if(preg_match('/^[a-z]+$/i', $country) || $country === ''){
+        if(preg_match('/^[a-z\s]+$/i', $country) || $country === ''){
             return '';
         }else{
             return "<br />Country field can only contain letters.";
         }
+    }
+
+    private function redisplay_form( $message, $post ){
+        require_once plugin_dir_path( __DIR__ ) . 'admin-pages/redisplay-video-project-form.php';
     }
 }
