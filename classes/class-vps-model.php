@@ -17,9 +17,9 @@ class VPS_Model{
         */
         $message = $this->get_post_form_errors( $_POST );
         
-        //Re-display form if errors exist
+        //Re-display form with current inputs and error messages
         if(!$message == ''){
-            return $this->redisplay_form( $message, $_POST ); 
+            return $this->re_display_form( $message, $_POST ); 
         }
 
         //Sanitize fields if no errors exist.
@@ -47,18 +47,7 @@ class VPS_Model{
         echo "<br />" . $duration;
         echo "<br />" . $video_url;
         echo "<br />" . $video_project_image;
-        
-        /*
-        var_dump($video_category);
-        var_dump($country);
-        var_dump($title);
-        var_dump($location);
-        var_dump($date);
-        var_dump($duration);
-        var_dump($video_url);
-        var_dump($video_project_image);
-        */
-        
+         
     }
     
     private function get_post_form_errors( $post ){
@@ -116,7 +105,7 @@ class VPS_Model{
         }
     }
 
-    private function redisplay_form( $message, $post ){
+    private function re_display_form( $message, $post ){
         require_once plugin_dir_path( __DIR__ ) . 'admin-pages/redisplay-video-project-form.php';
     }
 }
