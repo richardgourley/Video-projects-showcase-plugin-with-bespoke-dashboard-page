@@ -15,27 +15,14 @@ class VPS_Model{
         /*
         * CHECK FORM FOR ERRORS AND SANITIZE/ VALIDATE
         */
-        $message = "";
+        $message = $this->get_post_form_errors( $_POST );
         
-        //ADD TO ERROR MESSAGE AS WE FIND ERRORS
-        $message .= $this->check_field_filled($_POST['video_category'], 'Video category', 'radio');
-        $message .= $this->check_field_filled($_POST['country'], 'Country', 'radio');
-        if($_POST['country'] == 'other'){
-            $message .= $this->check_field_filled($_POST['new-country'], 'Other Country', 'text');
-            $message .= $this->check_only_letters($_POST['new-country']);
-        }
-        $message .= $this->check_field_filled($_POST['title'], 'Title', 'text');
-        $message .= $this->check_field_filled($_POST['location'], 'Location', 'text');
-        $message .= $this->check_date_validity($_POST['date']);
-        $message .= $this->check_field_filled($_POST['duration'], 'Duration', 'text');
-        $message .= $this->check_field_filled($_POST['video-project-image'], 'Project Image', 'text');
-        $message .= $this->check_field_filled($_POST['video-url'], 'Video Url', 'text');
-
+        //Re-display form if errors exist
         if(!$message == ''){
             return $this->redisplay_form( $message, $_POST ); 
         }
 
-        //SANITIZE TEXT FIELDS
+        //Sanitize fields if no errors exist.
         $video_category = sanitize_text_field($_POST['video-category']);
         $country = sanitize_text_field($_POST['country']);
         $new_country = sanitize_text_field($_POST['new_country']);
@@ -72,6 +59,23 @@ class VPS_Model{
         var_dump($video_project_image);
         */
         
+    }
+    
+    private function get_post_form_errors( $post ){
+        $message = "";
+        $message .= $this->check_field_filled( $post['video_category'], 'Video category', 'radio' );
+        $message .= $this->check_field_filled( $post['country'], 'Country', 'radio' );
+        if( $post['country'] == 'other' ){
+            $message .= $this->check_field_filled( $post['new-country'], 'Other Country', 'text' );
+            $message .= $this->check_only_letters( $post['new-country'] );
+        }
+        $message .= $this->check_field_filled( $post['title'], 'Title', 'text' );
+        $message .= $this->check_field_filled( $post['location'], 'Location', 'text' );
+        $message .= $this->check_date_validity( $post['date'] );
+        $message .= $this->check_field_filled( $post['duration'], 'Duration', 'text' );
+        $message .= $this->check_field_filled( $post['video-project-image'], 'Project Image', 'text' );
+        $message .= $this->check_field_filled( $post['video-url'], 'Video Url', 'text' );
+        return $message;
     }
 
     private function check_field_filled( $var, $name, $type ){
