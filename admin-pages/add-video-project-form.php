@@ -37,12 +37,15 @@
 
                 foreach($country_terms as $term):
                 ?>
-        		<label><input type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="country" value="usa">USA</label>
+        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="country" 
+                    value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></label>
                 <?php endforeach ?>
         	    </div>
-        	    <br />
-                <label><input type="radio" id="add-new-country" name="country" value="add-new-country">Other</label>
-        		<label id="new-country-text-input"></label>
+        	    
+                <br />
+                <br />
+                <label><input type="radio" id="other" name="country" value="other">Other</label>
+                <input placeholder="Enter country" type="text" id="new-country" name="new-country" value="">
         	</td>
         </tr>
         <tr>
