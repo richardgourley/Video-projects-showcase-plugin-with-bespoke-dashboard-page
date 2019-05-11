@@ -1,6 +1,6 @@
 <?php
 
-class VpsScriptsInitializer{
+class VPS_Scripts_Initializer{
     public function __construct(){
         //enqueue scripts here
         add_action( 'init', array( $this, 'enqueue_css' ) );
@@ -12,9 +12,9 @@ class VpsScriptsInitializer{
     }
 
     public function enqueue_admin_js(){
-        wp_enqueue_script( 'video_projects_admin_js', plugins_url( 'js/admin-page.js', __DIR__ ),
+        wp_enqueue_script( 'vps_admin_add_form_js', plugins_url( 'js/admin-page-add-video-project-form.js', __DIR__ ),
         array(), '1.0.0', true );
-        wp_enqueue_script( 'video_projects_admin_media_js', plugins_url( 'js/admin-page-media.js', __DIR__ ),
+        wp_enqueue_script( 'vps_admin_media_js', plugins_url( 'js/admin-page-media.js', __DIR__ ),
         array('jquery'), '1.0.0', true);
     }
 
