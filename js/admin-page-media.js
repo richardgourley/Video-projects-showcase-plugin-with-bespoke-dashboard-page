@@ -7,8 +7,7 @@ jQuery(document).ready(function($s){
 
     var mediaUploader;
 
-    $('#upload_image_video_project').click(function(e){
-    	console.log("JUST TESTING AGAIN");
+    $('#upload-image-video-project').click(function(e){
         e.preventDefault();
 
         if(mediaUploader){
@@ -27,7 +26,7 @@ jQuery(document).ready(function($s){
         //When file selected, get the URL and set it to field value in the form
         mediaUploader.on('select', function(){
             attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#video_project_image').val(attachment.url);
+            $('#video-project-image').val(attachment.url);
         });
 
         //Opens the uploader dialog
