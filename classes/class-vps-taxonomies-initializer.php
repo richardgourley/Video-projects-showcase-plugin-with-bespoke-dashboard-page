@@ -1,6 +1,6 @@
 <?php
 
-class VpsTaxonomiesInitializer{
+class VPS_Taxonomies_Initializer{
     public function __construct(){
         add_action( 'init', array( $this, 'add_video_project_taxonomies' ));
     }
