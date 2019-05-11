@@ -23,7 +23,7 @@ class VPS_Admin_Page_Initializer{
         		$model->display_video_project_form();
         	}
 
-            //handles insert video project logic
+            //handles insert video project form logic
             if(isset($_POST['insert-video-project-form-nonce']) 
             && wp_verify_nonce($_POST['insert-video-project-form-nonce'], 'insert-video-project-form-action')){
                 $model = new VPS_Model();
