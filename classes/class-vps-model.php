@@ -2,6 +2,8 @@
 
 class VPS_Model{
     
+    protected $fields;
+
     public function __construct(){
         //constructor logic
     }
@@ -22,20 +24,28 @@ class VPS_Model{
             return $this->re_display_form( $message, $_POST ); 
         }
 
-        //Sanitize fields if no errors exist.
-        $video_category = sanitize_text_field($_POST['video-category']);
-        $country = sanitize_text_field($_POST['country']);
-        $new_country = sanitize_text_field($_POST['new_country']);
-        $title = sanitize_text_field($_POST['title']);
-        $location = sanitize_text_field($_POST['location']);
-        $date = $_POST['date'];
-        $duration = sanitize_text_field($_POST['duration']);
-        $video_project_image = sanitize_url($_POST['video-project-image']);
-        $video_url = sanitize_url($_POST['video-url']);
-        
+        //Sanitize fields if no errors exist. Set as array parameters
+        $this->fields[ 'video_category' ] = sanitize_text_field($_POST['video-category']);
+        $this->fields[ 'country' ] = sanitize_text_field($_POST['country']);
+        $this->fields[ 'new_country' ] = sanitize_text_field($_POST['new-country']);
+        $this->fields[ 'title' ] = sanitize_text_field($_POST['title']);
+        $this->fields[ 'location' ] = sanitize_text_field($_POST['location']);
+        $this->fields[ 'date' ] = $_POST['date'];
+        $this->fields[ 'duration' ] = sanitize_text_field($_POST['duration']);
+        $this->fields[ 'video_project_image' ] = sanitize_url($_POST['video-project-image']);
+        $this->fields[ 'video_url' ] = sanitize_url($_POST['video-url']);
 
+        var_dump($this->fields);
         /*
         * INSERT NEW POST HERE
+        */
+
+        /*
+        $post_arr = array(
+            'content' => $this->generate_content( $this->fields );
+
+
+        );
         */
         
         echo "<br />";
