@@ -40,6 +40,12 @@ class VPS_Model{
         * INSERT NEW POST HERE
         */
 
+        if($this->fields[ 'country' ] == 'other'){
+            //insert new term into the database
+        }
+
+        
+
         /*
         $post_arr = array(
             'content' => $this->generate_content( $this->fields );
