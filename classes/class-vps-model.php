@@ -44,11 +44,11 @@ class VPS_Model{
             //insert new term into the database
         }
 
-        
+
 
         /*
         $post_arr = array(
-            'content' => $this->generate_content( $this->fields );
+            'content' => $this->generate_post_content( $this->fields );
 
 
         );
@@ -123,5 +123,9 @@ class VPS_Model{
 
     private function re_display_form( $message, $post ){
         require_once plugin_dir_path( __DIR__ ) . 'admin-pages/redisplay-video-project-form.php';
+    }
+
+    private function generate_post_content(){
+
     }
 }
