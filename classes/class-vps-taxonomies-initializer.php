@@ -3,6 +3,13 @@
 class VPS_Taxonomies_Initializer{
     public function __construct(){
         add_action( 'init', array( $this, 'add_video_project_taxonomies' ));
+        //if( !term_exists())
+        /*
+        if( !term_exists( 'spanish' )){
+            wp_insert_term( 'Spanish', 'video_project_language' );
+        }*/
+        
+        
     }
 
     public function add_video_project_taxonomies(){
@@ -52,13 +59,38 @@ class VPS_Taxonomies_Initializer{
             "show_in_quick_edit" => false,
         );
 
+        $labels_video_project_language = array(
+            "name" => __( "Language" ),
+            "singular_name" => __( "Language" ),
+        );
+
+        $args_video_project_language = array(
+            "label" => __( "Language" ),
+            "labels" => $labels_video_project_language,
+            "public" => true,
+            "publicly_queryable" => true,
+            "hierarchical" => false,
+            "show_ui" => true,
+            "show_in_menu" => false,
+            "show_in_nav_menus" => true,
+            "query_var" => true,
+            "rewrite" => array( 'slug' => 'video_project_languages', 'with_front' => true, ),
+            "show_admin_column" => false,
+            "show_in_rest" => true,
+            "rest_base" => "video_project_language",
+            "rest_controller_class" => "WP_REST_Terms_Controller",
+            "show_in_quick_edit" => false,
+        );
+
         register_taxonomy( 'country', array( "video_project" ), $args_country );
         register_taxonomy( 'video_category', array( "video_project" ), $args_video_category );
-        /*
-        $labels_video_type = array();
-        $args_video_type = array();
-        register_taxonomy( 'video_type', $args_video_type);
-        */
+        register_taxonomy( 'video_project_language', array( "video_project"), $args_video_project_language );
+
+        //insert terms after taxonomies registered
+        if( !term_exists( 'english' )){
+            wp_insert_term( 'English', 'video_project_language' );
+        }
+        
     }
 
 }
