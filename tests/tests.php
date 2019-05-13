@@ -71,6 +71,11 @@ var_dump(check_date_validity('@!,aaggrRRRtt@uyee')); // returns reg ex error
 var_dump(check_date_validity('@!,aaggrtt@uyee')); // returns reg ex error
 var_dump(check_date_validity('2003-13-13')); // returns wp_checkdate error
 
+//Check new language taxonomy
+if(taxonomy_exists( 'video_project_language' )){
+	var_dump("Yes video project language is a registered taxonomy");
+}
+
 
 /*
 $my_test_str = 'Hello@';
