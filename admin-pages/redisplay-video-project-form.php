@@ -8,6 +8,36 @@
 <?php wp_nonce_field( 'insert-video-project-form-action', 'insert-video-project-form-nonce' ); ?>
 <table class="form-table">
     <tbody>
+        <tr>
+            <th>
+                <label for="video-project-language">Select a language for this entry</label>
+            </th>
+            <td>
+                <?php
+                $video_project_language_terms = get_terms( array(
+                    'taxonomy' =>   'video_project_language',
+                    'hide_empty' => false
+                ));
+                
+                foreach($video_project_language_terms as $term) {
+                    
+                    $checked = '';
+                    if($term->slug == $post['video-project-language']){
+                        $checked = 'checked';
+                    }else{
+                        $checked = '';
+                    }
+                    printf('<label><input %s type="radio" id=%s name="video-project-language" value=%s>%s</label> ',
+                        $checked,
+                        esc_html( $term->slug),
+                        esc_html( $term->slug),
+                        esc_html( $term->name)
+                    );
+
+                }
+                ?>
+            </td>
+        </tr>
     	<tr>
         	<th>
         		<label for="video-category">Select a category for this video</label>
