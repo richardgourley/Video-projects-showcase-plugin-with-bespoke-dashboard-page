@@ -6,6 +6,27 @@
 <table class="form-table">
     <tbody>
     	<tr>
+            <th>
+                <label for="video-project-language">Select a language for this entry</label>
+            </th>
+            <td>
+                <?php
+                $video_project_language_terms = get_terms( array(
+                    'taxonomy' =>   'video_project_language',
+                    'hide_empty' => false
+                ));
+                
+                foreach($video_project_language_terms as $term):
+                ?>
+                <?php
+                $language_checked = $term->slug == 'english' ? 'checked' : '';
+                ?>
+                <label><input <?php echo $language_checked; ?> type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-project-language" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
+                </label>
+                <?php endforeach; ?>
+            </td>
+        </tr>
+        <tr>
         	<th>
         		<label for="video-category">Select a category for this video</label>
         	</th>
