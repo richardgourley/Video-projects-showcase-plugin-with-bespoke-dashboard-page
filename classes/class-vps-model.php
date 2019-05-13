@@ -41,14 +41,17 @@ class VPS_Model{
         */
 
         if($this->fields[ 'country' ] == 'other'){
-            //insert new term into the database
+            //insert new term into the database ($this->fields[ 'new_country' ]);
         }
 
 
 
         /*
         $post_arr = array(
-            'content' => $this->generate_post_content( $this->fields );
+            'title'   => $this->fields[ 'title' ],
+            'content' => $this->generate_post_content( $this->fields ),
+            'comment_status' => 'closed',
+
 
 
         );
@@ -68,6 +71,7 @@ class VPS_Model{
     
     private function get_post_form_errors( $post ){
         $message = "";
+        $message .= $this->check_field_filled( $post['video-project-language'], 'Video project language', 'radio');
         $message .= $this->check_field_filled( $post['video_category'], 'Video category', 'radio' );
         $message .= $this->check_field_filled( $post['country'], 'Country', 'radio' );
         if( $post['country'] == 'other' ){
