@@ -44,25 +44,12 @@ class VPS_Model{
         if($this->fields[ 'country' ] == 'other'){
             //insert new term into the database ($this->fields[ 'new_country' ]);
         }
-
-        
-        $post_arr = array(
-            'title'   => $this->fields[ 'title' ],
-            'content' => $this->generate_post_content( $this->fields ),
-            'comment_status' => 'closed',
-            'post_type' => 'video_project',
-            'tags_input'    => array(
-                'myTax' => array(12,13,16)
-             ),
-        );
-        
-        
         
         $content = $this->generate_post_content();
 
         $post_arr = array(
-            'title'   => $this->fields[ 'title' ],
-            'content' => $content,
+            'post_title'   => $this->fields[ 'title' ],
+            'post_content' => $content,
             'comment_status' => 'closed',
             'post_type' => 'video_project',
             'meta_input' => array(
@@ -81,7 +68,6 @@ class VPS_Model{
         wp_set_object_terms( $post_id, $this->fields['video_category'], 'video_category' );
         wp_set_object_terms( $post_id, $this->fields['country'], 'country');
 
-         
     }
     
     private function get_post_form_errors( $post ){
