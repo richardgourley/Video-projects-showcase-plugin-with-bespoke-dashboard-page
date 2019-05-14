@@ -122,6 +122,17 @@ var_dump(preg_match('/^[a-z]+$/i', 'italy@-!22-')); //false - only letters - i c
 
 */
 
+//TEST QUERY FOR SPECIFIC TERM
+$args = array(
+'post_type' => 'video_project',
+'tax_query' => array(
+    array(
+    'taxonomy' => 'video_project_language',
+    'terms' => 'english'
+     )
+  )
+);
+$test_query = new WP_Query( $args );
 
 ?>
 
