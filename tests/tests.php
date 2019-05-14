@@ -6,7 +6,10 @@
 * Various testing shown below when writing functions for the plugin.
 */
 
-/*
+/************
+* TAXONOMY TESTS
+*************
+
 var_dump(taxonomy_exists('category'));
 var_dump(taxonomy_exists('video_category'));
 
@@ -44,6 +47,10 @@ foreach($terms as $term){
 var_dump(term_exists('music-video'));
 */
 
+/*****************
+* DATE VALIDITY TESTS
+******************
+
 function check_date_validity( $date ){
     //if blank
 	  if($date === ''){
@@ -75,9 +82,12 @@ var_dump(check_date_validity('2003-13-13')); // returns wp_checkdate error
 if(taxonomy_exists( 'video_project_language' )){
 	var_dump("Yes video project language is a registered taxonomy");
 }
+*/
 
+/***************
+*  REGEX TESTS
+*****************
 
-/*
 $my_test_str = 'Hello@';
 $res = preg_match("/[^a-zA-Z0-9_-]/", $my_test_str);
 var_dump($res);
@@ -122,7 +132,10 @@ var_dump(preg_match('/^[a-z]+$/i', 'italy@-!22-')); //false - only letters - i c
 
 */
 
-//TEST QUERY FOR SPECIFIC TERM
+/********************
+* QUERY TERM TESTS
+*********************
+
 $args = array(
 'post_type' => 'video_project',
 'tax_query' => array(
