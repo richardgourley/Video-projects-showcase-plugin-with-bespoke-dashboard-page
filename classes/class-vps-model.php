@@ -60,7 +60,8 @@ class VPS_Model{
                 'video_project_date' => $this->fields[ 'date' ],
                 'video_project_image' => $this->fields[ 'video_project_image'],
                 'video_project_url' => $this->fields[ 'video_url']
-            )
+            ), 
+            'post_status' => 'publish'
         );
 
         $post_id = wp_insert_post( $post_arr );
@@ -68,6 +69,22 @@ class VPS_Model{
         wp_set_object_terms( $post_id, $this->fields['video_category'], 'video_category' );
         wp_set_object_terms( $post_id, $this->fields['country'], 'country');
 
+    }
+
+    public function view_all_video_projects(){
+        //displays all video projects
+        $args = array(
+            'post_type' => 'video_project',
+            'post_status' => 'publish'
+        );
+        $video_projects = new WP_Query( $args );
+        $post_1 = $video_projects->posts[0];
+        $post_1_meta = array();
+        array_push($post_1_meta, get_post_meta($post_1->ID, 'video_project_duration', true));
+        array_push($post_1_meta, get_post_meta($post_1->ID, 'video_project_category', true));
+        array_push($post_1_meta, get_post_meta($post_1->ID, 'video_project_country', true));
+        
+        require_once plugin_dir_path( __DIR__ ) . 'admin-pages/view-all-video-projects.php';
     }
     
     private function get_post_form_errors( $post ){
