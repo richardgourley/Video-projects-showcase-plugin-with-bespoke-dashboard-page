@@ -25,6 +25,7 @@ class VPS_Model{
         }
 
         //Sanitize fields if no errors exist. Set as array parameters
+        $this->fields[ 'language' ] = sanitize_text_field($_POST['video-project-language']);
         $this->fields[ 'video_category' ] = sanitize_text_field($_POST['video-category']);
         $this->fields[ 'country' ] = sanitize_text_field($_POST['country']);
         $this->fields[ 'new_country' ] = sanitize_text_field($_POST['new-country']);
@@ -44,28 +45,42 @@ class VPS_Model{
             //insert new term into the database ($this->fields[ 'new_country' ]);
         }
 
-
-
-        /*
+        
         $post_arr = array(
             'title'   => $this->fields[ 'title' ],
             'content' => $this->generate_post_content( $this->fields ),
             'comment_status' => 'closed',
-
-
-
+            'post_type' => 'video_project',
+            'tags_input'    => array(
+                'myTax' => array(12,13,16)
+             ),
         );
-        */
         
-        echo "<br />";
-        echo "<br />" . $video_category;
-        echo "<br />" . $country;
-        echo "<br />" . $new_country;
-        echo "<br />" . $title;
-        echo "<br />" . $date;
-        echo "<br />" . $duration;
-        echo "<br />" . $video_url;
-        echo "<br />" . $video_project_image;
+        
+        
+        $content = $this->generate_post_content();
+
+        $post_arr = array(
+            'title'   => $this->fields[ 'title' ],
+            'content' => $content,
+            'comment_status' => 'closed',
+            'post_type' => 'video_project',
+            'meta_input' => array(
+                'video_project_category' => $this->fields[ 'video_category' ],
+                'video_project_country' => $this->fields[ 'country' ],
+                'video_project_location' => $this->fields[ 'location' ],
+                'video_project_duration' => $this->fields[ 'duration' ],
+                'video_project_date' => $this->fields[ 'date' ],
+                'video_project_image' => $this->fields[ 'video_project_image'],
+                'video_project_url' => $this->fields[ 'video_url']
+            )
+        );
+
+        $post_id = wp_insert_post( $post_arr );
+        wp_set_object_terms( $post_id, $this->fields['language'], 'video_project_language' );
+        wp_set_object_terms( $post_id, $this->fields['video_category'], 'video_category' );
+        wp_set_object_terms( $post_id, $this->fields['country'], 'country');
+
          
     }
     
@@ -130,6 +145,6 @@ class VPS_Model{
     }
 
     private function generate_post_content(){
-
+        return 'This is a demo test post';
     }
 }
