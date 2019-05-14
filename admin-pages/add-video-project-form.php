@@ -99,7 +99,7 @@
         <tr>
         	<th>
         		<label for="duration">Duration</label>
-        		<p><small>Enter a duration eg 2 weeks, 3 months.</small></p>
+        		<p><small>Enter a duration for the project - 2 weeks, 3 months etc.</small></p>
         	</th>
         	<td>
         		<input class="regular-text" id="duration" name="duration" type="text" value="">
