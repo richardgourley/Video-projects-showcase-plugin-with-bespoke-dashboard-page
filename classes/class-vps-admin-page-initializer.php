@@ -17,17 +17,24 @@ class VPS_Admin_Page_Initializer{
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //loads add video project form
-        	if(isset($_POST['add-video-project-nonce']) 
+        	if( isset($_POST['add-video-project-nonce'] ) 
             && wp_verify_nonce($_POST[ 'add-video-project-nonce' ], 'add-video-project-action')){
         		$model = new VPS_Model();
         		$model->display_video_project_form();
         	}
 
             //handles insert video project form logic
-            if(isset($_POST['insert-video-project-form-nonce']) 
+            if( isset($_POST['insert-video-project-form-nonce'] ) 
             && wp_verify_nonce($_POST['insert-video-project-form-nonce'], 'insert-video-project-form-action')){
                 $model = new VPS_Model();
                 $model->insert_video_project( );
+            }
+
+            //displays all video projects with edit, update buttons
+            if(isset( $_POST['view-all-video-projects-nonce'] ) 
+            && wp_verify_nonce($_POST[ 'view-all-video-projects-nonce' ], 'view-all-video-projects-action')){
+                $model = new VPS_Model();
+                $model->view_all_video_projects();
             }
         }
     }
