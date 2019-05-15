@@ -147,5 +147,14 @@ $args = array(
 );
 $test_query = new WP_Query( $args );
 
+/************************
+*CONVERT FIRST LETTER OF STRING TO UPPER CASE
+*************************
+$my_string = 'australia';
+echo "<br />" . $my_string;
+echo "<br />" . $my_string[0];
+$my_string[0] = strtoupper($my_string[0]);
+echo "<br />" . $my_string;
+
 ?>
 
