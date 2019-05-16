@@ -39,7 +39,7 @@
 
                 foreach($video_category_terms as $term):
                 ?>
-        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-category" value="<?php echo esc_html( $term->name ); ?>"><?php echo esc_html( $term->name); ?>
+        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-category" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
                 </label>
                 <?php endforeach; ?>
         	</td>
@@ -59,7 +59,7 @@
                 foreach($country_terms as $term):
                 ?>
         		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="country" 
-                    value="<?php echo esc_html( $term->name ); ?>"><?php echo esc_html( $term->name ); ?></label>
+                    value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></label>
                 <?php endforeach ?>
         	    </div>
         	    
