@@ -60,7 +60,7 @@
                     printf('<label><input %s type="radio" id=%s name="video-category" value=%s>%s</label> ',
                         $checked,
                         esc_html( $term->slug),
-                        esc_html( $term->name),
+                        esc_html( $term->slug),
                         esc_html( $term->name)
                     );
 
@@ -89,14 +89,14 @@
                         $new_country = false;
                         printf('<label><input checked type="radio" id=%s name="country" value=%s>%s</label> ',
                             esc_html( $country_term->slug),
-                            esc_html( $country_term->name),
+                            esc_html( $country_term->slug),
                             esc_html( $country_term->name)
                         );
                     }else{
-                        //tells us that user entered a new country
+                        //tells us that this term not checked by user
                         printf('<label><input type="radio" id=%s name="country" value=%s>%s</label> ',
                             esc_html( $country_term->slug),
-                            esc_html( $country_term->name),
+                            esc_html( $country_term->slug),
                             esc_html( $country_term->name)
                         );
                     }
