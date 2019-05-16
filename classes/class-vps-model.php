@@ -43,6 +43,9 @@ class VPS_Model{
 
         if($this->fields[ 'country' ] == 'other'){
             //insert new term into the database ($this->fields[ 'new_country' ]);
+            if( !term_exists( $this->fields[ 'new_country' ] )){
+                wp_insert_term( $this->first_letter_upper($this->fields[ 'new_country' ]), 'country' );
+            }
         }
         
         $content = $this->generate_post_content();
@@ -53,8 +56,10 @@ class VPS_Model{
             'comment_status' => 'closed',
             'post_type' => 'video_project',
             'meta_input' => array(
-                'video_project_category' => $this->fields[ 'video_category' ],
-                'video_project_country' => $this->fields[ 'country' ],
+                'video_project_category' => 
+                get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name,
+                'video_project_country' => 
+                get_term_by('slug', $this->fields[ 'country' ], 'country')->name,
                 'video_project_location' => $this->fields[ 'location' ],
                 'video_project_duration' => $this->fields[ 'duration' ],
                 'video_project_date' => $this->fields[ 'date' ],
@@ -65,9 +70,14 @@ class VPS_Model{
         );
 
         $post_id = wp_insert_post( $post_arr );
+
         wp_set_object_terms( $post_id, $this->fields['language'], 'video_project_language' );
         wp_set_object_terms( $post_id, $this->fields['video_category'], 'video_category' );
-        wp_set_object_terms( $post_id, $this->fields['country'], 'country');
+        if($this->fields[ 'country' ] == 'other'){
+            wp_set_object_terms( $post_id, $this->first_letter_upper($this->fields[ 'new_country' ]), 'country');
+        }else{
+            wp_set_object_terms( $post_id, $this->fields['country'], 'country');
+        }
 
     }
 
@@ -147,7 +157,32 @@ class VPS_Model{
         require_once plugin_dir_path( __DIR__ ) . 'admin-pages/redisplay-video-project-form.php';
     }
 
+    private function first_letter_upper( $str ){
+        $str[0] = strtoupper($str[0]);
+        return $str;
+    }
+
     private function generate_post_content(){
-        return 'This is a demo test post';
+
+        $category_name = get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name;
+        $country_name = get_term_by('slug', $this->fields[ 'country' ], 'country')->name;
+
+        $html = '';
+        $html .= '<h3>Category: ' . $category_name . '</h3>';
+        $html .= '<p>Location: ' . $this->fields[ 'location' ] . ', ' . $country_name . '.</p>';
+        $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'video_project_image' ] . '"></img>';
+        $html .= '<p>Date: ' . $this->fields[ 'date' ] . '.</p>';
+        $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
+        $vimeo_id = $this->get_vimeo_link( $this->fields['video_url'] );
+        $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <p><a href="https://vimeo.com/259695789">VDP Design // Hype Reel</a> from <a href="https://vimeo.com/ablueroomproduction">Blueroom Productions</a> on <a href="https://vimeo.com">Vimeo</a>.</p>';
+        return $html;
+
+    }
+
+    private function get_vimeo_link( $vimeo_url ){
+        $video_id = $vimeo_url;
+        $vid_arr = explode('/', $video_id);
+        return $vid_arr[(count($vid_arr)-1)];
     }
 }
