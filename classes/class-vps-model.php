@@ -50,6 +50,15 @@ class VPS_Model{
         
         $content = $this->generate_post_content();
 
+        //CHECK IF IS NEW COUNTRY OR EXISTING FOR OUR video_project_country META FIELD
+        $post_meta_country = '';
+        if($this->fields[ 'country' ] == 'other'){
+            $post_meta_country = get_term_by( 'slug', $this->fields['new_country'], 'country' )->name;
+        }else{
+            $post_meta_country = get_term_by( 'slug', $this->fields[ 'country' ], 'country' )->name;
+        }
+
+    
         $post_arr = array(
             'post_title'   => $this->fields[ 'title' ],
             'post_content' => $content,
@@ -59,7 +68,7 @@ class VPS_Model{
                 'video_project_category' => 
                 get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name,
                 'video_project_country' => 
-                get_term_by('slug', $this->fields[ 'country' ], 'country')->name,
+                $post_meta_country,
                 'video_project_location' => $this->fields[ 'location' ],
                 'video_project_duration' => $this->fields[ 'duration' ],
                 'video_project_date' => $this->fields[ 'date' ],
