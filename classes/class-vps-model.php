@@ -61,6 +61,7 @@ class VPS_Model{
         $post_arr = array(
             'post_title'   => $this->fields[ 'title' ],
             'post_content' => $content,
+            'post_date' => $this->fields[ 'date' ],
             'comment_status' => 'closed',
             'post_type' => 'video_project',
             'meta_input' => array(
@@ -175,7 +176,13 @@ class VPS_Model{
     private function generate_post_content(){
 
         $category_name = get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name;
-        $country_name = get_term_by('slug', $this->fields[ 'country' ], 'country')->name;
+        $country_name = '';
+        if($this->fields[ 'country' ] == 'other'){
+            $country_name = $this->first_letter_upper($this->fields[ 'new_country' ]);
+        }else{
+            $country_name = get_term_by('slug', $this->fields[ 'country' ], 'country')->name;
+        }
+        
 
         $html = '';
         $html .= '<h3>Category: ' . $category_name . '</h3>';
@@ -183,9 +190,8 @@ class VPS_Model{
         $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'video_project_image' ] . '"></img>';
         $html .= '<p>Date: ' . $this->fields[ 'date' ] . '.</p>';
         $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
-        $vimeo_id = $this->get_vimeo_link( $this->fields['video_url'] );
-        $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            <p><a href="https://vimeo.com/259695789">VDP Design // Hype Reel</a> from <a href="https://vimeo.com/ablueroomproduction">Blueroom Productions</a> on <a href="https://vimeo.com">Vimeo</a>.</p>';
+        $vimeo_id = $this->get_vimeo_link( $this->fields[ 'video_url' ] );
+        $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
         return $html;
 
     }
