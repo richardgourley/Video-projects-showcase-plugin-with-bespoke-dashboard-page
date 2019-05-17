@@ -148,13 +148,43 @@ $args = array(
 $test_query = new WP_Query( $args );
 
 /************************
-*CONVERT FIRST LETTER OF STRING TO UPPER CASE
+* CONVERT FIRST LETTER OF STRING TO UPPER CASE
 *************************
 $my_string = 'australia';
 echo "<br />" . $my_string;
 echo "<br />" . $my_string[0];
 $my_string[0] = strtoupper($my_string[0]);
 echo "<br />" . $my_string;
+
+/************************
+* GET VIMEO ID NUMBER TO DISPLAY
+*************************
+function get_vimeo_link( $vimeo_url){
+    //https://vimeo.com/259695789
+    $video_id = $vimeo_url;
+    $vid_arr = explode('/', $video_id);
+    return $vid_arr[(count($vid_arr)-1)];
+}
+echo get_vimeo_link( 'https://vimeo.com/259695789' );
+echo get_vimeo_link( '29898759');
+
+/*********************************
+* GET ALL CATEGORY NAMES
+**********************************
+$video_category_terms = get_terms( array(
+                    'taxonomy' =>   'video_category',
+                    'hide_empty' => false
+                ));
+foreach($video_category_terms as $category){
+    echo '<br />' . $category->name;
+}
+
+/*****************************
+* GET TERM NAME FROM TERM SLUG
+******************************
+
+$my_term_name =  get_term_by('slug', 'music-video', 'video_category')->name;
+var_dump($my_term_name);
 
 ?>
 
