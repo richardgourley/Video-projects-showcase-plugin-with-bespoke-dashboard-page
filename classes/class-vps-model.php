@@ -36,7 +36,6 @@ class VPS_Model{
         $this->fields[ 'video_project_image' ] = sanitize_url($_POST['video-project-image']);
         $this->fields[ 'video_url' ] = sanitize_url($_POST['video-url']);
 
-        var_dump($this->fields);
         /*
         * INSERT NEW POST HERE
         */
@@ -87,6 +86,8 @@ class VPS_Model{
         }else{
             wp_set_object_terms( $post_id, $this->fields['country'], 'country');
         }
+
+        echo '<h3>New post has been succesfully created.</h3>';
 
     }
 
