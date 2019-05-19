@@ -66,7 +66,7 @@ class VPS_Model{
             )->slug;
         }
 
-        $this->update_post_assign_terms();
+        $this->create_or_update_post_assign_terms( 'update' );
     }
 
     public function view_all_video_projects(){
@@ -156,11 +156,12 @@ class VPS_Model{
         );
         
         $post_id = '';
-        
+
         //If action is update, add existing ID to $post_arr
         if( $action == 'update'){
             $post_arr[ 'ID' ] = $this->fields[ 'id' ];
             $post_id = $this->fields[ 'id' ];
+            wp_update_post( $post_arr );
         }else{
             $post_id = wp_insert_post( $post_arr );
         }
