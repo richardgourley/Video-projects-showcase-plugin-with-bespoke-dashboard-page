@@ -5,7 +5,7 @@
 </div>
 <h1>Add a new video project</h1>
 <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
-<?php wp_nonce_field( 'insert-video-project-form-action', 'insert-video-project-form-nonce' ); ?>
+<?php wp_nonce_field( 'create-video-project-action', 'create-video-project-nonce' ); ?>
 <table class="form-table">
     <tbody>
         <tr>
