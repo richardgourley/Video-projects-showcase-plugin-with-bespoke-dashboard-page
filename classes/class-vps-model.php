@@ -31,8 +31,9 @@ class VPS_Model{
         
         //if country is other, insert as new term in db
         if($this->fields[ 'country' ] == 'other'){
+            //insert new term from $this->fields['new_country']
             $this->insert_new_country_term();
-            //assign new term slug to country field. (Because slug is used for existing country radio boxes)
+            //get the slug of term in line above, assign to $this->fields['country']
             $this->fields[ 'country' ] = 
             get_term_by(
                 'name',
@@ -84,10 +85,10 @@ class VPS_Model{
         $message = "";
         if( $action == 'update'){
             $message .= $this->check_field_filled( $post[ 'id' ], 'ID', 'text' );
-            $message .= $this->is_an_int($post[ 'id' ], 'ID', 'text' );
+            $message .= $this->is_a_number($post[ 'id' ], 'ID', 'text' );
         }
-        $message .= $this->check_field_filled( $post['video-project-language'], 'Video project language', 'radio');
-        $message .= $this->check_field_filled( $post['video_category'], 'Video category', 'radio' );
+        $message .= $this->check_field_filled( $post['language'], 'Video project language', 'radio');
+        $message .= $this->check_field_filled( $post['category'], 'Video category', 'radio' );
         $message .= $this->check_field_filled( $post['country'], 'Country', 'radio' );
         if( $post['country'] == 'other' ){
             $message .= $this->check_field_filled( $post['new-country'], 'Other Country', 'text' );
@@ -97,7 +98,7 @@ class VPS_Model{
         $message .= $this->check_field_filled( $post['location'], 'Location', 'text' );
         $message .= $this->check_date_validity( $post['date'] );
         $message .= $this->check_field_filled( $post['duration'], 'Duration', 'text' );
-        $message .= $this->check_field_filled( $post['video-project-image'], 'Project Image', 'text' );
+        $message .= $this->check_field_filled( $post['image-url'], 'Project Image', 'text' );
         $message .= $this->check_field_filled( $post['video-url'], 'Video Url', 'text' );
         return $message;
     }
@@ -107,22 +108,22 @@ class VPS_Model{
     }
 
     private function re_display_update_video_project_form( $message, $post ){
-        require_once plugin_dir_path( __DIR__ ) . 'admin-pages/re-display-update-video-project-form.php';
+        require_once plugin_dir_path( __DIR__ ) . 'admin-pages/update-video-project-form.php';
     }
 
     private function sanitize_fields_assign( $action ){
         if( $action == 'update'){
             $this->fields[ 'id' ] = sanitize_text_field( $_POST[ 'id' ]);
         }
-        $this->fields[ 'language' ] = sanitize_text_field($_POST['video-project-language']);
-        $this->fields[ 'video_category' ] = sanitize_text_field($_POST['video-category']);
+        $this->fields[ 'language' ] = sanitize_text_field($_POST['language']);
+        $this->fields[ 'category' ] = sanitize_text_field($_POST['category']);
         $this->fields[ 'country' ] = sanitize_text_field($_POST['country']);
         $this->fields[ 'new_country' ] = sanitize_text_field($_POST['new-country']);
         $this->fields[ 'title' ] = sanitize_text_field($_POST['title']);
         $this->fields[ 'location' ] = sanitize_text_field($_POST['location']);
         $this->fields[ 'date' ] = $_POST['date']; //date validity previously checked
         $this->fields[ 'duration' ] = sanitize_text_field($_POST['duration']);
-        $this->fields[ 'video_project_image' ] = sanitize_url($_POST['video-project-image']);
+        $this->fields[ 'image_url' ] = sanitize_url($_POST['image-url']);
         $this->fields[ 'video_url' ] = sanitize_url($_POST['video-url']);
 
     }
@@ -143,13 +144,13 @@ class VPS_Model{
             'post_type' => 'video_project',
             'meta_input' => array(
                 'video_project_category' => 
-                get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name,
+                get_term_by('slug', $this->fields[ 'category' ], 'video_project_category')->name,
                 'video_project_country' => 
-                get_term_by( 'slug', $this->fields[ 'country' ], 'country' )->name,
+                get_term_by( 'slug', $this->fields[ 'country' ], 'video_project_country' )->name,
                 'video_project_location' => $this->fields[ 'location' ],
                 'video_project_duration' => $this->fields[ 'duration' ],
                 'video_project_date' => $this->fields[ 'date' ],
-                'video_project_image' => $this->fields[ 'video_project_image'],
+                'video_project_image' => $this->fields[ 'image_url'],
                 'video_project_url' => $this->fields[ 'video_url']
             ), 
             'post_status' => 'publish'
@@ -168,8 +169,8 @@ class VPS_Model{
 
         //use post id to set object terms
         wp_set_object_terms( $post_id, $this->fields['language'], 'video_project_language' );
-        wp_set_object_terms( $post_id, $this->fields['video_category'], 'video_category' );
-        wp_set_object_terms( $post_id, $this->fields['country'], 'country');
+        wp_set_object_terms( $post_id, $this->fields['category'], 'video_project_category' );
+        wp_set_object_terms( $post_id, $this->fields['country'], 'video_project_country');
 
         echo '<h3>New post has been succesfully created.</h3>';
     }
@@ -184,8 +185,8 @@ class VPS_Model{
         }
     }
 
-    private function is_an_int( $var, $name){
-        if(!is_int( $var )){
+    private function is_a_number( $var, $name){
+        if(!is_numeric( $var )){
             return "<br />$name entered is not a number.";
         }else{
             return '';
@@ -228,14 +229,18 @@ class VPS_Model{
     private function generate_post_content(){
         
         //use name instead of slug for presentation.
-        $category_name = get_term_by('slug', $this->fields[ 'video_category' ], 'video_category')->name;
+        $category_name = get_term_by(
+            'slug', 
+            $this->fields[ 'category' ], 
+            'video_project_category'
+        )->name;
 
-        $country_name = get_term_by('slug', $this->fields[ 'country' ], 'country')->name;
+        $country_name = get_term_by('slug', $this->fields[ 'country' ], 'video_project_country')->name;
         
         $html = '';
         $html .= '<h3>Category: ' . $category_name . '</h3>';
         $html .= '<p>Location: ' . $this->fields[ 'location' ] . ', ' . $country_name . '.</p>';
-        $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'video_project_image' ] . '"></img>';
+        $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'image_url' ] . '"></img>';
         $html .= '<p>Date: ' . $this->fields[ 'date' ] . '.</p>';
         $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
         $vimeo_id = $this->get_vimeo_id( $this->fields[ 'video_url' ] );
