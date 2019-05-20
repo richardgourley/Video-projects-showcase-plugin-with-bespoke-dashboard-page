@@ -26,7 +26,7 @@ jQuery(document).ready(function($s){
         //When file selected, get the URL and set it to field value in the form
         mediaUploader.on('select', function(){
             attachment = mediaUploader.state().get('selection').first().toJSON();
-            $('#video-project-image').val(attachment.url);
+            $('#image-url').val(attachment.url);
         });
 
         //Opens the uploader dialog
