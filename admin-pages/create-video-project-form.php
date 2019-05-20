@@ -7,7 +7,7 @@
     <tbody>
     	<tr>
             <th>
-                <label for="video-project-language">Select a language for this entry</label>
+                <label for="language">Select a language for this entry</label>
             </th>
             <td>
                 <?php
@@ -21,25 +21,27 @@
                 <?php
                 $language_checked = $term->slug == 'english' ? 'checked' : '';
                 ?>
-                <label><input <?php echo $language_checked; ?> type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-project-language" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
+                <label><input <?php echo $language_checked; ?> type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="language" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
                 </label>
                 <?php endforeach; ?>
             </td>
         </tr>
         <tr>
         	<th>
-        		<label for="video-category">Select a category for this video</label>
+        		<label for="category">Select a category for this video</label>
         	</th>
         	<td>
                 <?php
                 $video_category_terms = get_terms( array(
-                    'taxonomy' =>   'video_category',
+                    'taxonomy' =>   'video_project_category',
                     'hide_empty' => false
                 ));
 
                 foreach($video_category_terms as $term):
                 ?>
-        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="video-category" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
+        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" 
+                name="category" value="<?php echo esc_html( $term->slug ); ?>">
+                <?php echo esc_html( $term->name); ?>
                 </label>
                 <?php endforeach; ?>
         	</td>
@@ -52,21 +54,23 @@
         		<div id="countries">
                 <?php
                 $country_terms = get_terms( array(
-                    'taxonomy' =>   'country',
+                    'taxonomy' =>   'video_project_country',
                     'hide_empty' => false
                 ));
 
                 foreach($country_terms as $term):
                 ?>
-        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="country" 
-                    value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name ); ?></label>
+        		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" 
+                name="country" value="<?php echo esc_html( $term->slug ); ?>">
+                <?php echo esc_html( $term->name ); ?></label>
                 <?php endforeach ?>
         	    </div>
         	    
                 <br />
                 <br />
                 <label><input type="radio" id="other" name="country" value="other">Other</label>
-                <input placeholder="Enter country" type="text" id="new-country" name="new-country" value="">
+                <input placeholder="Enter country" type="text" id="new-country" name="new-country" 
+                value="">
         	</td>
         </tr>
         <tr>
@@ -107,11 +111,11 @@
         </tr>
         <tr>
         	<th>
-        		<label for="video-project-image">Image</label>
+        		<label for="image-url">Image</label>
         		<p><small>Click the upload button to choose an image from the media library.</small></p>
         	</th>
         	<td>
-        		<input class="regular-text" id="video-project-image" name="video-project-image" type="text" value="">
+        		<input class="regular-text" id="image-url" name="image-url" type="text" value="">
         		<input class="button insert-video-project-form_button" id="upload-image-video-project" name="video-project-button" type="button" value="Upload"/>
         	</td>
         </tr>
