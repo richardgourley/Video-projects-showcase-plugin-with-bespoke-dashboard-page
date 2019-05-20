@@ -186,5 +186,15 @@ foreach($video_category_terms as $category){
 $my_term_name =  get_term_by('slug', 'music-video', 'video_category')->name;
 var_dump($my_term_name);
 
+
+/****************************
+GET_THE_TERMS TEST (used to retrieve language for update video project form)
+******************************
+
+$language = get_the_terms( 495,'video_project_language' );
+$language_name = esc_html( $language[0]->name );
+$language_slug = esc_html( $language[0]->slug );
+
+
 ?>
 
