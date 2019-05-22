@@ -87,6 +87,7 @@
 .vps-col-3 {width: 25%;}
 .vps-col-4 {width: 33.33%;}
 .vps-col-5 {width: 41.66%;}
+.vps-col-5-border {width: 41.66%; border: 1px solid grey;}
 .vps-col-6 {width: 50%;}
 .vps-col-7 {width: 58.33%;}
 .vps-col-8 {width: 66.66%;}
