@@ -195,6 +195,22 @@ $language = get_the_terms( 495,'video_project_language' );
 $language_name = esc_html( $language[0]->name );
 $language_slug = esc_html( $language[0]->slug );
 
+/******************************
+* PLUGIN_DIR_URL TESTS
+********************************
+//CALLED FROM admin-pages/main.php
+var_dump(plugin_dir_url( __FILE__ ) . '/js/admin-page-media.js'); 
+//'http://localhost/wordpress/wp-content/plugins/video-projects-showcase/admin-pages//js/admin-page-media.js'
+var_dump(plugin_dir_url( __FILE__ ) . 'js/admin-page-media.js'); 
+//'http://localhost/wordpress/wp-content/plugins/video-projects-showcase/admin-pages/js/admin-page-media.js'
+var_dump(plugin_dir_url( __DIR__ ) . 'js/admin-page-media.js'); 
+//http://localhost/wordpress/wp-content/plugins/video-projects-showcase/js/admin-page-media.js
+var_dump(plugins_url('css/styles.css', __DIR__));
 
+/******************************
+* DIRNAME TESTS
+********************************
+//CALLED FROM admin-pages/main.php
+var_dump(dirname(dirname(dirname(__FILE__)))); // C:\wamp\www\wordpress\wp-content\plugins
 ?>
 
