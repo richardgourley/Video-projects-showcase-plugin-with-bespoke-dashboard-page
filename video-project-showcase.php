@@ -14,10 +14,10 @@ via a bespoke dashboard page.
 //check abspath
 if(!defined( 'ABSPATH' )) exit;
 
-require dirname( __FILE__ ) . '/classes/class-vps-admin-page-initializer.php';
-require dirname( __FILE__ ) . '/classes/class-vps-scripts-initializer.php';
-require dirname( __FILE__ ) . '/classes/class-vps-custom-post-type-initializer.php';
-require dirname( __FILE__ ) . '/classes/class-vps-taxonomies-initializer.php';
+require dirname( __FILE__ ) . '/classes-init/class-vps-admin-page-initializer.php';
+require dirname( __FILE__ ) . '/classes-init/class-vps-scripts-initializer.php';
+require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initializer.php';
+require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
 
 //initializes css and js scripts
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
