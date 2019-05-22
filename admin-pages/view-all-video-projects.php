@@ -52,7 +52,7 @@ foreach($video_projects->posts as $project):
     <input type="hidden" id="video-url" name="video-url"
     value="<?php echo $video_url; ?>">
     
-    <input type="submit" value="Edit">
+    <input type="submit" value="Update">
   </form>
 </div>
 <?php
