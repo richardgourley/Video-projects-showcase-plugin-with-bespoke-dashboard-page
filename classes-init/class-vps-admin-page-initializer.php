@@ -11,9 +11,8 @@ class VPS_Admin_Page_Initializer{
     }
 
     public function video_project_admin_page_callback(){
-    	//displays main admin page in dashboard.
-        require_once plugin_dir_path( __DIR__ ) . '/admin-pages/main.php';
-        require_once plugin_dir_path( __DIR__ ) . '/classes/init/class-vps-model.php';
+        require_once dirname( __DIR__ ) . '/admin-pages/main.php';
+        require_once dirname( __DIR__ ) . '/classes-model/class-vps-model.php';
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //loads create video project form
