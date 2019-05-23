@@ -1,6 +1,6 @@
 <?php
 
-class VPS_View{
+class VPS_View_All{
 
     public function __construct( ){
         

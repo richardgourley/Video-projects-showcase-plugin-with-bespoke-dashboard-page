@@ -15,7 +15,7 @@ class VPS_Admin_Page_Initializer{
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-model.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-create.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-update.php';
-        require_once dirname( __DIR__ ) . '/classes-model/class-vps-view.php';
+        require_once dirname( __DIR__ ) . '/classes-model/class-vps-view-all.php';
         require_once dirname( __DIR__ ) . '/classes-helper/class-vps-test.php';
 
         $helper_class = new VPS_Helper();
@@ -39,7 +39,7 @@ class VPS_Admin_Page_Initializer{
             //displays all video projects with update buttons
             if(isset( $_POST['view-all-video-projects-nonce'] ) 
             && wp_verify_nonce($_POST[ 'view-all-video-projects-nonce' ], 'view-all-video-projects-action')){
-                $model = new VPS_View( );
+                $model = new VPS_View_All( );
                 $model->view_all_video_projects();
             }
 
