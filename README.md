@@ -1,5 +1,7 @@
 # Video-projects-showcase-plugin-with-bespoke-dashboard-page
 
+# NOTE: Work in progess :) .......
+
 ## What is it?
 This Word press plugin allows a video production company, or any business that regularly creates videos, to quickly and easily record, manage and display their video projects to customers.
 
