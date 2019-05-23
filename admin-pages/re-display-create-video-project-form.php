@@ -52,16 +52,16 @@
                 foreach($video_category_terms as $term) {
                     
                     $checked = '';
-                    if($term->slug == $post['video-project-category']){
+                    if($term->slug == $post['category']){
                         $checked = 'checked';
                     }else{
                         $checked = '';
                     }
                     printf('<label><input %s type="radio" id=%s name="category" value=%s>%s</label> ',
                         $checked,
-                        esc_html( $term->slug),
-                        esc_html( $term->slug),
-                        esc_html( $term->name)
+                        esc_html( $term->slug ),
+                        esc_html( $term->slug ),
+                        esc_html( $term->name )
                     );
 
                 }
