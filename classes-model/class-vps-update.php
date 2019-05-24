@@ -17,6 +17,7 @@ class VPS_Update extends VPS_Model{
     public function update_video_project(){
         $message = $this->get_post_form_errors( $_POST, 'update' );
 
+        //message not blank means message contains FORM ERRORS - re-display form
         if(!$message == ''){
             return $this->re_display_form( 
                 $message, 
@@ -25,7 +26,7 @@ class VPS_Update extends VPS_Model{
             ); 
         }
 
-        $this->sanitize_fields_assign( $_POST, 'update' ); //'update' means we have existing post ID
+        $this->sanitize_fields_assign( 'update' ); //'update' means we have existing post ID
 
         if($this->fields[ 'country' ] == 'other'){
             $this->insert_new_country_term();
@@ -35,7 +36,7 @@ class VPS_Update extends VPS_Model{
             get_term_by(
                 'name',
                 $this->helper->first_letter_upper( $this->fields[ 'new_country' ]), 
-                'country'
+                'video_project_country'
             )->slug;
         }
 
