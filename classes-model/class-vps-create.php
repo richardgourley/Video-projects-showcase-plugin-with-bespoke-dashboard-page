@@ -29,7 +29,7 @@ class VPS_Create extends VPS_Model{
         }
         
         //sanitize fields and assign to $fields array property
-        $this->sanitize_fields_assign( $_POST, 'create' );
+        $this->sanitize_fields_assign( 'create' );
         
         //if country is other, insert as new term in db
         if($this->fields[ 'country' ] == 'other'){
@@ -40,8 +40,9 @@ class VPS_Create extends VPS_Model{
             get_term_by(
                 'name',
                 $this->helper->first_letter_upper( $this->fields[ 'new_country' ]), 
-                'country'
+                'video_project_country'
             )->slug;
+            
         }
 
         //Finally, create new post and set terms for the object.
