@@ -29,6 +29,7 @@ abstract class VPS_Model{
     }
 
     protected function sanitize_fields_assign( $action ){
+
         if( $action == 'update'){
             $this->fields[ 'id' ] = sanitize_text_field( $_POST[ 'id' ]);
         }
@@ -46,12 +47,16 @@ abstract class VPS_Model{
     }
 
     protected function insert_new_country_term(){
-        wp_insert_term( $this->helper->first_letter_upper($this->fields[ 'new_country' ]), 'country' );
+        wp_insert_term( 
+            $this->helper->first_letter_upper($this->fields[ 'new_country' ]), 
+            'video_project_country' 
+        );
     }
 
     protected function create_or_update_post_assign_terms( $action ){
         $content = $this->generate_post_content();
         
+        var_dump($this->fields);
         //NOTE: We retrieve term name from term slug - use name for display purposes.
         $post_arr = array(
             'post_title'   => $this->fields[ 'title' ],
@@ -89,7 +94,12 @@ abstract class VPS_Model{
         wp_set_object_terms( $post_id, $this->fields['category'], 'video_project_category' );
         wp_set_object_terms( $post_id, $this->fields['country'], 'video_project_country');
 
-        echo '<h3>New post has been succesfully created.</h3>';
+        if($action == 'create'){
+            echo '<h3>YOUR NEW VIDEO PROJECT HAS BEEN SUCSESSFULLY CREATED.</h3>';
+        }else{
+            echo '<h3>YOUR VIDEO PROJECT HAS BEEN SUCSESSFULLY UPDATED.</h3>';
+        }
+        
     }
 
     protected function generate_post_content(){
