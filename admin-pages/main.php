@@ -8,12 +8,14 @@
 </div>
 
 <?php
-
+wp_update_post(
+    
+);
 ?>
 
 <div><h3>Intro</h3></div>
-<div><p>Here, you can create, update, insert and manage all of your custom post types.</p></div>
-<div><p>We hope this page makes it very quick and very easy to manage the bespoke content for your site all in 1 place.</p></div>
+<div><p>Here, you can create, update, insert and manage all of your video projects.</p></div>
+<div><p>We hope this page makes it very quick and very easy to manage bespoke content for your site all in 1 place.</p></div>
 
 <div class="vps-row">
 <div class="vps-col-5">
