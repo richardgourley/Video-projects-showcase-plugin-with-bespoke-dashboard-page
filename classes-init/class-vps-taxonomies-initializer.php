@@ -80,13 +80,40 @@ class VPS_Taxonomies_Initializer{
         register_taxonomy( 'video_project_category', array( "video_project" ), $args_video_category );
         register_taxonomy( 'video_project_language', array( "video_project"), $args_video_project_language );
 
-        //insert terms after taxonomies registered
-        /*
+        /********
+        * Insert initial terms after taxonomies registered
+        *********/
+        
+        //language terms
         if( !term_exists( 'english' )){
             wp_insert_term( 'English', 'video_project_language' );
         }
-        */
-        
+
+        if( !term_exists( 'spanish' )){
+            wp_insert_term( 'Spanish', 'video_project_language' );
+        }
+
+        //country terms
+        if( !term_exists( 'ireland' )){
+            wp_insert_term( 'Ireland', 'video_project_country' );
+        }     
+
+        if( !term_exists( 'spain' )){
+            wp_insert_term( 'Spain', 'video_project_country' );
+        }
+
+        //category terms
+        if( !term_exists( 'wedding' )){
+            wp_insert_term( 'Wedding', 'video_project_category' );
+        }
+
+        if( !term_exists( 'commercial' )){
+            wp_insert_term( 'Commercial', 'video_project_category' );
+        }
+
+        if( !term_exists( 'music-video' )){
+            wp_insert_term( 'Music Video', 'video_project_category' );
+        }
     }
 
 }
