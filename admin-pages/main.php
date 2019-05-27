@@ -8,9 +8,7 @@
 </div>
 
 <?php
-wp_update_post(
-    
-);
+
 ?>
 
 <div><h3>Intro</h3></div>
@@ -32,12 +30,24 @@ wp_update_post(
 
 <div class="vps-col-5">
 
-<h2>View all video projects</h2>
+<h2>View all and update video projects</h2>
 <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
    <input type="hidden" name="action" value="view-all-video-projects">
    <input type="hidden" name="view-all-video-projects" value="1">
    <input type="submit" name="submit" id="submit" value="View all Video Projects">
    <?php wp_nonce_field( 'view-all-video-projects-action', 'view-all-video-projects-nonce' ); ?>
+</form>
+
+</div><!----End column---->
+
+<div class="vps-col-5">
+
+<h2>Delete a video project</h2>
+<form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
+   <input type="hidden" name="action" value="delete-video-project">
+   <input type="hidden" name="delete-video-project" value="1">
+   <input type="submit" name="submit" id="submit" value="Choose project to delete">
+   <?php wp_nonce_field( 'delete-video-project-form-action', 'delete-video-project-form-nonce' ); ?>
 </form>
 
 </div><!----End column---->
