@@ -56,7 +56,6 @@ abstract class VPS_Model{
     protected function create_or_update_post_assign_terms( $action ){
         $content = $this->generate_post_content();
         
-        var_dump($this->fields);
         //NOTE: We retrieve term name from term slug - use name for display purposes.
         $post_arr = array(
             'post_title'   => $this->fields[ 'title' ],
