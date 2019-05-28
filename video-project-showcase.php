@@ -18,6 +18,8 @@ require dirname( __FILE__ ) . '/classes-init/class-vps-admin-page-initializer.ph
 require dirname( __FILE__ ) . '/classes-init/class-vps-scripts-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
+require dirname( __FILE__ ) . '/classes-init/class-vps-page-initializer.php';
+
 
 //initializes css and js scripts
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
@@ -30,5 +32,8 @@ $vps_taxonomies_initializer = new VPS_Taxonomies_Initializer();
 
 //initializes admin page in dashboard
 $vps_admin_page_initializer = new VPS_Admin_Page_Initializer();
+
+//initializes page and localizes script for the JS for the page.
+$vps_page_initializer = new VPS_Page_Initializer();
 
 
