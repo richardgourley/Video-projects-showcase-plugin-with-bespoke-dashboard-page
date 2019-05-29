@@ -51,8 +51,12 @@ class VPS_Scripts_Initializer{
         foreach($results->posts as $project){
             $this_project = [];
             $this_project['title'] = $project->post_title;
-            $this_project['content'] = $project->post_content;
             $this_project['category'] = get_the_terms( $project->ID, 'video_project_category' )[0]->name;
+            $this_project['location'] = get_post_meta( $project->ID, 'video_project_location', true);
+            $this_project['image'] = get_post_meta( $project->ID, 'video_project_image', true);
+            $this_project['date'] = get_post_meta( $project->ID, 'video_project_date', true);
+            $this_project['duration'] = get_post_meta( $project->ID, 'video_project_duration', true);
+            $this_project['url'] = get_post_meta( $project->ID, 'video_project_url', true);
 
             //add this_project to video_projects_array
             array_push($video_projects_array, $this_project);
