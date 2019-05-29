@@ -66,4 +66,9 @@ class VPS_Helper{
     public static function test_class_function(){
         echo "Hello world";
     }
+
+    public function convert_date_to_month_year( $date ){
+        $new_date = date("F Y", strtotime( $date ));
+        return $new_date;
+    }
 }
