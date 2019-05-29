@@ -77,6 +77,12 @@
   display: table;
 }
 
+.vps-div-border{
+  border:1px solid grey;
+  margin-top:6px;
+  padding:15px 10px 0px 10px;
+}
+
 [class*="vps-col-"] {
   float: left;
   padding: 15px;
