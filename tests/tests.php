@@ -214,3 +214,11 @@ var_dump(plugins_url('css/styles.css', __DIR__));
 var_dump(dirname(dirname(dirname(__FILE__)))); // C:\wamp\www\wordpress\wp-content\plugins
 ?>
 
+/*******************************
+* DATE TO MONTH YEAR FORMAT
+********************************
+$new_date = date("F Y", strtotime('2018-05-03'));
+var_dump($new_date); // returns 'May 2018'
+
+
+
