@@ -5,8 +5,6 @@ var musicVideoBtn = document.getElementById("musicVideoBtn");
 var weddingsBtn = document.getElementById("weddingsBtn");
 var projectsDiv = document.getElementById("projectsDiv");
 
-console.log(videoProjects);
-
 function getVimeoId(vimeoLink){
     vimeoLinkParts = vimeoLink.split("/");
     return vimeoLinkParts[(vimeoLinkParts.length -1)];
@@ -27,11 +25,11 @@ function displayVideos(category){
 
                 output += '<div class="vps-col-3">';
                 output += '<h3>Category: ' + videoProjects[i].category + '</h3>';
-                output += '<p>Location: ' + videoProjects[i].location + '</p>';
                 output += '<img src="' + videoProjects[i].image + '">';
                 output += '</div>';
 
                 output += '<div class="vps-col-8">';
+                output += '<p>Location: ' + videoProjects[i].location + '</p>';
                 output += '<p>Date: ' + videoProjects[i].date + '</p>';
                 output += '<p>Project Duration: ' + videoProjects[i].duration + '</p>';
                 output += '<iframe src="https://player.vimeo.com/video/';
