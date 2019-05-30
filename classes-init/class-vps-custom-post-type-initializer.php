@@ -5,6 +5,11 @@ class VPS_Custom_Post_Type_Initializer{
         add_action( 'init', array( $this, 'add_video_project_post_type' ));
     }
 
+    public function register_post_type_activation(){
+    	$this->add_video_project_post_type();
+    	flush_rewrite_rules();
+    }
+
     public function add_video_project_post_type(){
         $labels = array(
 		    "name" => __( "Video Projects" ),
@@ -54,6 +59,7 @@ class VPS_Custom_Post_Type_Initializer{
 		    "query_var" => false,
 		    "supports" => array( "title", "thumbnail" ),
         );
+
         register_post_type( 'video_project', $args );
     }
 
