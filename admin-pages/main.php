@@ -7,10 +7,6 @@
 <h1 class="vps-main-page-header-font">Welcome to your bespoke admin page!</h1>
 </div>
 
-<?php
-
-?>
-
 <div><h3>Intro</h3></div>
 <div><p>Here, you can create, update, insert and manage all of your video projects.</p></div>
 <div><p>We hope this page makes it very quick and very easy to manage bespoke content for your site all in 1 place.</p></div>
