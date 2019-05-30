@@ -1,5 +1,7 @@
 //videoProjects is assigned from our wp_localize_scripts action in scripts-intializer class.
 
+console.log(videoProjects);
+
 var commercialBtn = document.getElementById("commercialBtn");
 var musicVideoBtn = document.getElementById("musicVideoBtn");
 var weddingsBtn = document.getElementById("weddingsBtn");
