@@ -9,7 +9,7 @@ foreach($video_projects->posts as $project):
 <div class="vps-col-5-border">
   <?php
       $title = esc_html( $project->post_title );
-      $language = get_the_terms( $project->ID,'video_project_language' );
+      $language = get_the_terms( $project->ID, 'video_project_language' );
       $language_name = esc_html( $language[0]->name );
       $language_slug = esc_html( $language[0]->slug );
       $category_name = esc_html( get_post_meta( $project->ID, 'video_project_category', true ) );
