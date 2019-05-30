@@ -1,10 +1,10 @@
 <?php
 class VPS_Scripts_Initializer{
     public function __construct(){
-        //enqueue scripts here
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_css' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_js') );
+        //Registers and localizes php array to JS objects for front end
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_localize_js') );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_css' ));
     }
 
@@ -13,25 +13,26 @@ class VPS_Scripts_Initializer{
     }
     
     public function enqueue_admin_js(){
-        wp_enqueue_script( 'vps_admin_add_form_js', plugins_url( 'js/admin-page-add-video-project-form.js', __DIR__ ),
-        array(), '1.0.0', true );
         wp_enqueue_script( 'vps_admin_media_js', plugins_url( 'js/admin-page-media.js', __DIR__ ),
         array('jquery'), '1.0.0', true);
     }
 
-    public function enqueue_js(){
+    public function enqueue_localize_js(){
         wp_enqueue_script( 'vps_video_project_display_js', plugins_url( 'js/video-project-display.js', __DIR__ ),
         array('jquery'), '1.0.0', true);
         
+        // Localize script - access php projects array as JS objects 
         $projects = $this->get_video_projects();
 
         wp_localize_script( 
+            //JS file handle
             'vps_video_project_display_js', 
+            //array name inside js file
             'videoProjects', 
+            //php array name
             $projects
         );
         
-
     }
 
     private function get_video_projects(){
@@ -52,7 +53,7 @@ class VPS_Scripts_Initializer{
             $this_project = [];
             $this_project['title'] = $project->post_title;
             $this_project['category'] = esc_html(
-                get_the_terms( $project->ID, 'video_project_category' )[0]->name
+                get_post_meta( $project->ID, 'video_project_category', true)
             );
             $this_project['location'] = esc_html(get_post_meta( $project->ID, 'video_project_location', true));
             $this_project['image'] = esc_html(get_post_meta( $project->ID, 'video_project_image', true));
