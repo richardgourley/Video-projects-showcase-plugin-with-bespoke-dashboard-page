@@ -70,7 +70,7 @@ abstract class VPS_Model{
                 get_term_by( 'slug', $this->fields[ 'country' ], 'video_project_country' )->name,
                 'video_project_location' => $this->fields[ 'location' ],
                 'video_project_duration' => $this->fields[ 'duration' ],
-                'video_project_date' => $this->fields[ 'date' ],
+                'video_project_date' => $this->helper->convert_date_to_month_year($this->fields[ 'date' ]),
                 'video_project_image' => $this->fields[ 'image_url'],
                 'video_project_url' => $this->fields[ 'video_url']
             ), 
@@ -116,7 +116,7 @@ abstract class VPS_Model{
         $html .= '<h3>Category: ' . $category_name . '</h3>';
         $html .= '<p>Location: ' . $this->fields[ 'location' ] . ', ' . $country_name . '.</p>';
         $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'image_url' ] . '"></img>';
-        $html .= '<p>Date: ' . $this->fields[ 'date' ] . '.</p>';
+        $html .= '<p>Date: ' . $this->helper->convert_date_to_month_year($this->fields[ 'date' ]) . '.</p>';
         $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
         $vimeo_id = $this->helper->get_vimeo_id( $this->fields[ 'video_url' ] );
         $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
