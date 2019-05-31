@@ -19,13 +19,16 @@ require dirname( __FILE__ ) . '/classes-init/class-vps-scripts-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-page-initializer.php';
-require dirname( __FILE__ ) . '/classes-init/class-vps-localize-script.php';
 
 //registers css and js scripts on activation
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
 
 //registers taxonomies on activation
 $vps_taxonomies_initializer = new VPS_Taxonomies_Initializer();
+
+//inserts terms - only on plugin activation
+register_activation_hook( __FILE__, array( $vps_taxonomies_initializer, 'register_terms' ));
+
 
 //register custom post type and flush rewrites rules on activation
 $vps_custom_post_type_initializer = new VPS_Custom_Post_Type_Initializer();
@@ -38,9 +41,5 @@ $vps_admin_page_initializer = new VPS_Admin_Page_Initializer();
 $vps_page_initializer = new VPS_Page_Initializer();
 register_activation_hook( __FILE__, array( $vps_page_initializer, 'create_video_project_page' ));
 
-/*
-//gets all video projects in php, then makes available as JS objects in 'video-project-display.js' file
-$vps_localize_script = new VPS_Localize_Script();
-*/
 
 
