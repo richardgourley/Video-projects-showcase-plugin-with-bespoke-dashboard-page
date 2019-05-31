@@ -24,7 +24,9 @@ Although not strictly an MVC framework, I tried to follow MVC principles in the 
     The admin page in the dashboard with a custom video project post input form.
     The custom post type
     Custom taxonomies of country, language and video type
-    Classes for adding meta data for each custom post entry.
+    Activation hooks for creating a page on plugin activation
+    Activation hooks for properly registering a CPT and flush re-writing the permalink rules
+    Classes for adding meta data for each custom post entry
     Classes for saving the post content to contain the meta data and display the video project using an iframe.
 
 ### SKILLS COVERED
