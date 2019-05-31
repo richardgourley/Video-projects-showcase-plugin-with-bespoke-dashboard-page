@@ -1,11 +1,5 @@
 <div class="vps-main-page-div">
 
-<?php
-var_dump(taxonomy_exists('video_project_category'));
-var_dump(taxonomy_exists('video_project_language'));
-var_dump(taxonomy_exists('video_project_country'));
-?>
-
 <div class="vps-main-page-greeting">
 <h1>Hello there <span class="vps-username-box"><?php echo esc_html(wp_get_current_user()->user_nicename); ?></span></h1>
 </div>
