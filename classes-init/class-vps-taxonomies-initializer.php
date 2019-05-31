@@ -2,10 +2,12 @@
 
 class VPS_Taxonomies_Initializer{
     public function __construct(){
-        add_action( 'init', array( $this, 'add_video_project_taxonomies' ));
+        add_action( 'init', array( $this, 'add_country_taxonomy' ));
+        add_action( 'init', array( $this, 'add_category_taxonomy' ));
+        add_action( 'init', array( $this, 'add_country_taxonomy' ));
     }
-
-    public function add_video_project_taxonomies(){
+    
+    public function add_country_taxonomy(){
         $labels_video_project_country = array(
             "name" => __( "Video Project Country" ),
              "singular_name" => __( "Video Project Country" ),
@@ -29,6 +31,10 @@ class VPS_Taxonomies_Initializer{
             "show_in_quick_edit" => false,
         );
 
+        register_taxonomy( 'video_project_country', array( "video_project" ), $args_country );
+    }
+
+    public function add_category_taxonomy(){
         $labels_video_project_category = array(
             "name" => __( "Video Project Category" ),
              "singular_name" => __( "Video Project Category" ),
@@ -52,6 +58,10 @@ class VPS_Taxonomies_Initializer{
             "show_in_quick_edit" => false,
         );
 
+        register_taxonomy( 'video_project_category', array( "video_project" ), $args_video_category );
+    }
+
+    public function add_language_taxonomy(){
         $labels_video_project_language = array(
             "name" => __( "Video Project Language" ),
             "singular_name" => __( "Video Project Language" ),
@@ -75,10 +85,10 @@ class VPS_Taxonomies_Initializer{
             "show_in_quick_edit" => false,
         );
 
-        register_taxonomy( 'video_project_country', array( "video_project" ), $args_country );
-        register_taxonomy( 'video_project_category', array( "video_project" ), $args_video_category );
         register_taxonomy( 'video_project_language', array( "video_project"), $args_video_project_language );
+    }
 
+    public function register_terms(){
         /********
         * Insert initial terms after taxonomies registered
         *********/
@@ -93,6 +103,10 @@ class VPS_Taxonomies_Initializer{
         }
 
         //country terms
+        if( !term_exists( 'germany' )){
+            wp_insert_term( 'Germany', 'video_project_country');
+        }
+
         if( !term_exists( 'ireland' )){
             wp_insert_term( 'Ireland', 'video_project_country' );
         }     
