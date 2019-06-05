@@ -220,5 +220,22 @@ var_dump(dirname(dirname(dirname(__FILE__)))); // C:\wamp\www\wordpress\wp-conte
 $new_date = date("F Y", strtotime('2018-05-03'));
 var_dump($new_date); // returns 'May 2018'
 
+/*********************************
+* URL TESTS
+**********************************
+$url_string = 'https://vimeo.com/301862295';
+$url_string2 = 'Hello there';
+var_dump( esc_url($url_string) ); // 'https://vimeo.com/301862295'
+var_dump( esc_url($url_string2) ); // 'http://Hello%20there'
+var_dump( esc_url_raw($url_string2) ); // 'http://Hello%20there'
+var_dump( filter_var($url_string, FILTER_VALIDATE_URL)); // 'https://vimeo.com/301862295'
+var_dump( filter_var($url_string2, FILTER_VALIDATE_URL)); // false
+$image_url1 = 'http://localhost/wordpress/wp-content/uploads/2019/04/cobh-cove-285147_640.jpg';
+$image_url2 = 'hello world, how are you?';
+var_dump( filter_var($image_url1, FILTER_VALIDATE_URL)); //'http://localhost/wordpress/wp-content/uploads/2019/04/cobh-cove-285147_640.jpg'
+var_dump( filter_var($image_url2, FILTER_VALIDATE_URL)); // false
+
+
+
 
 
