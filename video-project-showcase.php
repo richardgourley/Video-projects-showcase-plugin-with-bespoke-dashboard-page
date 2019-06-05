@@ -19,7 +19,7 @@ require dirname( __FILE__ ) . '/classes-init/class-vps-scripts-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-page-initializer.php';
-require dirname( __FILE__ ) . '/classes-helper/class-vps-test.php';
+require dirname( __FILE__ ) . '/classes-helper/class-vps-helper.php';
 
 //registers css and js scripts on activation
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
