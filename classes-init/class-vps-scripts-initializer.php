@@ -57,9 +57,13 @@ class VPS_Scripts_Initializer{
             );
             $this_project['location'] = esc_html(get_post_meta( $project->ID, 'video_project_location', true));
             $this_project['image'] = esc_html(get_post_meta( $project->ID, 'video_project_image', true));
-            $this_project['date'] = esc_html(get_post_meta( $project->ID, 'video_project_date', true));
+            $this_project['displaydate'] = esc_html(
+                get_post_meta( $project->ID, 
+                'video_project_display_date', 
+                true
+            ));
             $this_project['duration'] = esc_html(get_post_meta( $project->ID, 'video_project_duration', true));
-            $this_project['videoId'] = esc_html(get_post_meta( $project->ID, 'video_project_id', true));
+            $this_project['videoid'] = esc_html(get_post_meta( $project->ID, 'video_project_id', true));
 
             //add this_project to video_projects_array
             array_push($video_projects_array, $this_project);
