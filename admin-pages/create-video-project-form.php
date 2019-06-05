@@ -15,7 +15,7 @@
                     'taxonomy' =>   'video_project_language',
                     'hide_empty' => false
                 ));
-                
+
                 foreach($video_project_language_terms as $term):
                 ?>
                 <?php
