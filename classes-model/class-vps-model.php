@@ -101,9 +101,9 @@ abstract class VPS_Model{
         wp_set_object_terms( $post_id, $this->fields['country'], 'video_project_country');
 
         if($action == 'create'){
-            echo '<h3>YOUR NEW VIDEO PROJECT HAS BEEN SUCSESSFULLY CREATED.</h3>';
+            echo '<h3>YOUR NEW VIDEO PROJECT HAS BEEN SUCCESSFULLY CREATED.</h3>';
         }else{
-            echo '<h3>YOUR VIDEO PROJECT HAS BEEN SUCSESSFULLY UPDATED.</h3>';
+            echo '<h3>YOUR VIDEO PROJECT HAS BEEN SUCCESSFULLY UPDATED.</h3>';
         }
         
     }
