@@ -1,7 +1,7 @@
 <div class="vps-main-page-div">
 <div>
     <p>There were errors in your form. Please check</p>
-    <p><?php echo $message; var_dump($post); ?></p>
+    <p><?php echo $message; ?></p>
 </div>
 <h1>Add a new video project</h1>
 <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
