@@ -29,6 +29,14 @@ Although not strictly an MVC framework, I tried to follow MVC principles in the 
     Classes for adding meta data for each custom post entry
     Classes for saving the post content to contain the meta data and display the video project using an iframe.
 
+### CRUD:
+
+    CREATION: Post content is created on creation. Post meta is saved on post creation for use in a bespoke search page with buttons. Post details such as title, date etc. are set on post creation.
+    Post meta is utilized by having different fields for similar data.  There is a date meta field and a display date meta field (displaying dates as Month and Year).
+    There is also a video url meta field and a video id field which is extracted from the video url and used when embedding the video using an iFrame.
+    READ AND UPDATE: There is an update post admin page which retrieves all current fields and allows the user to quickly make minor changes to their video project posts.
+    DELETE: All post meta and term relationships are deleted when a user deletes a project, limiting the amount of reduntant data in the database.
+
 ### SKILLS COVERED
 
     MVC architecture
