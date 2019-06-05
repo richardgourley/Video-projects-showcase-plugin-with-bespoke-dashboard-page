@@ -60,15 +60,24 @@ class VPS_Helper{
     public function get_vimeo_id( $vimeo_url ){
         $video_id = $vimeo_url;
         $vid_arr = explode('/', $video_id);
-        return $vid_arr[(count($vid_arr)-1)];
-    }
-
-    public static function test_class_function(){
-        echo "Hello world";
+        //check if final element in $vid_arr is '/' (results in '')
+        if( $vid_arr[ (count($vid_arr)-1) ] == '' ){
+            return $vid_arr[ (count($vid_arr)-2) ];
+        }else{
+            return $vid_arr[(count($vid_arr)-1)];
+        }
     }
 
     public function convert_date_to_month_year( $date ){
         $new_date = date("F Y", strtotime( $date ));
         return $new_date;
+    }
+
+    public function check_valid_url( $url, $name ){
+        if( !filter_var( $url, FILTER_VALIDATE_URL ) ){
+            return "<br />Your $name url is not valid.";
+        }else{
+            return '';
+        }
     }
 }
