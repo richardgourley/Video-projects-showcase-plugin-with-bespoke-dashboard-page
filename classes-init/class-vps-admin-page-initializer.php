@@ -17,7 +17,7 @@ class VPS_Admin_Page_Initializer{
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-update.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-view-all.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-delete.php';
-        require_once dirname( __DIR__ ) . '/classes-helper/class-vps-test.php';
+        require_once dirname( __DIR__ ) . '/classes-helper/class-vps-helper.php';
 
         $helper_class = new VPS_Helper();
 
