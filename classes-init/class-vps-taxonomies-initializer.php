@@ -2,7 +2,7 @@
 
 class VPS_Taxonomies_Initializer{
     public function __construct(){
-        add_action( 'init', array( $this, 'add_country_taxonomy' ));
+        add_action( 'init', array( $this, 'add_language_taxonomy' ));
         add_action( 'init', array( $this, 'add_category_taxonomy' ));
         add_action( 'init', array( $this, 'add_country_taxonomy' ));
     }
