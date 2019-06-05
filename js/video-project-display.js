@@ -7,11 +7,6 @@ var musicVideoBtn = document.getElementById("musicVideoBtn");
 var weddingsBtn = document.getElementById("weddingsBtn");
 var projectsDiv = document.getElementById("projectsDiv");
 
-function getVimeoId(vimeoLink){
-    vimeoLinkParts = vimeoLink.split("/");
-    return vimeoLinkParts[(vimeoLinkParts.length -1)];
-}
-
 function displayVideos(category){
 	if(videoProjects){
 		var output = '';
@@ -35,7 +30,7 @@ function displayVideos(category){
                 output += '<p>Date: ' + videoProjects[i].date + '</p>';
                 output += '<p>Project Duration: ' + videoProjects[i].duration + '</p>';
                 output += '<iframe src="https://player.vimeo.com/video/';
-                output += getVimeoId(videoProjects[i].url);
+                output += videoProjects[i].videoId;
                 output += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
                 output += '</div>';
 
