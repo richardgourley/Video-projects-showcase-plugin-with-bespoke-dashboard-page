@@ -19,8 +19,8 @@ abstract class VPS_Model{
         $message .= $this->helper->check_field_filled( $post['location'], 'Location', 'text' );
         $message .= $this->helper->check_date_validity( $post['date'] );
         $message .= $this->helper->check_field_filled( $post['duration'], 'Duration', 'text' );
-        $message .= $this->helper->check_field_filled( $post['image-url'], 'Project Image', 'text' );
-        $message .= $this->helper->check_field_filled( $post['video-url'], 'Video Url', 'text' );
+        $message .= $this->helper->check_valid_url( $post['image-url'], 'Image Url', 'text' );
+        $message .= $this->helper->check_valid_url( $post['video-url'], 'Video Url', 'text' );
         return $message;
     }
 
@@ -41,8 +41,8 @@ abstract class VPS_Model{
         $this->fields[ 'location' ] = sanitize_text_field($_POST['location']);
         $this->fields[ 'date' ] = $_POST['date']; //date validity previously checked
         $this->fields[ 'duration' ] = sanitize_text_field($_POST['duration']);
-        $this->fields[ 'image_url' ] = sanitize_url($_POST['image-url']);
-        $this->fields[ 'video_url' ] = sanitize_url($_POST['video-url']);
+        $this->fields[ 'image_url' ] = esc_url_raw($_POST['image-url']);
+        $this->fields[ 'video_url' ] = esc_url_raw($_POST['video-url']);
         //vimeo video id extracted from the url, to be displayed in iFrame
         $this->fields[ 'video_id' ] = $this->helper->get_vimeo_id( $this->fields[ 'video_url' ]);
 
@@ -79,6 +79,8 @@ abstract class VPS_Model{
             ), 
             'post_status' => 'publish'
         );
+
+        var_dump( $post_arr );
         
         $post_id = '';
 
@@ -121,7 +123,7 @@ abstract class VPS_Model{
         $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'image_url' ] . '"></img>';
         $html .= '<p>Date: ' . $this->helper->convert_date_to_month_year($this->fields[ 'date' ]) . '.</p>';
         $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
-        $vimeo_id = $this->helper->get_vimeo_id( $this->fields[ 'video_url' ] );
+        $vimeo_id = $this->fields[ 'video_id' ];
         $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
         return $html;
 
