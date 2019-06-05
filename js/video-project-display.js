@@ -1,7 +1,5 @@
 //videoProjects is assigned from our wp_localize_scripts action in scripts-intializer class.
 
-console.log(videoProjects);
-
 var commercialBtn = document.getElementById("commercialBtn");
 var musicVideoBtn = document.getElementById("musicVideoBtn");
 var weddingsBtn = document.getElementById("weddingsBtn");
@@ -27,10 +25,10 @@ function displayVideos(category){
 
                 output += '<div class="vps-col-8">';
                 output += '<p>Location: ' + videoProjects[i].location + '</p>';
-                output += '<p>Date: ' + videoProjects[i].date + '</p>';
+                output += '<p>Date: ' + videoProjects[i].displaydate + '</p>';
                 output += '<p>Project Duration: ' + videoProjects[i].duration + '</p>';
                 output += '<iframe src="https://player.vimeo.com/video/';
-                output += videoProjects[i].videoId;
+                output += videoProjects[i].videoid;
                 output += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
                 output += '</div>';
 
