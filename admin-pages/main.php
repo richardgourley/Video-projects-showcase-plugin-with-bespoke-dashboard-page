@@ -1,14 +1,10 @@
 <div class="vps-main-page-div">
 
-<?php
-
-?>
-
 <div class="vps-main-page-greeting">
 <h1>Hello there <span class="vps-username-box"><?php echo esc_html(wp_get_current_user()->user_nicename); ?></span></h1>
 </div>
 <div class="vps-main-page-header">
-<h1 class="vps-main-page-header-font">Welcome to your bespoke admin page!</h1>
+<h1 class="vps-main-page-header-font">Welcome to your bespoke video projects showcase page!</h1>
 </div>
 
 <div><h3>Intro</h3></div>
