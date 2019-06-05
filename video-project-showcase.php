@@ -19,6 +19,7 @@ require dirname( __FILE__ ) . '/classes-init/class-vps-scripts-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-page-initializer.php';
+require dirname( __FILE__ ) . '/classes-helper/class-vps-test.php';
 
 //registers css and js scripts on activation
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
@@ -40,6 +41,7 @@ $vps_admin_page_initializer = new VPS_Admin_Page_Initializer();
 //creates a new page - only runs once on activation of plugin
 $vps_page_initializer = new VPS_Page_Initializer();
 register_activation_hook( __FILE__, array( $vps_page_initializer, 'create_video_project_page' ));
+
 
 
 
