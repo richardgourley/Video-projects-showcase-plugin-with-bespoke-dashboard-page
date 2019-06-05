@@ -43,6 +43,8 @@ abstract class VPS_Model{
         $this->fields[ 'duration' ] = sanitize_text_field($_POST['duration']);
         $this->fields[ 'image_url' ] = sanitize_url($_POST['image-url']);
         $this->fields[ 'video_url' ] = sanitize_url($_POST['video-url']);
+        //vimeo video id extracted from the url, to be displayed in iFrame
+        $this->fields[ 'video_id' ] = $this->helper->get_vimeo_id( $this->fields[ 'video_url' ]);
 
     }
 
@@ -72,14 +74,15 @@ abstract class VPS_Model{
                 'video_project_duration' => $this->fields[ 'duration' ],
                 'video_project_date' => $this->helper->convert_date_to_month_year($this->fields[ 'date' ]),
                 'video_project_image' => $this->fields[ 'image_url'],
-                'video_project_url' => $this->fields[ 'video_url']
+                'video_project_url' => $this->fields[ 'video_url'],
+                'video_project_id' => $this->fields[ 'video_id' ]
             ), 
             'post_status' => 'publish'
         );
         
         $post_id = '';
 
-        //If action is update, add existing ID to $post_arr
+        //If action parameter is 'update', add existing ID to $post_arr
         if( $action == 'update'){
             $post_arr[ 'ID' ] = $this->fields[ 'id' ];
             $post_id = $this->fields[ 'id' ];
