@@ -41,20 +41,6 @@
 	padding:20px;
 }
 
-.vps-flex-row{
-	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.vps-flex-column{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}
-
 .vps-results-display-div {
 	background-color: white; 
 	padding:24px 23px 23px 39px; 
