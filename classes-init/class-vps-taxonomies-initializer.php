@@ -2,11 +2,21 @@
 
 class VPS_Taxonomies_Initializer{
     public function __construct(){
-        add_action( 'init', array( $this, 'add_language_taxonomy' ));
-        add_action( 'init', array( $this, 'add_category_taxonomy' ));
-        add_action( 'init', array( $this, 'add_country_taxonomy' ));
+        add_action( 'init', array( $this, 'add_video_project_taxonomies' ));
     }
     
+    //called once on plugin activation
+    public function add_terms(){
+        $this->add_video_project_taxonomies();
+        $this->register_terms();
+    }
+
+    public function add_video_project_taxonomies(){
+        $this->add_country_taxonomy();
+        $this->add_category_taxonomy();
+        $this->add_language_taxonomy();
+    }
+
     public function add_country_taxonomy(){
         $labels_video_project_country = array(
             "name" => __( "Video Project Country" ),
@@ -18,7 +28,7 @@ class VPS_Taxonomies_Initializer{
             "labels" => $labels_video_project_country,
             "public" => true,
             "publicly_queryable" => true,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "show_ui" => true,
             "show_in_menu" => false,
             "show_in_nav_menus" => true,
@@ -45,7 +55,7 @@ class VPS_Taxonomies_Initializer{
             "labels" => $labels_video_project_category,
             "public" => true,
             "publicly_queryable" => true,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "show_ui" => true,
             "show_in_menu" => false,
             "show_in_nav_menus" => true,
@@ -72,7 +82,7 @@ class VPS_Taxonomies_Initializer{
             "labels" => $labels_video_project_language,
             "public" => true,
             "publicly_queryable" => true,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "show_ui" => true,
             "show_in_menu" => false,
             "show_in_nav_menus" => true,
