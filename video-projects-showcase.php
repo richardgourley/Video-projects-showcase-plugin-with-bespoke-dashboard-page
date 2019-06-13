@@ -20,6 +20,7 @@ require dirname( __FILE__ ) . '/classes-init/class-vps-custom-post-type-initiali
 require dirname( __FILE__ ) . '/classes-init/class-vps-taxonomies-initializer.php';
 require dirname( __FILE__ ) . '/classes-init/class-vps-page-initializer.php';
 require dirname( __FILE__ ) . '/classes-helper/class-vps-helper.php';
+require dirname( __FILE__ ) . '/classes-deactivate/class-vps-deactivation.php';
 
 //registers css and js scripts on activation
 $vps_scripts_initializer = new VPS_Scripts_Initializer();
@@ -27,21 +28,23 @@ $vps_scripts_initializer = new VPS_Scripts_Initializer();
 //registers taxonomies on activation
 $vps_taxonomies_initializer = new VPS_Taxonomies_Initializer();
 
-//inserts terms - only on plugin activation
-register_activation_hook( __FILE__, array( $vps_taxonomies_initializer, 'register_terms' ));
+//inserts terms - on plugin activation
+register_activation_hook( __FILE__, array( $vps_taxonomies_initializer, 'add_terms' ));
 
-
-//register custom post type and flush rewrites rules on activation
+//register custom post type
 $vps_custom_post_type_initializer = new VPS_Custom_Post_Type_Initializer();
+
+//flush rewrites rules on activation
 register_activation_hook( __FILE__, array( $vps_custom_post_type_initializer, 'register_post_type_activation' ));
 
 //initializes admin page in dashboard
 $vps_admin_page_initializer = new VPS_Admin_Page_Initializer();
 
-//creates a new page - only runs once on activation of plugin
+//creates a new archive page - on plugin activation
 $vps_page_initializer = new VPS_Page_Initializer();
 register_activation_hook( __FILE__, array( $vps_page_initializer, 'create_video_project_page' ));
 
-
+$vps_plugin_deactivation = new VPS_Plugin_Deactivation();
+register_deactivation_hook( __FILE__, array( $vps_plugin_deactivation, 'remove_cpt_taxonomies' ));
 
 
