@@ -13,6 +13,7 @@ class VPS_Scripts_Initializer{
     }
     
     public function enqueue_admin_js(){
+        wp_enqueue_media();
         wp_enqueue_script( 'vps_admin_media_js', plugins_url( 'js/admin-page-media.js', __DIR__ ),
         array('jquery'), '1.0.0', true);
     }
