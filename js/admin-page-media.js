@@ -3,23 +3,22 @@
 * DISPLAYS the media box when uploading an image
 */
 
-jQuery(document).ready(function($s){
-
+jQuery(document).ready(function($){
     var mediaUploader;
 
     $('#upload-image-video-project').click(function(e){
         e.preventDefault();
 
         if(mediaUploader){
-        	mediaUploader.open();
-        	return;
+            mediaUploader.open();
+            return;
         }
 
         //Extend wp_media object
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: 'Choose Image',
             button: {
-            	text: 'Choose Image'
+                text: 'Choose Image'
             }, multiple: false}
         );
 
