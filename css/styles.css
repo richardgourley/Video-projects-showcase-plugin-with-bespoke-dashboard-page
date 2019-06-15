@@ -1,30 +1,30 @@
 .vps-main-page-div{
-	background-color: white; 
-	padding:17px; 
-	margin-right:17px; 
-	border-radius:10px; 
-	margin-top:10px;
+  background-color: white; 
+  padding:17px; 
+  margin-right:17px; 
+  border-radius:10px; 
+  margin-top:10px;
 }
 
 .vps-main-page-greeting{
-	padding:20px; 
-	margin-right:13px;
-	margin-bottom:5px;
+  padding:20px; 
+  margin-right:13px;
+  margin-bottom:5px;
 }
 
 .vps-username-box{
-	border-radius:3px;
-	padding:9px;
-	color:white; 
-	background-color: #2e3b48;
+  border-radius:3px;
+  padding:9px;
+  color:white; 
+  background-color: #2e3b48;
 }
 
 .vps-main-page-header{
-	text-align: center; 
-	background-color: #2a4d6e; 
-	padding:10px; 
-	color:white; 
-	border-radius:2px;
+  text-align: center; 
+  background-color: #2a4d6e; 
+  padding:10px; 
+  color:white; 
+  border-radius:2px;
     margin-left:39px; 
     margin-right:39px; 
     margin-top:20px; 
@@ -32,21 +32,27 @@
 }
 
 .vps-main-page-header-font{
-	text-align: center; 
-	color:white; 
-	font-size:220%;
+  text-align: center; 
+  color:white; 
+  font-size:220%;
 }
 
 .vps-menu-buttons-wrapper{
-	padding:20px;
+  padding:20px;
 }
 
-.vps-results-display-div {
-	background-color: white; 
-	padding:24px 23px 23px 39px; 
-	margin-right:17px; 
-	border-radius:10px; 
-	margin-top:10px;
+.vps-flex-row{
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.vps-flex-column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
 }
 
 .vps-image-small{
@@ -57,28 +63,60 @@
    margin:10px;
 }
 
+.vps-patua-font{
+  font-family: 'Patua One', cursive;
+}
+
 .vps-row::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.vps-div-border{
-  border:1px solid lightgrey;
-  margin-top:16px;
-  padding:25px 10px 0px 20px;
+.uagb-slick-carousel{
+  padding-top: 18px;
+  padding-right:45px;
+  padding-left:45px;
+  padding-bottom: 45px;
 }
 
 [class*="vps-col-"] {
   float: left;
-  padding: 15px;
+  padding: 0px;
+}
+
+
+
+.vps-iframe{
+  border:0px solid lightgrey;
+}
+
+.vps-col-video-project-fullwidth{
+  width:100%; 
+  padding:15px; 
+  margin-bottom:12px;
+  background-color:#fafafa;
+}
+
+.vps-col-selectboxes{
+  padding:10px;
+  margin-bottom: 7px;
+}
+
+.vps-col-content-inner-text{
+  padding-left: 14px;
+}
+
+.vps-col-content-inner-text-carousel{
+  padding-left: 14px;
+  padding-bottom:10px;
 }
 
 .vps-col-1 {width: 8.33%;}
 .vps-col-2 {width: 16.66%;}
 .vps-col-3 {width: 25%;}
 .vps-col-4 {width: 33.33%;}
-.vps-col-5 {width: 41.66%; border:1px solid lightgrey;}
+.vps-col-5 {width: 41.66%;}
 .vps-col-6 {width: 50%;}
 .vps-col-7 {width: 58.33%;}
 .vps-col-8 {width: 66.66%;}
@@ -94,6 +132,7 @@
   .vps-col-4{width:100%;}
   .vps-col-5{width:100%;}
   .vps-col-6{width:100%;}
+  .vps-col-6-lightgrey {width: 99%; background-color: #fafafa; margin:10px; padding:23px;}
   .vps-col-7{width:100%;}
   .vps-col-8{width:100%;}
   .vps-col-9{width:100%;}
