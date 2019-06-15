@@ -1,5 +1,4 @@
 <?php
-
 /*
 * Plugin Name: Video Projects Showcase
 * Plugin URI: http://wprevs.com
@@ -27,13 +26,12 @@ $vps_scripts_initializer = new VPS_Scripts_Initializer();
 
 //registers taxonomies on activation
 $vps_taxonomies_initializer = new VPS_Taxonomies_Initializer();
-
 //inserts terms - on plugin activation
 register_activation_hook( __FILE__, array( $vps_taxonomies_initializer, 'add_terms' ));
 
+
 //register custom post type
 $vps_custom_post_type_initializer = new VPS_Custom_Post_Type_Initializer();
-
 //flush rewrites rules on activation
 register_activation_hook( __FILE__, array( $vps_custom_post_type_initializer, 'register_post_type_activation' ));
 
@@ -46,5 +44,3 @@ register_activation_hook( __FILE__, array( $vps_page_initializer, 'create_video_
 
 $vps_plugin_deactivation = new VPS_Plugin_Deactivation();
 register_deactivation_hook( __FILE__, array( $vps_plugin_deactivation, 'remove_cpt_taxonomies' ));
-
-
