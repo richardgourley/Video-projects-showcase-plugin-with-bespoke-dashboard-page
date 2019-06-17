@@ -1,19 +1,22 @@
 # Video-projects-showcase-plugin-with-bespoke-dashboard-page
 
-## What is it?
+## What does the plugin do?
 This Word press plugin allows a video production company, or any business that regularly creates videos, to quickly and easily record, manage and display their video projects to customers.
 
 ## Back end dashboard
-The principal aim of the plugin is to allow the user to manage their video projects on one page in their Wordpress dashboard.
+The principal aim of the plugin is to allow the user to manage their video projects from one page in their Wordpress dashboard.
 The bespoke dashboard page allows the user to create a new video project, view all projects, update any project and delete projects, all from one page in the dashboard page.
 
 ## Frontend
-The plugin also adds a page to the site which displays buttons that allow the user to choose which video project type they wish to see.  For example, the categories we have are wedding video, commercial videos and music videos. The buttons allow the user to click a button and all of the videos for that category will appear in a grid format showing video details and an embedded video.
+The plugin also adds a page to the site on plugin activation, which displays two drop down menus that allow the user to choose which video project type they wish to see.  
+There are two filter options for the user to select which video projects they wish to see.
+The user can either select a country or select a category (music video, commercial video or wedding video.) 
+For each project the user is shown video details such as location, project duration, category and an embedded video with playback capability.
 
-As mentioned above, the plugin is mainly a backend project but the front end could be adapted to allow users to search via country, city, date, project duration - any number of front end possibilities could be added.
+As mentioned above, the plugin is mainly a backend project but there are numerous possiblities to adapt the filtering options on the front end video project page by adding further categories.
 
 ## Languages
-Mainly PHP, with a little Javascript and JQuery for the admin and front end pages, and of course, HTML and CSS.
+Mainly PHP and Javascript and a little JQuery for selecting the URL of an image from the media library, and of course, HTML and CSS.
 
 ## Architecture
 Although not strictly an MVC framework, I tried to follow MVC principles in the way the plugin is structured with admin-pages acting as the views, classes as models for CRUD actions, and the admin page callback acting as a controller.
