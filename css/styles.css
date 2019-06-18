@@ -6,6 +6,12 @@
   margin-top:10px;
 }
 
+/*
+h1{
+  font-family: 'Patua One', cursive;
+}
+*/
+
 .vps-main-page-greeting{
   padding:20px; 
   margin-right:13px;
@@ -64,7 +70,8 @@
 }
 
 .vps-patua-font{
-  font-family: 'Patua One', cursive;
+  font-family: 'Patua One';
+
 }
 
 .vps-row::after {
@@ -86,25 +93,29 @@
 }
 
 
-
 .vps-iframe{
-  border:0px solid lightgrey;
+  border:1px solid red;
+  width:100%;
+  height:280px;
 }
 
 .vps-col-video-project-fullwidth{
   width:100%; 
   padding:15px; 
-  margin-bottom:12px;
+  margin-bottom:23px;
   background-color:#fafafa;
+  border:1px solid red;
 }
 
 .vps-col-selectboxes{
   padding:10px;
   margin-bottom: 7px;
+  border:1px solid red;
 }
 
 .vps-col-content-inner-text{
   padding-left: 14px;
+  border:1px solid red;
 }
 
 .vps-col-content-inner-text-carousel{
@@ -140,3 +151,12 @@
   .vps-col-11{width:100%;}
   .vps-col-12{width:100%;}
 }
+
+@media screen and (max-width: 600px) {
+  .vps-iframe{
+    border:1px solid red;
+    width:100%;
+    height:250px;
+  }
+}
+
