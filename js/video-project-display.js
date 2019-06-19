@@ -129,21 +129,20 @@ function addVideoContent(videoProject){
     content += '<h1 class="vps-patua-font">' + videoProject.title + '</h1>';
 
     content += '<div class="vps-col-content-inner-text">';
-    content += '<p class="vps-patua-font">Category: ' + videoProject.category + '</p>';
-    content += '<p class="vps-patua-font">Location: ' + videoProject.location + ', ' + videoProjects[i].country;
+    content += '<p>Category: ' + videoProject.category + '</p>';
+    content += '<p>Location: ' + videoProject.location + ', ' + videoProjects[i].country;
     content += '</div>'; //end inner-text
 
     content += '<div class="vps-col-content-inner-text">';
-    content += '<p class="vps-patua-font">Date: ' + videoProject.displaydate + '</p>';
-    content += '<p class="vps-patua-font">Duration: ' + videoProject.duration + '</p>';
+    content += '<p>Date: ' + videoProject.displaydate + '</p>';
+    content += '<p>Duration: ' + videoProject.duration + '</p>';
     content += '</div>'; //end inner-text
 
     content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
     content += videoProject.videoid;
-    //content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
     content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
     
-    content += '</div>'; //end col-12
+    content += '</div>'; //end col-fullwidth
 
     return content;
 }
