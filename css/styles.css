@@ -104,18 +104,19 @@ h1{
   padding:15px; 
   margin-bottom:23px;
   background-color:#fafafa;
-  border:1px solid red;
+  border:1px solid green;
 }
 
 .vps-col-selectboxes{
   padding:10px;
   margin-bottom: 7px;
-  border:1px solid red;
+  border:1px solid blue;
 }
 
 .vps-col-content-inner-text{
+  width:50%;
   padding-left: 14px;
-  border:1px solid red;
+  border:1px solid orange;
 }
 
 .vps-col-content-inner-text-carousel{
@@ -143,7 +144,6 @@ h1{
   .vps-col-4{width:100%;}
   .vps-col-5{width:100%;}
   .vps-col-6{width:100%;}
-  .vps-col-6-lightgrey {width: 99%; background-color: #fafafa; margin:10px; padding:23px;}
   .vps-col-7{width:100%;}
   .vps-col-8{width:100%;}
   .vps-col-9{width:100%;}
