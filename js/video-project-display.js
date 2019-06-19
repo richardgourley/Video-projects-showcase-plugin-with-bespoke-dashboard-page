@@ -6,10 +6,9 @@ console.log(categories);
 
 let selectOptionsCountryDiv = document.getElementById("selectOptionsCountryDiv");
 let selectOptionsCategoryDiv = document.getElementById("selectOptionsCategoryDiv");
-//let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
 
 //only run this code on pages where vpsProjectsContainer is found
-if(vpsProjectsContainer){
+if(document.getElementById("vpsProjectsContainer")){
     //display columns in main container
     let vpsProjectContainerHTML = '';
     vpsProjectContainerHTML += '<div class="vps-col-3" id="selectOptions"></div>';
@@ -46,6 +45,15 @@ if(vpsProjectsContainer){
 }
 
 function vpsPopulateSelectBoxes(){
+    /*selectOptions.innerHTML += '<div class="vps-selectbox-div">';
+    selectOptions.innerHTML += '<p>Select a country to see projects</p>';
+    selectOptions.innerHTML += createSelectCountryDropDown();
+    selectOptions.innerHTML += '</div>';
+    selectOptions.innerHTML += '<div class="vps-selectbox-div">';
+    selectOptions.innerHTML += '<p>Select a category to see projects</p>';
+    selectOptions.innerHTML += createSelectCategoryDropDown();
+    selectOptions.innerHTML += '</div>';*/
+    //selectOptions.innerHTML = '<div class="vps-selectbox-div">';
     let content = '';
     content += '<div class="vps-row">';
     content += '<div class="vps-col-selectboxes">';
@@ -120,29 +128,74 @@ function addVideoContent(videoProject){
 
     content += '<h1 class="vps-patua-font">' + videoProject.title + '</h1>';
 
-    content += '<div class="vps-col-6">';
     content += '<div class="vps-col-content-inner-text">';
     content += '<p class="vps-patua-font">Category: ' + videoProject.category + '</p>';
     content += '<p class="vps-patua-font">Location: ' + videoProject.location + ', ' + videoProjects[i].country;
     content += '</div>'; //end inner-text
-    content += '</div>'; //end col-6 category and location
 
-    content += '<div class="vps-col-6">';
     content += '<div class="vps-col-content-inner-text">';
     content += '<p class="vps-patua-font">Date: ' + videoProject.displaydate + '</p>';
     content += '<p class="vps-patua-font">Duration: ' + videoProject.duration + '</p>';
     content += '</div>'; //end inner-text
-    content += '</div>'; //end col-6 date and duration
 
     content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
     content += videoProject.videoid;
     //content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
-    content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+    content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
     
     content += '</div>'; //end col-12
 
     return content;
 }
+
+/*
+
+
+function addContent(videoProject){
+    console.log(videoProject);
+    let content = '';
+
+    //to be spaced better into a single row!
+    //content += '<div class=""';
+    
+    content += '<div class="vps-col-9">';
+    content += '<div class="vps-col-6">';
+    content += '<div class="vps-col-padding-left">';
+    content += '<h1 class="vps-patua-font">Just testing this out</h1>';
+    content += '</div>'; //end TITLE div
+    content += '</div>'; //end COL 5
+    content += '<div class="vps-col-6">';
+    content += '<div class="vps-col-padding-left">';
+    content += '<p class="vps-patua-font">Just testing this out</p>';
+    content += '</div>'; //end TITLE div
+    content += '</div>'; //end COL 5
+    content += '</div>'; //end main div
+
+*/
+/*
+    content += '<div class="vps-col-fullwidth-lightgrey">';
+
+    content += '<div class="vps-col-5>';
+    content += '<h1 class="vps-patua-font">' + videoProject.title + '</h1>';
+    content += '</div>';
+    content += '<div class="vps-col-padding-left">';
+    content += '<p class="vps-patua-font">Category: ' + videoProject.category + '</p>';
+    content += '<p class="vps-patua-font">Location: ' + videoProject.location + ', ' + videoProjects[i].country;
+    content += '<p class="vps-patua-font">Date: ' + videoProject.displaydate + '</p>';
+    content += '<p class="vps-patua-font">Duration: ' + videoProject.duration + '</p>';
+    content += '</div>';
+    content += '<div class="vps-col-padding-left-right">';
+    content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
+    content += videoProject.videoid;
+    //content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+    content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+    content += '</div>';
+    content += '</div>';
+*/
+/*
+    return content;
+}
+*/
 
 
 
