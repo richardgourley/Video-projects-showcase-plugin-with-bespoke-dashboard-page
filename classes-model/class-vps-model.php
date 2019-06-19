@@ -8,7 +8,6 @@ abstract class VPS_Model{
             $message .= $this->helper->check_field_filled( $post[ 'id' ], 'ID', 'text' );
             $message .= $this->helper->is_a_number($post[ 'id' ], 'ID', 'text' );
         }
-        $message .= $this->helper->check_field_filled( $post['language'], 'Video project language', 'radio');
         $message .= $this->helper->check_field_filled( $post['category'], 'Video category', 'radio' );
         $message .= $this->helper->check_field_filled( $post['country'], 'Country', 'radio' );
         if( $post['country'] == 'other' ){
@@ -33,7 +32,6 @@ abstract class VPS_Model{
         if( $action == 'update'){
             $this->fields[ 'id' ] = sanitize_text_field( $_POST[ 'id' ]);
         }
-        $this->fields[ 'language' ] = sanitize_text_field($_POST['language']);
         $this->fields[ 'category' ] = sanitize_text_field($_POST['category']);
         $this->fields[ 'country' ] = sanitize_text_field($_POST['country']);
         $this->fields[ 'new_country' ] = sanitize_text_field($_POST['new-country']);
@@ -59,6 +57,7 @@ abstract class VPS_Model{
 
     protected function create_or_update_post_assign_terms( $action ){
         $content = $this->generate_post_content();
+        var_dump($content);
         
         //NOTE: We retrieve term name from term slug - use name for display purposes.
         $post_arr = array(
@@ -86,7 +85,7 @@ abstract class VPS_Model{
         
         $post_id = '';
 
-        //If action parameter is 'update', add existing ID to $post_arr
+        //Update = update with existing ID, Else create = insert a new post
         if( $action == 'update'){
             $post_arr[ 'ID' ] = $this->fields[ 'id' ];
             $post_id = $this->fields[ 'id' ];
@@ -96,7 +95,6 @@ abstract class VPS_Model{
         }
 
         //use post id to set object terms
-        wp_set_object_terms( $post_id, $this->fields['language'], 'video_project_language' );
         wp_set_object_terms( $post_id, $this->fields['category'], 'video_project_category' );
         wp_set_object_terms( $post_id, $this->fields['country'], 'video_project_country');
 
@@ -117,18 +115,37 @@ abstract class VPS_Model{
             'video_project_category'
         )->name;
 
+        //use name instead of slug for presentation
         $country_name = get_term_by('slug', $this->fields[ 'country' ], 'video_project_country')->name;
         
         $html = '';
-        $html .= '<h3>Category: ' . $category_name . '</h3>';
-        $html .= '<p>Location: ' . $this->fields[ 'location' ] . ', ' . $country_name . '.</p>';
-        $html .= '<img class="vps-image-small" src ="' . $this->fields[ 'image_url' ] . '"></img>';
-        $html .= '<p>Date: ' . $this->fields[ 'display_date' ] . '.</p>';
-        $html .= '<p>Project duration: ' . $this->fields[ 'duration' ] . '.</p>';
-        $vimeo_id = $this->fields[ 'video_id' ];
-        $html .= '<iframe src="https://player.vimeo.com/video/' . $vimeo_id . '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
-        return $html;
+        
+        $html .= '<div class="vps-col-video-project-fullwidth">';
 
+        $html .= '<div class="vps-col-6">';
+        $html .= '<div class="vps-col-content-inner-text">';
+        $html .= '<p class="vps-patua-font">Category: ' . $category_name . '</p>';
+        $html .= '<p class="vps-patua-font">Location: ' . $this->fields['location'] . ', ';
+        $html .= $country_name . '</p>';
+        $html .= '</div>'; //end inner-text
+        $html .= '</div>'; //end col-6 category and location 
+
+        $html .= '<div class="vps-col-6">';
+        $html .= '<div class="vps-col-content-inner-text">';
+        $html .= '<p class="vps-patua-font">Date: ' . $this->fields['display_date'] . '</p>';
+        $html .= '<p class="vps-patua-font">Duration: ' . $this->fields['duration'] . '</p>';
+        $html .= '</div>'; //end inner-text
+        $html .= '</div>'; //end col-6 category and location 
+
+        $html .= '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
+        $html .= $this->fields['video_id'];
+        //content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+        $html .= '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+
+        $html .= '</div>'; //end fullwidth container
+
+        return $html;
+  
     }
 
 }
