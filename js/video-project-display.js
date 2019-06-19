@@ -1,13 +1,12 @@
 //only run this code on pages where vpsProjectsContainer is found
 if(document.getElementById("vpsProjectsContainer")){
+
     //display columns in main container
     let vpsProjectContainerHTML = '';
     vpsProjectContainerHTML += '<div class="vps-col-3" id="vpsSelectOptions"></div>';
     vpsProjectContainerHTML += '<div class="vps-col-9" id="vpsContentDiv"></div>';
     vpsProjectsContainer.innerHTML += vpsProjectContainerHTML;
 
-    console.log(vpsProjectContainerHTML);
- 
     //assign variables to columns
     let vpsSelectOptions = document.getElementById("vpsSelectOptions");
     let vpsContentDiv = document.getElementById("vpsContentDiv");
@@ -15,7 +14,7 @@ if(document.getElementById("vpsProjectsContainer")){
     //populate the select options column
     vpsSelectOptions.innerHTML = vpsPopulateSelectBoxes();
 
-    //a function to populate the contentDiv on page load
+    //populate the contentDiv on page load
     vpsPopulateContentDivOnLoad();
 
     //populate the contentDiv on select box change
