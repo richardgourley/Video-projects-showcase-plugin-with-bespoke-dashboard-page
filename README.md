@@ -8,7 +8,7 @@ The principal aim of the plugin is to allow the user to manage their video proje
 The bespoke dashboard page allows the user to create a new video project, view all projects, update any project and delete projects, all from one page in the dashboard page.
 
 ## Frontend
-The plugin also adds a page to the site on plugin activation, which displays two drop down menus that allow the user to choose which video project type they wish to see.  
+The plugin also saves a mobile-responsive page to the site on plugin activation, which displays two drop down menus that allow the user to choose which video projects they wish to see.  
 There are two filter options for the user to select which video projects they wish to see.
 The user can either select a country or select a category (music video, commercial video or wedding video.) 
 For each project the user is shown video details such as location, project duration, category and an embedded video with playback capability.
