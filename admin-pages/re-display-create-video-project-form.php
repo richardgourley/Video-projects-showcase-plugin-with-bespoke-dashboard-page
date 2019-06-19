@@ -8,48 +8,18 @@
 <?php wp_nonce_field( 'create-video-project-action', 'create-video-project-nonce' ); ?>
 <table class="form-table">
     <tbody>
-        <tr>
-            <th>
-                <label for="language">Select a language for this entry</label>
-            </th>
-            <td>
-                <?php
-                $video_project_language_terms = get_terms( array(
-                    'taxonomy' =>   'video_project_language',
-                    'hide_empty' => false
-                ));
-                
-                foreach($video_project_language_terms as $term) {
-                    
-                    $checked = '';
-                    if($term->slug == $post['language']){
-                        $checked = 'checked';
-                    }else{
-                        $checked = '';
-                    }
-                    printf('<label><input %s type="radio" id=%s name="language" value=%s>%s</label> ',
-                        $checked,
-                        esc_html( $term->slug),
-                        esc_html( $term->slug),
-                        esc_html( $term->name)
-                    );
-
-                }
-                ?>
-            </td>
-        </tr>
     	<tr>
         	<th>
         		<label for="category">Select a category for this video</label>
         	</th>
         	<td>
                 <?php
-                $video_category_terms = get_terms( array(
+                $video_project_category_terms = get_terms( array(
                     'taxonomy' =>   'video_project_category',
                     'hide_empty' => false
                 ));
                 
-                foreach($video_category_terms as $term) {
+                foreach($video_project_category_terms as $term) {
                     
                     $checked = '';
                     if($term->slug == $post['category']){
@@ -75,25 +45,27 @@
         	<td>
         		<div id="countries">
                 <?php
-                $country_terms = get_terms( array(
+                $video_project_country_terms = get_terms( array(
                     'taxonomy' =>   'video_project_country',
                     'hide_empty' => false
                 ));
                 
+                //set to true unless we find existing country below
                 $new_country = true;
 
-                foreach($country_terms as $country_term){
+                foreach($video_project_country_terms as $country_term){
                     
                     if($country_term->slug == $post['country']){
-                        //tells us that the country is from our list of terms ie. not a new country
+                        //existing country selected - NOT a new country
                         $new_country = false;
+                        //prints existing country with checked box
                         printf('<label><input checked type="radio" id=%s name="country" value=%s>%s</label> ',
                             esc_html( $country_term->slug),
                             esc_html( $country_term->slug),
                             esc_html( $country_term->name)
                         );
                     }else{
-                        //tells us that this term not checked by user
+                        //prints existing country not checked
                         printf('<label><input type="radio" id=%s name="country" value=%s>%s</label> ',
                             esc_html( $country_term->slug),
                             esc_html( $country_term->slug),
@@ -102,6 +74,7 @@
                     }
                 }
 
+                //other is checked or not and value printed or not depending if $new_country is true
                 if($new_country){
                     $country = $post['new-country'];
                     echo
