@@ -4,40 +4,40 @@ console.log(countries);
 console.log(categories);
 */
 
-let selectOptionsCountryDiv = document.getElementById("selectOptionsCountryDiv");
-let selectOptionsCategoryDiv = document.getElementById("selectOptionsCategoryDiv");
+//let selectOptionsCountryDiv = document.getElementById("selectOptionsCountryDiv");
+//let selectOptionsCategoryDiv = document.getElementById("selectOptionsCategoryDiv");
 
 //only run this code on pages where vpsProjectsContainer is found
 if(document.getElementById("vpsProjectsContainer")){
     //display columns in main container
     let vpsProjectContainerHTML = '';
-    vpsProjectContainerHTML += '<div class="vps-col-3" id="selectOptions"></div>';
-    vpsProjectContainerHTML += '<div class="vps-col-9" id="contentDiv"></div>';
+    vpsProjectContainerHTML += '<div class="vps-col-3" id="vpsSelectOptions"></div>';
+    vpsProjectContainerHTML += '<div class="vps-col-9" id="vpsContentDiv"></div>';
     vpsProjectsContainer.innerHTML += vpsProjectContainerHTML;
 
     console.log(vpsProjectContainerHTML);
  
     //assign variables to columns
-    let selectOptions = document.getElementById("selectOptions");
-    let contentDiv = document.getElementById("contentDiv");
+    let vpsSelectOptions = document.getElementById("vpsSelectOptions");
+    let vpsContentDiv = document.getElementById("vpsContentDiv");
     
-    //populate the select boxes
-    selectOptions.innerHTML = vpsPopulateSelectBoxes();
+    //populate the select options column
+    vpsSelectOptions.innerHTML = vpsPopulateSelectBoxes();
 
     //a function to populate the contentDiv on page load
     vpsPopulateContentDivOnLoad();
 
     //populate the contentDiv on select box change
-    selectCountryDropDown.onchange = function(){
-        contentDiv.innerHTML = displayVideoProjects(
-            selectCountryDropDown.options[selectCountryDropDown.selectedIndex].value,
+    vpsCountryDropDown.onchange = function(){
+        vpsContentDiv.innerHTML = vpsDisplayProjects(
+            vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value,
             'country'
         );
     }
 
-    selectCategoryDropDown.onchange = function(){
-        contentDiv.innerHTML = displayVideoProjects(
-            selectCategoryDropDown.options[selectCategoryDropDown.selectedIndex].value,
+    vpsCategoryDropDown.onchange = function(){
+        vpsContentDiv.innerHTML = vpsDisplayProjects(
+            vpsCategoryDropDown.options[vpsCategoryDropDown.selectedIndex].value,
             'category'
         );
     }
@@ -58,11 +58,11 @@ function vpsPopulateSelectBoxes(){
     content += '<div class="vps-row">';
     content += '<div class="vps-col-selectboxes">';
     content += '<p>Select a country to see projects</p>';
-    content += createSelectCountryDropDown();
+    content += vpsGenerateCountryDropDown();
     content += '</div>'; //end col
     content += '<div class="vps-col-selectboxes">';
     content += '<p>Select a category to see projects</p>';
-    content += createSelectCategoryDropDown();
+    content += vpsGenerateCategoryDropDown();
     content += '</div>'; //end col
     content += '</div>'; //end row
 
@@ -70,11 +70,11 @@ function vpsPopulateSelectBoxes(){
 }
 
 function vpsPopulateContentDivOnLoad(){
-    contentDiv.innerHTML = displayVideoProjects('Commercial', 'category');
+    vpsContentDiv.innerHTML = vpsDisplayProjects('Commercial', 'category');
 }
 
-function createSelectCountryDropDown(){
-    let dropDown = '<select id="selectCountryDropDown">';
+function vpsGenerateCountryDropDown(){
+    let dropDown = '<select id="vpsCountryDropDown">';
     dropDown += '<option>--Choose a country--</option>';
     for(i=0; i<countries.length; i++){
         dropDown += '<option value="'; 
@@ -88,8 +88,8 @@ function createSelectCountryDropDown(){
     return dropDown;
 }
 
-function createSelectCategoryDropDown(){
-    let dropDown = '<select id="selectCategoryDropDown">';
+function vpsGenerateCategoryDropDown(){
+    let dropDown = '<select id="vpsCategoryDropDown">';
     dropDown += '<option>--Choose a category--</option>';
     for(i=0; i<categories.length; i++){
         dropDown += '<option value="'; 
@@ -103,16 +103,17 @@ function createSelectCategoryDropDown(){
     return dropDown;
 }
 
-function displayVideoProjects(selectOption, selectMenu){
+function vpsDisplayProjects(selectOption, selectMenu){
     //contentDiv.innerHTML = '<h1>' + country + '</h1>';
     let content = '<div class="vps-row">';
     
     for(i=0; i<videoProjects.length; i++){
         if(selectMenu === 'country' && videoProjects[i].country === selectOption){
-            content += addVideoContent(videoProjects[i]);
+            //lines 113, 116, 126
+            content += vpsGenerateContent(videoProjects[i]);
         }
         if(selectMenu === 'category' && videoProjects[i].category === selectOption){
-            content += addVideoContent(videoProjects[i]);
+            content += vpsGenerateContent(videoProjects[i]);
         }
     }
 
@@ -122,7 +123,7 @@ function displayVideoProjects(selectOption, selectMenu){
 
 }
 
-function addVideoContent(videoProject){
+function vpsGenerateContent(videoProject){
     let content = '';
     content += '<div class="vps-col-video-project-fullwidth">';
 
