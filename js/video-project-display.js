@@ -1,10 +1,9 @@
 //only run this code on pages where vpsProjectsContainer is found
 if(document.getElementById("vpsProjectsContainer")){
-
     //display columns in main container
     let vpsProjectContainerHTML = '';
-    vpsProjectContainerHTML += '<div class="vps-col-3" id="vpsSelectOptions"></div>';
-    vpsProjectContainerHTML += '<div class="vps-col-9" id="vpsContentDiv"></div>';
+    vpsProjectContainerHTML += '<div class="vps-col-select-div" id="vpsSelectOptions"></div>';
+    vpsProjectContainerHTML += '<div class="vps-col-content-div" id="vpsContentDiv"></div>';
     vpsProjectsContainer.innerHTML += vpsProjectContainerHTML;
 
     //assign variables to columns
@@ -14,7 +13,7 @@ if(document.getElementById("vpsProjectsContainer")){
     //populate the select options column
     vpsSelectOptions.innerHTML = vpsPopulateSelectBoxes();
 
-    //populate the contentDiv on page load
+    //a function to populate the contentDiv on page load
     vpsPopulateContentDivOnLoad();
 
     //populate the contentDiv on select box change
@@ -106,7 +105,7 @@ function vpsGenerateContent(videoProject){
     let content = '';
     content += '<div class="vps-col-video-project-fullwidth">';
 
-    content += '<h1 class="vps-patua-font">' + videoProject.title + '</h1>';
+    content += '<h1 class="vps-noto-sans-font">' + videoProject.title + '</h1>';
 
     content += '<div class="vps-col-content-inner-text">';
     content += '<p>Category: ' + videoProject.category + '</p>';
