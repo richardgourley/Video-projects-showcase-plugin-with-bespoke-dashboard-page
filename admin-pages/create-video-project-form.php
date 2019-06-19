@@ -5,39 +5,18 @@
 <?php wp_nonce_field( 'create-video-project-action', 'create-video-project-nonce' ); ?>
 <table class="form-table">
     <tbody>
-    	<tr>
-            <th>
-                <label for="language">Select a language for this entry</label>
-            </th>
-            <td>
-                <?php
-                $video_project_language_terms = get_terms( array(
-                    'taxonomy' =>   'video_project_language',
-                    'hide_empty' => false
-                ));
-
-                foreach($video_project_language_terms as $term):
-                ?>
-                <?php
-                $language_checked = $term->slug == 'english' ? 'checked' : '';
-                ?>
-                <label><input <?php echo $language_checked; ?> type="radio" id="<?php echo esc_html( $term->slug ); ?>" name="language" value="<?php echo esc_html( $term->slug ); ?>"><?php echo esc_html( $term->name); ?>
-                </label>
-                <?php endforeach; ?>
-            </td>
-        </tr>
         <tr>
         	<th>
-        		<label for="category">Select a category for this video</label>
+        		<label for="category">Select a video category for this video</label>
         	</th>
         	<td>
                 <?php
-                $video_category_terms = get_terms( array(
+                $video_project_category_terms = get_terms( array(
                     'taxonomy' =>   'video_project_category',
                     'hide_empty' => false
                 ));
 
-                foreach($video_category_terms as $term):
+                foreach($video_project_category_terms as $term):
                 ?>
         		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" 
                 name="category" value="<?php echo esc_html( $term->slug ); ?>">
@@ -53,12 +32,12 @@
         	<td>
         		<div id="countries">
                 <?php
-                $country_terms = get_terms( array(
+                $video_project_country_terms = get_terms( array(
                     'taxonomy' =>   'video_project_country',
                     'hide_empty' => false
                 ));
 
-                foreach($country_terms as $term):
+                foreach($video_project_country_terms as $term):
                 ?>
         		<label><input checked type="radio" id="<?php echo esc_html( $term->slug ); ?>" 
                 name="country" value="<?php echo esc_html( $term->slug ); ?>">
