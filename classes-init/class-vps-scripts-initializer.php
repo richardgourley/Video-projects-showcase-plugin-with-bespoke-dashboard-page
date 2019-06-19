@@ -6,6 +6,7 @@ class VPS_Scripts_Initializer{
         //Registers and localizes php array to JS objects for front end
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_localize_js') );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_css' ));
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_google_font' ) );
     }
 
     public function enqueue_css(){
@@ -13,9 +14,14 @@ class VPS_Scripts_Initializer{
     }
     
     public function enqueue_admin_js(){
+        //loads wordpress media files for use with admin-page-media.js
         wp_enqueue_media();
         wp_enqueue_script( 'vps_admin_media_js', plugins_url( 'js/admin-page-media.js', __DIR__ ),
         array('jquery'), '1.0.0', true);
+    }
+
+    public function enqueue_google_font(){
+        wp_enqueue_style( 'notosans', 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
     }
 
     public function enqueue_localize_js(){
@@ -24,6 +30,8 @@ class VPS_Scripts_Initializer{
         
         // Localize script - access php projects array as JS objects 
         $projects = $this->get_video_projects();
+        $countries = $this->get_countries( $projects );
+        $categories = $this->get_categories( $projects );
 
         wp_localize_script( 
             //JS file handle
@@ -33,9 +41,27 @@ class VPS_Scripts_Initializer{
             //php array name
             $projects
         );
+
+        wp_localize_script( 
+            //JS file handle
+            'vps_video_project_display_js', 
+            //array name inside js file
+            'countries', 
+            //php array name
+            $countries
+        );
+
+        wp_localize_script( 
+            //JS file handle
+            'vps_video_project_display_js', 
+            //array name inside js file
+            'categories', 
+            //php array name
+            $categories
+        );
         
     }
-
+    
     private function get_video_projects(){
         $video_projects_array = [];
 
@@ -56,6 +82,9 @@ class VPS_Scripts_Initializer{
             $this_project['category'] = esc_html(
                 get_post_meta( $project->ID, 'video_project_category', true)
             );
+            $this_project['country'] = esc_html(
+                get_post_meta( $project->ID, 'video_project_country', true)
+            );
             $this_project['location'] = esc_html(get_post_meta( $project->ID, 'video_project_location', true));
             $this_project['image'] = esc_html(get_post_meta( $project->ID, 'video_project_image', true));
             $this_project['displaydate'] = esc_html(
@@ -72,6 +101,32 @@ class VPS_Scripts_Initializer{
 
         return $video_projects_array;
 
+    }
+
+    private function get_countries( $projects ){
+        $countries = [];
+
+        //gets list of countries being used by video projects
+        foreach($projects as $project){
+            if( !in_array( $project['country'], $countries )){
+                array_push( $countries, $project['country'] );
+            }
+        }
+
+        return $countries;
+    }
+
+    private function get_categories( $projects ){
+        $categories = [];
+
+        //gets list of countries being used by video projects
+        foreach($projects as $project){
+            if( !in_array( $project['category'], $categories )){
+                array_push( $categories, $project['category'] );
+            }
+        }
+
+        return $categories;
     }
     
 }
