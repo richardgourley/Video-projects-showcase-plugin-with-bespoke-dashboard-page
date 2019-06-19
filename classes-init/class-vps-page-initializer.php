@@ -6,21 +6,15 @@ class VPS_Page_Initializer{
     }
     
     public function create_video_project_page(){
-        //code for custom page to be inserted into the site to display custom post type results
-        $page_content = 
-            '<div id="vpsProjectsContainer" class="vps-row">
-             </div>';
-
-        $args = array(
-            'post_title'   => 'Video Projects',
-            'post_status'  => 'publish',
-            'post_content' => $page_content,
-            'post_type'    => 'page'
+        $post_array = array(
+            'post_author' => 1,
+            'post_title' => 'Video Projects',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'post_content' => '<div class="vps-row" id="vpsProjectsContainer"></div>'
         );
 
-        if( !post_exists( 'Video Projects' ) ){
-            wp_insert_post( $args );
-        }
+        wp_insert_post( $post_array );
         
     }
 
