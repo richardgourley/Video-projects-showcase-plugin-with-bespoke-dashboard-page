@@ -12,6 +12,7 @@ The plugin also adds a page to the site on plugin activation, which displays two
 There are two filter options for the user to select which video projects they wish to see.
 The user can either select a country or select a category (music video, commercial video or wedding video.) 
 For each project the user is shown video details such as location, project duration, category and an embedded video with playback capability.
+A google font is enqueued for displaying the title of the video project.
 
 As mentioned above, the plugin is mainly a backend project but there are numerous possiblities to adapt the filtering options on the front end video project page by adding further categories.
 
@@ -30,6 +31,7 @@ Although not strictly an MVC framework, I tried to follow MVC principles in the 
     JS files for retrieving images from the media library.
     The custom post type.
     Custom taxonomies of country, language and video type.
+    A google font.
     Activation hooks for creating a page on plugin activation.
     Activation hooks for properly registering a CPT and flush re-writing the permalink rules.
     Classes for adding meta data for each custom post entry.
