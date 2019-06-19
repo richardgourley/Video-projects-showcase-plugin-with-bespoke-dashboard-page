@@ -6,12 +6,9 @@
 <?php 
 foreach($video_projects->posts as $project):
 ?>
-<div class="vps-col-5-border">
+<div class="vps-col-10">
   <?php
       $title = esc_html( $project->post_title );
-      $language = get_the_terms( $project->ID, 'video_project_language' );
-      $language_name = esc_html( $language[0]->name );
-      $language_slug = esc_html( $language[0]->slug );
       $category_name = esc_html( get_post_meta( $project->ID, 'video_project_category', true ) );
       $category_slug = esc_html( get_term_by( 'name', $category_name, 'video_project_category' )->slug );
       $country_name = esc_html( get_post_meta( $project->ID, 'video_project_country', true ) );
@@ -23,7 +20,6 @@ foreach($video_projects->posts as $project):
       $image_url = esc_url( get_post_meta( $project->ID, 'video_project_image', true ) );
   ?>
   <h3>Title: <?php echo $title; ?></h3>
-  <p>Language: <?php echo $language_name; ?></p>
   <p>Category: <?php echo $category_name; ?></p>
   <p>Country: <?php echo $country_name; ?></p>
   <p>Location: <?php echo $location; ?></p>
@@ -35,8 +31,6 @@ foreach($video_projects->posts as $project):
     <?php wp_nonce_field( 'update-video-project-form-action', 'update-video-project-form-nonce' ); ?>
     <input type="hidden" id="id" name="id" value="<?php echo $project->ID; ?>">
     <input type="hidden" id="title" name="title" value="<?php echo $title; ?>">
-    <input type="hidden" id="language" name="language"
-    value="<?php echo $language_slug; ?>">
     <input type="hidden" id="category" name="category"
     value="<?php echo $category_slug; ?>">
     <input type="hidden" id="country" name="country"
