@@ -1,27 +1,26 @@
 # Video-projects-showcase-plugin-with-bespoke-dashboard-page
 
 ## What does the plugin do?
-This Word press plugin allows a video production company, or any business that regularly creates videos, to quickly and easily record, manage and display their video projects to customers.
+This Word press plugin allows a video production company, or any business that regularly creates videos, to quickly and easily manage and display their video projects to customers.
 
 ## Back end dashboard
 The principal aim of the plugin is to allow the user to manage their video projects from one page in their Wordpress dashboard.
-The bespoke dashboard page allows the user to create a new video project, view all projects, update any project and delete projects, all from one page in the dashboard page.
+The bespoke dashboard page allows the user to create a new video project, view all projects, update any project and delete projects, all from one page.
 
 ## Frontend
-The plugin also saves a mobile-responsive page to the site on plugin activation, which displays two drop down menus that allow the user to choose which video projects they wish to see.  
-There are two filter options for the user to select which video projects they wish to see.
-The user can either select a country or select a category (music video, commercial video or wedding video.) 
-For each project the user is shown video details such as location, project duration, category and an embedded video with playback capability.
-A google font is enqueued for displaying the title of the video project.
-
-As mentioned above, the plugin is mainly a backend project but there are numerous possiblities to adapt the filtering options on the front end video project page by adding further categories.
+On plugin activation, a mobile-responsive video search page is created, which acts as a bespoke search page that works on all devices.
+The user can filter video projects by country or category( commercial, wedding or music video).
+The user is shown postmeta data for each project, such as location adn duration, along with an embedded video which adapts to different screen sizes.
+Enqueued google fonts are used in the presentation of each video.
 
 ## Languages
-Mainly PHP and Javascript and a little JQuery for selecting the URL of an image from the media library, and of course, HTML and CSS.
+Mainly PHP and Wordpress APIs. 
+JS is used for the search page and the admin page forms. 
+HTML and CSS for the search page and admin page layouts.
 
 ## Architecture
-Although not strictly an MVC framework, I tried to follow MVC principles in the way the plugin is structured with admin-pages acting as the views, classes as models for CRUD actions, and the admin page callback acting as a controller.
-
+Although not strictly an MVC framework, MVC principles were followed.
+We have model classes that handle DB interraction and our admin page callback acts as a controller.
 
 ### The plugin sets up:
 
@@ -49,17 +48,17 @@ Although not strictly an MVC framework, I tried to follow MVC principles in the 
 ### SKILLS COVERED
 
     MVC architecture
-    Separating classes into helper, init and model files
+    Plugin structure - separating classes into helper, init and model folders.
     Separating logic from views 
     Adding a custom post type
     Adding a bespoke admin page
     Updating post meta data
-    Activation hooks in WP
+    Activation and deactivation hooks in WP
     Localizing a PHP array into a Javascript file
     Retrieving and saving taxonomy terms
     Retrieving and saving post meta
     Setting up a bespoke form for inserting a custom post type
-    Using JS to select an image URL from the current media files in the WP site
+    Using JS to open the media library and select an image url in a form
     Wordpress data validation and sanitization
     Creating and updating posts with code in WP
     Abstract classes
@@ -67,5 +66,6 @@ Although not strictly an MVC framework, I tried to follow MVC principles in the 
     String manipulation in PHP and JS
     Date manipulation to convert a date to 'month year' format for display
     CSS columns and rows
+    Media queries in CSS.
 
 NOTE: The files 'tests.php' in the folder 'tests' is only there as a reference. It contains the tests performed while building the plugin.
