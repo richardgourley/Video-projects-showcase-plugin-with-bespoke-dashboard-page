@@ -1,57 +1,39 @@
 //only run this code on pages where vpsProjectsContainer is found
 if(document.getElementById("vpsProjectsContainer")){
     //display columns in main container
-    let vpsProjectContainerHTML = '';
-    vpsProjectContainerHTML += '<div class="vps-col-select-div" id="vpsSelectOptions"></div>';
-    vpsProjectContainerHTML += '<div class="vps-col-content-div" id="vpsContentDiv"></div>';
-    vpsProjectsContainer.innerHTML += vpsProjectContainerHTML;
+    let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
+    vpsProjectsContainer.innerHTML = '<div class="vps-row">';
+    vpsProjectsContainer.innerHTML += '<div id="vpsSelectDiv" class="vps-col-12"></div>';
+    vpsProjectsContainer.innerHTML += '<div id="vpsProjectDiv" class="vps-col-12"></div>';
+    vpsProjectsContainer.innerHTML += '</div>'; 
 
-    //assign variables to columns
-    let vpsSelectOptions = document.getElementById("vpsSelectOptions");
-    let vpsContentDiv = document.getElementById("vpsContentDiv");
-    
-    //populate the select options column
-    vpsSelectOptions.innerHTML = vpsPopulateSelectBoxes();
+    let vpsSelectDiv = document.getElementById("vpsSelectDiv");
+    vpsSelectDiv.innerHTML = vpsPopulateSelectBox();
 
-    //a function to populate the contentDiv on page load
-    vpsPopulateContentDivOnLoad();
+    let vpsProjectDiv = document.getElementById("vpsProjectDiv");
+    //vpsProjectDiv.innerHTML = vpsDisplayProjectsOnLoad(countries[0]);
+    vpsProjectDiv.innerHTML = vpsDisplayProjectsOnLoad(countries[0]);
 
     //populate the contentDiv on select box change
     vpsCountryDropDown.onchange = function(){
-        vpsContentDiv.innerHTML = vpsDisplayProjects(
-            vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value,
-            'country'
-        );
-    }
-
-    vpsCategoryDropDown.onchange = function(){
-        vpsContentDiv.innerHTML = vpsDisplayProjects(
-            vpsCategoryDropDown.options[vpsCategoryDropDown.selectedIndex].value,
-            'category'
+        vpsProjectDiv.innerHTML = vpsDisplayProjects(
+            vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value
         );
     }
 
 }
 
-function vpsPopulateSelectBoxes(){
+function vpsPopulateSelectBox(){
     let content = '';
-    content += '<div class="vps-row">';
-    content += '<div class="vps-col-selectboxes">';
+    content += '<div class="vps-col-selectbox">';
     content += '<p>Select a country to see projects</p>';
     content += vpsGenerateCountryDropDown();
     content += '</div>'; //end col
-    content += '<div class="vps-col-selectboxes">';
-    content += '<p>Select a category to see projects</p>';
-    content += vpsGenerateCategoryDropDown();
-    content += '</div>'; //end col
-    content += '</div>'; //end row
 
     return content;
 }
 
-function vpsPopulateContentDivOnLoad(){
-    vpsContentDiv.innerHTML = vpsDisplayProjects('Commercial', 'category');
-}
+//function vpsDisplayProjectsOnLoad('Commercial', 'category')
 
 function vpsGenerateCountryDropDown(){
     let dropDown = '<select id="vpsCountryDropDown">';
@@ -68,60 +50,53 @@ function vpsGenerateCountryDropDown(){
     return dropDown;
 }
 
-function vpsGenerateCategoryDropDown(){
-    let dropDown = '<select id="vpsCategoryDropDown">';
-    dropDown += '<option>--Choose a category--</option>';
-    for(i=0; i<categories.length; i++){
-        dropDown += '<option value="'; 
-        dropDown += categories[i]; 
-        dropDown += '">';
-        dropDown += categories[i]; 
-        dropDown += '</option>';
-    }
-    dropDown += '</select>';
-
-    return dropDown;
+function vpsDisplayProjectsOnLoad(country){
+    return vpsDisplayProjects(country);
 }
 
-function vpsDisplayProjects(selectOption, selectMenu){
-    let content = '<div class="vps-row">';
-    
+function vpsDisplayProjects(country){
+    let content = '';
     for(i=0; i<videoProjects.length; i++){
-        if(selectMenu === 'country' && videoProjects[i].country === selectOption){
-            //lines 113, 116, 126
-            content += vpsGenerateContent(videoProjects[i]);
-        }
-        if(selectMenu === 'category' && videoProjects[i].category === selectOption){
-            content += vpsGenerateContent(videoProjects[i]);
+        if(videoProjects[i].country == country){
+            content += '<div class="vps-row">';
+            content += '<div class="vps-col-4">';
+            content += '<h3 class="vps-noto-sans-font-title">' + videoProjects[i].title + '</h3>';
+            content += '<p class="vps-noto-sans-font">Category: ' + videoProjects[i].category + '</p>';
+            content += '<p class="vps-noto-sans-font">Location: ' + videoProjects[i].location;
+            content += ', ' + videoProjects[i].country + '</p>';
+            content += '<p class="vps-noto-sans-font">Date: ' + videoProjects[i].displaydate + '</p>';
+            content += '<p class="vps-noto-sans-font">Duration: ' + videoProjects[i].duration + '</p>';
+            content += '</div>'; //end col 4
+
+            content += '<div class="vps-col-8">';
+            content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
+            content += videoProjects[i].videoid;
+            content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+            content += '</div>'; //end col 8
+            content += '</div>'; //end row  
         }
     }
-
-    content += '</div>';
-
+    
     return content;
 }
 
 function vpsGenerateContent(videoProject){
     let content = '';
-    content += '<div class="vps-col-video-project-fullwidth">';
 
-    content += '<h1 class="vps-noto-sans-font">' + videoProject.title + '</h1>';
+    content += '<div class="vps-col-postmeta-div">';
+    content += '<h3 class="vps-noto-sans-font">' + videoProject.title + '</h3>';
+    content += '<p class="vps-noto-sans-font">Category: ' + videoProject.category + '</p>';
+    content += '<p class="vps-noto-sans-font">Location: ' + videoProject.location + ', ' + videoProjects[i].country;
+    content += '<p class="vps-noto-sans-font">Date: ' + videoProject.displaydate + '</p>';
+    content += '<p class="vps-noto-sans-font">Duration: ' + videoProject.duration + '</p>';
+    content += '</div>'; // end postmeta div
 
-    content += '<div class="vps-col-content-inner-text">';
-    content += '<p>Category: ' + videoProject.category + '</p>';
-    content += '<p>Location: ' + videoProject.location + ', ' + videoProjects[i].country;
-    content += '</div>'; //end inner-text
-
-    content += '<div class="vps-col-content-inner-text">';
-    content += '<p>Date: ' + videoProject.displaydate + '</p>';
-    content += '<p>Duration: ' + videoProject.duration + '</p>';
-    content += '</div>'; //end inner-text
-
+    content += '<div class="vps-col-video-div">';
     content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
     content += videoProject.videoid;
     content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
-    
-    content += '</div>'; //end col-fullwidth
+    content += '</div>'; // end video div
+
 
     return content;
 }
