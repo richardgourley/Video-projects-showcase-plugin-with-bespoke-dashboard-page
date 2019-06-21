@@ -65,6 +65,12 @@
 
 .vps-noto-sans-font{
   font-family: 'Noto Sans JP', sans-serif;
+  font-size:92%;
+}
+
+.vps-noto-sans-font-title{
+  font-family: 'Noto Sans JP', sans-serif;
+  border-top:1px solid lightgrey;
 }
 
 .vps-row::after {
@@ -78,39 +84,20 @@
   padding: 0px;
 }
 
-
 .vps-iframe{
+  position:relative;
+  top:0;
+  left:0;
   width:100%;
-  height:280px;
+  height:250px;
 }
 
-.vps-col-video-project-fullwidth{
-  width:100%;
-  padding-top:23px;
-  padding-left:23px;
-  padding-right:14px;
-  padding-bottom:0px; 
-  margin-bottom:23px;
-  background-color:#fafafa;
-}
-
-.vps-col-select-div{
-  width:25%;
-  border: 3px solid #fcfdff;
-}
-
-.vps-col-content-div{
-  width:75%;
-}
-
-.vps-col-selectboxes{
-  padding:10px;
-  margin-bottom: 7px;
-}
-
-.vps-col-content-inner-text{
-  width:50%;
-  padding-left: 14px;
+.vps-col-selectbox{
+  width:30%;
+  background-color:lightblue;
+  margin-bottom:13px;
+  font-size:90%;
+  padding:12px;
 }
 
 .vps-col-1 {width: 8.33%;}
@@ -126,48 +113,27 @@
 .vps-col-11 {width: 91.66%;}
 .vps-col-12 {width: 100%;}
 
-@media screen and (max-width: 1400px){
-  .vps-col-content-inner-text{
-    width:50%;
-    padding-left: 24px;
-  }
-
-  .vps-iframe{
-    width:100%;
-    height:290px;
-  }
-}
-
-@media screen and (max-width: 1100px){
-  .vps-col-content-inner-text{
-    width:50%;
-    padding-left: 20px;
-  }
-
-  .vps-iframe{
-    width:100%;
-    height:240px;
-  }
-}
 
 @media screen and (max-width: 970px){
   .vps-iframe{
+    position:relative;
+    top:0;
+    left:0;
     width:100%;
-    height:240px;
+    height:200px;
   }
 
-  .vps-col-select-div{
-    width:100%;
+  .vps-noto-sans-font{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:85%;
   }
 
-  .vps-col-content-div{
-    width:100%;
-  }
-
-  .vps-col-selectboxes{
-    padding:10px;
-    margin-bottom: 7px;
-    margin-right:10px;
+  .vps-col-selectbox{
+    width:50%;
+    background-color:lightblue;
+    margin-bottom:13px;
+    font-size:90%;
+    padding:12px;
   }
 }
 
@@ -185,16 +151,24 @@
   .vps-col-11{width:100%;}
   .vps-col-12{width:100%;}
 
-  .vps-col-content-inner-text{
-    width:50%;
-    padding-left: 1px;
-    padding-right:10px;
+  .vps-col-selectbox{
+    width:100%;
+    background-color:lightblue;
   }
 
   .vps-iframe{
+    position:relative;
+    top:0;
+    left:0;
     width:100%;
-    height:130px;
+    height:150px;
   }
+
+  .vps-noto-sans-font{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:85%;
+  }
+
 }
 
 
