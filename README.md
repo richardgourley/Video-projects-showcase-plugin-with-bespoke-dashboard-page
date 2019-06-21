@@ -58,7 +58,7 @@ We have model classes that handle DB interraction and our admin page callback ac
     Retrieving and saving taxonomy terms
     Retrieving and saving post meta
     Setting up a bespoke form for inserting a custom post type
-    Using JS to open the media library and select an image url in a form
+    Using JS to select an image URL from the current media files in the WP site
     Wordpress data validation and sanitization
     Creating and updating posts with code in WP
     Abstract classes
