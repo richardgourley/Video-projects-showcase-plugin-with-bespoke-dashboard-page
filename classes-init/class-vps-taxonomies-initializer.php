@@ -5,6 +5,7 @@ class VPS_Taxonomies_Initializer{
         add_action( 'init', array( $this, 'add_video_project_taxonomies' ));
     }
 
+    //called in register_activation hook. IMPORTANT to register taxonomies just before register_terms
     public function add_terms(){
         $this->add_video_project_taxonomies();
         $this->register_terms();
