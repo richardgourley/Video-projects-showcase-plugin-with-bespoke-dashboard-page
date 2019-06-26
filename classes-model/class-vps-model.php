@@ -32,9 +32,33 @@ abstract class VPS_Model{
         if( $action == 'update'){
             $this->fields[ 'id' ] = sanitize_text_field( $_POST[ 'id' ]);
         }
-        $this->fields[ 'category' ] = sanitize_text_field($_POST['category']);
-        $this->fields[ 'country' ] = sanitize_text_field($_POST['country']);
-        $this->fields[ 'new_country' ] = sanitize_text_field($_POST['new-country']);
+
+        $this->fields[ 'category_name' ] = sanitize_text_field($_POST['category']);
+        $this->fields['category_slug'] = esc_html(
+            get_term_by( 
+                'name', 
+                $this->fields['category_name'], 
+                'video_project_category' )->slug 
+        );
+
+        if($_POST['country'] == 'other'){
+            $new_country = sanitize_text_field($_POST['new-country']);
+            wp_insert_term(
+                $this->helper->first_letter_upper( $new_country ),
+                'video_project_country'
+            );
+            $this->fields['country_name'] = $this->helper->first_letter_upper( $new_country );    
+        }else{
+            $this->fields[ 'country_name' ] = sanitize_text_field($_POST['country']);
+        }
+
+        //add country slug here
+        $this->fields['country_slug'] = esc_html(
+            get_term_by(
+                'name', 
+                $this->fields['country_name'], 
+                'video_project_country' )->slug 
+        );
         $this->fields[ 'title' ] = sanitize_text_field($_POST['title']);
         $this->fields[ 'location' ] = sanitize_text_field($_POST['location']);
         $this->fields[ 'date' ] = $_POST['date']; //date validity previously checked
@@ -103,6 +127,10 @@ abstract class VPS_Model{
         }else{
             echo '<h3>YOUR VIDEO PROJECT HAS BEEN SUCCESSFULLY UPDATED.</h3>';
         }
+
+        var_dump($post_id);
+        var_dump(get_post_meta( $post_id, 'video_project_country', true ));
+        var_dump(get_post_meta( $post_id, 'video_project_category', true ));
         
     }
 
