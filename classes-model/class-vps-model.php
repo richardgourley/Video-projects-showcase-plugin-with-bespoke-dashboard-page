@@ -72,13 +72,6 @@ abstract class VPS_Model{
 
     }
 
-    protected function insert_new_country_term(){
-        wp_insert_term( 
-            $this->helper->first_letter_upper($this->fields[ 'new_country' ]), 
-            'video_project_country' 
-        );
-    }
-
     protected function create_or_update_post_assign_terms( $action ){
         $content = $this->generate_post_content();
         var_dump($content);
