@@ -9,10 +9,10 @@ foreach($video_projects->posts as $project):
 <div class="vps-col-11">
   <?php
       $title = esc_html( $project->post_title );
-      $category_name = esc_html( get_post_meta( $project->ID, 'video_project_category', true ) );
-      $category_slug = esc_html( get_term_by( 'name', $category_name, 'video_project_category' )->slug );
-      $country_name = esc_html( get_post_meta( $project->ID, 'video_project_country', true ) );
-      $country_slug = esc_html( get_term_by( 'name', $country_name, 'video_project_country' )->slug );
+      $category_name = esc_html( get_post_meta( $project->ID, 'video_project_category_name', true ) );
+      $category_slug = esc_html( get_post_meta( $project->ID, 'video_project_category_slug', true ) );
+      $country_name = esc_html( get_post_meta( $project->ID, 'video_project_country_name', true ) );
+      $country_slug = esc_html( get_post_meta( $project->ID, 'video_project_country_slug', true ) );
       $location = esc_html( get_post_meta( $project->ID, 'video_project_location', true ) );
       $date = esc_html( get_post_meta( $project->ID, 'video_project_date', true ) );
       $video_url = esc_url( get_post_meta( $project->ID, 'video_project_url', true ) );
