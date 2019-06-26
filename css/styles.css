@@ -70,7 +70,6 @@
 
 .vps-noto-sans-font-title{
   font-family: 'Noto Sans JP', sans-serif;
-  border-top:1px solid lightgrey;
 }
 
 .vps-row::after {
@@ -84,21 +83,46 @@
   padding: 0px;
 }
 
-.vps-iframe{
-  position:relative;
-  top:0;
-  left:0;
-  width:100%;
-  height:250px;
-}
-
 .vps-col-selectbox{
-  width:30%;
-  background-color:lightblue;
-  margin-bottom:13px;
-  font-size:90%;
-  padding:12px;
-}
+    width:30%;
+    background-color: #3b7f96;
+    color:white;
+    margin-bottom:15px;
+    font-size:90%;
+  }
+
+  .vps-select-box{
+    font-size:90%;
+  }
+
+  .vps-iframe{
+    position:relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:220px;
+    align-content:center;
+  }
+
+  .vps-noto-sans-font{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:78%;
+  }
+
+  .vps-col-4-postmeta{
+    width:37%;
+    background-color:#f3f3f3;
+    border-top:2px solid #abc3bd;
+    padding-left:8px;
+    padding-top:8px;
+  }
+
+  .vps-col-8-video{
+    width:61%;
+    padding:8px;
+    margin-bottom:2px;
+    box-shadow: 1px 1px 2px #d3d9de;
+  }
 
 .vps-col-1 {width: 8.33%;}
 .vps-col-2 {width: 16.66%;}
@@ -114,26 +138,48 @@
 .vps-col-12 {width: 100%;}
 
 
-@media screen and (max-width: 970px){
+@media screen and (max-width: 940px){
+  .vps-col-selectbox{
+    width:50%;
+    background-color: #3b7f96;
+    color:white;
+    margin-bottom:15px;
+    font-size:90%;
+    padding:13px;
+    box-shadow:1px 1px 2px lightgrey;
+  }
+
+  .vps-select-box{
+    font-size:90%;
+  }
+
   .vps-iframe{
     position:relative;
     top:0;
     left:0;
     width:100%;
-    height:200px;
+    height:220px;
+    align-content:center;
   }
 
   .vps-noto-sans-font{
     font-family: 'Noto Sans JP', sans-serif;
-    font-size:85%;
+    font-size:78%;
   }
 
-  .vps-col-selectbox{
-    width:50%;
-    background-color:lightblue;
-    margin-bottom:13px;
-    font-size:90%;
-    padding:12px;
+  .vps-col-4-postmeta{
+    width:37%;
+    background-color:#f3f3f3;
+    border-top:2px solid #abc3bd;
+    padding-left:8px;
+    padding-top:8px;
+  }
+
+  .vps-col-8-video{
+    width:61%;
+    padding:8px;
+    margin-bottom:2px;
+    box-shadow: 1px 1px 2px #d3d9de;
   }
 }
 
@@ -152,8 +198,17 @@
   .vps-col-12{width:100%;}
 
   .vps-col-selectbox{
-    width:100%;
-    background-color:lightblue;
+    width:70%;
+    background-color: #3b7f96;
+    color:white;
+    margin-bottom:15px;
+    font-size:90%;
+    padding:13px;
+    box-shadow:1px 1px 2px lightgrey;
+  }
+
+  .vps-select-box{
+    font-size:90%;
   }
 
   .vps-iframe{
@@ -162,11 +217,27 @@
     left:0;
     width:100%;
     height:150px;
+    align-content:center;
   }
 
   .vps-noto-sans-font{
     font-family: 'Noto Sans JP', sans-serif;
     font-size:85%;
+  }
+
+  .vps-col-4-postmeta{
+    width:100%;
+    background-color:#f3f3f3;
+    border-top:2px solid #abc3bd;
+    padding-left:8px;
+    padding-top:8px;
+  }
+
+  .vps-col-8-video{
+    width:100%;
+    padding-top:2px;
+    margin-bottom:2px;
+    box-shadow: none;
   }
 
 }
