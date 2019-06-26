@@ -74,7 +74,6 @@ abstract class VPS_Model{
 
     protected function create_or_update_post_assign_terms( $action ){
         $content = $this->generate_post_content();
-        var_dump($content);
         
         //NOTE: We retrieve term name from term slug - use name for display purposes.
         $post_arr = array(
@@ -85,10 +84,10 @@ abstract class VPS_Model{
             'comment_status' => 'closed',
             'post_type' => 'video_project',
             'meta_input' => array(
-                'video_project_category' => 
-                get_term_by('slug', $this->fields[ 'category' ], 'video_project_category')->name,
-                'video_project_country' => 
-                get_term_by( 'slug', $this->fields[ 'country' ], 'video_project_country' )->name,
+                'video_project_category_name' => $this->fields['category_name'],
+                'video_project_category_slug' => $this->fields['category_slug'],
+                'video_project_country_name' => $this->fields['country_name'],
+                'video_project_country_slug' => $this->fields['country_slug'],
                 'video_project_location' => $this->fields[ 'location' ],
                 'video_project_duration' => $this->fields[ 'duration' ],
                 'video_project_date' => $this->fields[ 'date' ],
@@ -112,42 +111,28 @@ abstract class VPS_Model{
         }
 
         //use post id to set object terms
-        wp_set_object_terms( $post_id, $this->fields['category'], 'video_project_category' );
-        wp_set_object_terms( $post_id, $this->fields['country'], 'video_project_country');
+        wp_set_object_terms( $post_id, $this->fields['category_slug'], 'video_project_category' );
+        wp_set_object_terms( $post_id, $this->fields['country_slug'], 'video_project_country');
 
         if($action == 'create'){
             echo '<h3>YOUR NEW VIDEO PROJECT HAS BEEN SUCCESSFULLY CREATED.</h3>';
         }else{
             echo '<h3>YOUR VIDEO PROJECT HAS BEEN SUCCESSFULLY UPDATED.</h3>';
         }
-
-        var_dump($post_id);
-        var_dump(get_post_meta( $post_id, 'video_project_country', true ));
-        var_dump(get_post_meta( $post_id, 'video_project_category', true ));
         
     }
 
     protected function generate_post_content(){
-        
-        //use name instead of slug for presentation.
-        $category_name = get_term_by(
-            'slug', 
-            $this->fields[ 'category' ], 
-            'video_project_category'
-        )->name;
 
-        //use name instead of slug for presentation
-        $country_name = get_term_by('slug', $this->fields[ 'country' ], 'video_project_country')->name;
-        
         $html = '';
         
         $html .= '<div class="vps-col-video-project-fullwidth">';
 
         $html .= '<div class="vps-col-6">';
         $html .= '<div class="vps-col-content-inner-text">';
-        $html .= '<p class="vps-patua-font">Category: ' . $category_name . '</p>';
+        $html .= '<p class="vps-patua-font">Category: ' . $this->fields['category_name'] . '</p>';
         $html .= '<p class="vps-patua-font">Location: ' . $this->fields['location'] . ', ';
-        $html .= $country_name . '</p>';
+        $html .= $this->fields['country_name'] . '</p>';
         $html .= '</div>'; //end inner-text
         $html .= '</div>'; //end col-6 category and location 
 
@@ -156,11 +141,10 @@ abstract class VPS_Model{
         $html .= '<p class="vps-patua-font">Date: ' . $this->fields['display_date'] . '</p>';
         $html .= '<p class="vps-patua-font">Duration: ' . $this->fields['duration'] . '</p>';
         $html .= '</div>'; //end inner-text
-        $html .= '</div>'; //end col-6 category and location 
+        $html .= '</div>'; //end col-6 date and duration 
 
         $html .= '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
         $html .= $this->fields['video_id'];
-        //content += '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
         $html .= '?color=fdfdfd" width="640" height="300" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
 
         $html .= '</div>'; //end fullwidth container
