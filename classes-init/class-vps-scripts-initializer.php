@@ -31,7 +31,6 @@ class VPS_Scripts_Initializer{
         // Localize script - access php projects array as JS objects 
         $projects = $this->get_video_projects();
         $countries = $this->get_countries( $projects );
-        $categories = $this->get_categories( $projects );
 
         wp_localize_script( 
             //JS file handle
@@ -49,15 +48,6 @@ class VPS_Scripts_Initializer{
             'countries', 
             //php array name
             $countries
-        );
-
-        wp_localize_script( 
-            //JS file handle
-            'vps_video_project_display_js', 
-            //array name inside js file
-            'categories', 
-            //php array name
-            $categories
         );
         
     }
@@ -80,10 +70,10 @@ class VPS_Scripts_Initializer{
             $this_project = [];
             $this_project['title'] = $project->post_title;
             $this_project['category'] = esc_html(
-                get_post_meta( $project->ID, 'video_project_category', true)
+                get_post_meta( $project->ID, 'video_project_category_name', true)
             );
             $this_project['country'] = esc_html(
-                get_post_meta( $project->ID, 'video_project_country', true)
+                get_post_meta( $project->ID, 'video_project_country_name', true)
             );
             $this_project['location'] = esc_html(get_post_meta( $project->ID, 'video_project_location', true));
             $this_project['image'] = esc_html(get_post_meta( $project->ID, 'video_project_image', true));
@@ -114,19 +104,6 @@ class VPS_Scripts_Initializer{
         }
 
         return $countries;
-    }
-
-    private function get_categories( $projects ){
-        $categories = [];
-
-        //gets list of countries being used by video projects
-        foreach($projects as $project){
-            if( !in_array( $project['category'], $categories )){
-                array_push( $categories, $project['category'] );
-            }
-        }
-
-        return $categories;
     }
     
 }
