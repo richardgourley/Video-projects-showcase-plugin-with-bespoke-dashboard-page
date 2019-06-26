@@ -1,14 +1,5 @@
 <div class="vps-main-page-div">
 
-<?php
-/*
-var_dump(taxonomy_exists('video_project_category'));
-var_dump(taxonomy_exists('video_project_country'));
-var_dump(post_type_exists('video_project'));
-var_dump(term_exists('music-video'));
-*/
-?>
-
 <div class="vps-main-page-greeting">
 <h1>Hello there <span class="vps-username-box"><?php echo esc_html(wp_get_current_user()->user_nicename); ?></span></h1>
 </div>
