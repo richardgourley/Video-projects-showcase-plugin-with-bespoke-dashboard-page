@@ -20,6 +20,7 @@ abstract class VPS_Model{
         $message .= $this->helper->check_field_filled( $post['duration'], 'Duration', 'text' );
         $message .= $this->helper->check_valid_url( $post['image-url'], 'Image Url', 'text' );
         $message .= $this->helper->check_valid_url( $post['video-url'], 'Video Url', 'text' );
+
         return $message;
     }
 
@@ -33,12 +34,12 @@ abstract class VPS_Model{
             $this->fields[ 'id' ] = sanitize_text_field( $_POST[ 'id' ]);
         }
 
-        $this->fields[ 'category_name' ] = sanitize_text_field($_POST['category']);
-        $this->fields['category_slug'] = esc_html(
+        $this->fields[ 'category_slug' ] = sanitize_text_field($_POST['category']);
+        $this->fields['category_name'] = esc_html(
             get_term_by( 
-                'name', 
-                $this->fields['category_name'], 
-                'video_project_category' )->slug 
+                'slug', 
+                $this->fields['category_slug'], 
+                'video_project_category' )->name 
         );
 
         if($_POST['country'] == 'other'){
@@ -47,18 +48,23 @@ abstract class VPS_Model{
                 $this->helper->first_letter_upper( $new_country ),
                 'video_project_country'
             );
-            $this->fields['country_name'] = $this->helper->first_letter_upper( $new_country );    
-        }else{
-            $this->fields[ 'country_name' ] = sanitize_text_field($_POST['country']);
-        }
-
-        //add country slug here
-        $this->fields['country_slug'] = esc_html(
+            $this->fields['country_name'] = $this->helper->first_letter_upper( $new_country );
+            $this->fields['country_slug'] = esc_html(
             get_term_by(
                 'name', 
                 $this->fields['country_name'], 
                 'video_project_country' )->slug 
-        );
+            );    
+        }else{
+            $this->fields[ 'country_slug' ] = sanitize_text_field($_POST['country']);
+            $this->fields[ 'country_name' ] = esc_html(
+            get_term_by(
+                'slug', 
+                $this->fields['country_slug'], 
+                'video_project_country' )->name 
+            );
+        }
+
         $this->fields[ 'title' ] = sanitize_text_field($_POST['title']);
         $this->fields[ 'location' ] = sanitize_text_field($_POST['location']);
         $this->fields[ 'date' ] = $_POST['date']; //date validity previously checked
