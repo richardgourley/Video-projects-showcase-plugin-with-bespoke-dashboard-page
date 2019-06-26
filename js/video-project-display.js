@@ -36,7 +36,7 @@ function vpsPopulateSelectBox(){
 //function vpsDisplayProjectsOnLoad('Commercial', 'category')
 
 function vpsGenerateCountryDropDown(){
-    let dropDown = '<select id="vpsCountryDropDown">';
+    let dropDown = '<select class="vps-select-box" id="vpsCountryDropDown">';
     dropDown += '<option>--Choose a country--</option>';
     for(i=0; i<countries.length; i++){
         dropDown += '<option value="'; 
@@ -59,7 +59,7 @@ function vpsDisplayProjects(country){
     for(i=0; i<videoProjects.length; i++){
         if(videoProjects[i].country == country){
             content += '<div class="vps-row">';
-            content += '<div class="vps-col-4">';
+            content += '<div class="vps-col-4-postmeta">';
             content += '<h3 class="vps-noto-sans-font-title">' + videoProjects[i].title + '</h3>';
             content += '<p class="vps-noto-sans-font">Category: ' + videoProjects[i].category + '</p>';
             content += '<p class="vps-noto-sans-font">Location: ' + videoProjects[i].location;
@@ -68,7 +68,7 @@ function vpsDisplayProjects(country){
             content += '<p class="vps-noto-sans-font">Duration: ' + videoProjects[i].duration + '</p>';
             content += '</div>'; //end col 4
 
-            content += '<div class="vps-col-8">';
+            content += '<div class="vps-col-8-video">';
             content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
             content += videoProjects[i].videoid;
             content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
