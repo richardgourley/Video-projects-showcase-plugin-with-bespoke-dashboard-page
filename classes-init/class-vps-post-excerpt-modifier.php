@@ -2,11 +2,7 @@
 
 class VPS_Post_Excerpt_Modifier{
     public function __construct(){
-        /* remove the default filter */
-        //remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-
-        /* now, add your own filter */
-        //add_filter('get_the_excerpt', array( $this, 'vps_wp_trim_excerpt' ));
+        
     }
 
     function vps_wp_trim_excerpt($text) { 
