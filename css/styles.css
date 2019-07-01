@@ -43,7 +43,7 @@
 	padding:20px;
 }
 
-/* IMAGE AND FONT */
+/* IMAGE AND FONTS */
 
 .vps-image-small{
    border-radius:2px;
@@ -61,6 +61,8 @@
 .vps-noto-sans-font-title{
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+/* BOOTSTRAP STYLE 12 COLUMN AND ROWS */
 
 .vps-row::after {
   content: "";
@@ -94,10 +96,6 @@
     align-content:center;
   }
 
-  .vps-noto-sans-font{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size:78%;
-  }
 
   .vps-col-4-postmeta{
     width:37%;
