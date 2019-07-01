@@ -1,3 +1,5 @@
+/*ADMIN HOME PAGE */
+
 .vps-main-page-div{
 	background-color: white; 
 	padding:17px; 
@@ -40,6 +42,8 @@
 .vps-menu-buttons-wrapper{
 	padding:20px;
 }
+
+/* IMAGE AND FONT */
 
 .vps-image-small{
    border-radius:2px;
