@@ -1,4 +1,30 @@
 //only run this code on pages where vpsProjectsContainer is found
+
+if(document.getElementById("vpsProjectsContainer")){
+    //create instance of our class
+    let pageSetUp = new vpsSearchPageSetUp();
+    
+    /*
+    //display grid in main container
+    let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
+    vpsProjectsContainer.innerHTML = vpsSetUpPage();
+
+    let vpsSelectDiv = document.getElementById("vpsSelectDiv");
+    let vpsProjectDisplayDiv = document.getElementById("vpsProjectDisplayDiv");
+
+    vpsSelectDiv.innerHTML = vpsPopulateSelectBox();
+    vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(countries[0]);
+
+    //populate the project display div on select box change
+    vpsCountryDropDown.onchange = function(){
+        vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(
+            vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value
+        );
+    }
+    */
+
+}
+
 function vpsSearchPageSetUp(){
     this.setDivs = function(){
         let content = '<div id="vpsSelectDiv" class="vps-select-div">Testing</div>';
@@ -48,26 +74,9 @@ function vpsSearchPageSetUp(){
         }
         return content;
     }
-}
-
-if(document.getElementById("vpsProjectsContainer")){
-    //display grid in main container
-    let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
-    vpsProjectsContainer.innerHTML = vpsSetUpPage();
-
-    let vpsSelectDiv = document.getElementById("vpsSelectDiv");
-    let vpsProjectDisplayDiv = document.getElementById("vpsProjectDisplayDiv");
-
-    vpsSelectDiv.innerHTML = vpsPopulateSelectBox();
-    vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(countries[0]);
-
-    //populate the project display div on select box change
-    vpsCountryDropDown.onchange = function(){
-        vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(
-            vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value
-        );
+    this.testMethod = function(){
+        return 'Just a test function';
     }
-
 }
 
 
