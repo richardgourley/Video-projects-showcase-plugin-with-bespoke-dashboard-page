@@ -1,4 +1,8 @@
 //only run this code on pages where vpsProjectsContainer is found
+function vpsSearchPageSetUp(){
+    
+}
+
 if(document.getElementById("vpsProjectsContainer")){
     //display grid in main container
     let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
@@ -18,10 +22,10 @@ if(document.getElementById("vpsProjectsContainer")){
     }
 
     function vpsSetUpPage(){
-        let containerContent = '<div id="vpsSelectDiv" class="vps-select-div">Testing</div>';
-        containerContent += '<div id="vpsProjectDisplayDiv">Testing</div>';
+        let content = '<div id="vpsSelectDiv" class="vps-select-div">Testing</div>';
+        content += '<div id="vpsProjectDisplayDiv">Testing</div>';
 
-        return containerContent;
+        return content;
     }
 
     function vpsPopulateSelectBox(){
