@@ -60,9 +60,41 @@
 
 .vps-noto-sans-font-title{
   font-family: 'Noto Sans JP', sans-serif;
+  font-size:1.4em;
+  margin: 0.67em
 }
 
+/* GRID - SEARCH PAGE */
 
+.vps-grid{
+  display:grid;
+  grid-template-columns: 40% 55%;
+  grid-template-rows: auto;
+  border:3px solid #e6e3e3;
+  background-color: #fcfcfc;
+  padding:18px;
+  margin-bottom:17px;
+}
+
+.vps-select-div{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding:10px;
+  margin-bottom: 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size:90%;
+}
+
+/* DROP DOWN MENU AND IFRAME */
+
+.vps-select-dropdown{
+  font-size: 90%;
+}
+
+.vps-iframe{
+  width:100%;
+  height:100%;
+}
 
 /* MEDIA SCREENS GREATER THAN 760PX WIDE */
 

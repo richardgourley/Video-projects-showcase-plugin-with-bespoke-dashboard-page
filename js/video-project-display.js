@@ -2,9 +2,8 @@
 if(document.getElementById("vpsProjectsContainer")){
     //display columns in main container
     let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
-    vpsProjectsContainer.innerHTML = '<div class="vps-row">';
+    vpsProjectsContainer.innerHTML = '<div class="vps-grid">';
     vpsProjectsContainer.innerHTML += '<div id="vpsSelectDiv" class="vps-col-12"></div>';
-    vpsProjectsContainer.innerHTML += '<div id="vpsProjectDiv" class="vps-col-12"></div>';
     vpsProjectsContainer.innerHTML += '</div>'; 
 
     let vpsSelectDiv = document.getElementById("vpsSelectDiv");
@@ -25,7 +24,7 @@ if(document.getElementById("vpsProjectsContainer")){
 
 function vpsPopulateSelectBox(){
     let content = '';
-    content += '<div class="vps-col-selectbox">';
+    content += '<div class="vps-select-div">';
     content += '<p>Select a country to see projects</p>';
     content += vpsGenerateCountryDropDown();
     content += '</div>'; //end col
@@ -36,7 +35,7 @@ function vpsPopulateSelectBox(){
 //function vpsDisplayProjectsOnLoad('Commercial', 'category')
 
 function vpsGenerateCountryDropDown(){
-    let dropDown = '<select class="vps-select-box" id="vpsCountryDropDown">';
+    let dropDown = '<select class="vps-select-dropdown" id="vpsCountryDropDown">';
     dropDown += '<option>--Choose a country--</option>';
     for(i=0; i<countries.length; i++){
         dropDown += '<option value="'; 
