@@ -4,9 +4,6 @@ if(document.getElementById("vpsProjectsContainer")){
     let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
     vpsProjectsContainer.innerHTML = vpsSetUpPage();
 
-    console.log(countries);
-    console.log(videoProjects);
-
     let vpsSelectDiv = document.getElementById("vpsSelectDiv");
     let vpsProjectDisplayDiv = document.getElementById("vpsProjectDisplayDiv");
 
