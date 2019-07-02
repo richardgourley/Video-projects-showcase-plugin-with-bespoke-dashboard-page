@@ -1,27 +1,30 @@
-//only run this code on pages where vpsProjectsContainer is found
-
+//check container is found
 if(document.getElementById("vpsProjectsContainer")){
     //create instance of our class
     let pageSetUp = new vpsSearchPageSetUp();
-    
-    /*
-    //display grid in main container
-    let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
-    vpsProjectsContainer.innerHTML = vpsSetUpPage();
 
+    //main div
+    let vpsProjectsContainer = document.getElementById("vpsProjectsContainer");
+
+    //set divs inside main container
+    vpsProjectsContainer.innerHTML = pageSetUp.setDivs();
+
+    //assign vars to divs set up in pageSetUp.setDivs()
     let vpsSelectDiv = document.getElementById("vpsSelectDiv");
     let vpsProjectDisplayDiv = document.getElementById("vpsProjectDisplayDiv");
 
-    vpsSelectDiv.innerHTML = vpsPopulateSelectBox();
-    vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(countries[0]);
+    //populate selectDiv
+    vpsSelectDiv.innerHTML = pageSetUp.populateSelectBox();
 
-    //populate the project display div on select box change
-    vpsCountryDropDown.onchange = function(){
-        vpsProjectDisplayDiv.innerHTML = vpsDisplayProjects(
+    //display videos for the first country
+    vpsProjectDisplayDiv.innerHTML = pageSetUp.displayProjects(countries[0]);
+
+    //drop down menu on change
+    countryDropDown.onchange = function(){
+        vpsProjectDisplayDiv.innerHTML = pageSetUp.displayProjects(
             vpsCountryDropDown.options[vpsCountryDropDown.selectedIndex].value
         );
     }
-    */
 
 }
 
@@ -31,7 +34,7 @@ function vpsSearchPageSetUp(){
         content += '<div id="vpsProjectDisplayDiv">Testing</div>';
         return content;
     }
-    this.populateSelectBoxes = function(){
+    this.populateSelectBox = function(){
         let content = '';
         content += '<p>Select a country to see projects</p>';
         content += this.generateCountryDropDown();
