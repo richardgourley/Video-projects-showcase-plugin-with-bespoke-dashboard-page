@@ -77,9 +77,7 @@ function vpsSearchPageSetUp(){
         }
         return content;
     }
-    this.testMethod = function(){
-        return 'Just a test function';
-    }
+    
 }
 
 
