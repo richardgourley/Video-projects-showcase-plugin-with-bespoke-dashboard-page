@@ -11,8 +11,6 @@
     if( $post == null || count( $post ) == 0){
         $post = $_POST;
     }
-    
-    var_dump($post);
 
     ?>
 
