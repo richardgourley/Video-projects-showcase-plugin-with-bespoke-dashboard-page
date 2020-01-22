@@ -1,4 +1,5 @@
 <div class="vps-main-page-div">
+    
 <div>
     <?php 
     //Determine if updating for the first time or if we have errors from an attempted update
@@ -13,9 +14,10 @@
     }
 
     ?>
-
 </div>
+
 <h1>Update <?php echo esc_html($post[ 'title' ]); ?> </h1>
+
 <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
 <?php wp_nonce_field( 'update-video-project-action', 'update-video-project-nonce' ); ?>
 <input type="hidden" id="id" name="id" value="<?php echo $post['id']; ?>">
