@@ -1,4 +1,11 @@
 /*ADMIN HOME PAGE */
+@media screen and (max-width: 480px){
+
+}
+
+
+
+
 
 .vps-main-page-div{
 	background-color: white; 
@@ -99,7 +106,7 @@
 /* MEDIA SCREENS GREATER THAN 760PX WIDE */
 
 @media screen and (min-width: 760px){
-
+  
 }
 
 
