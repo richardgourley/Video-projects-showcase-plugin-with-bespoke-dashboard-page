@@ -11,6 +11,10 @@ class VPS_Admin_Page_Initializer{
     }
 
     public function video_project_admin_page_callback(){
+        if( current_user_can( 'contributor' ) || current_user_can( 'author' ) || current_user_can( 'subscriber' ) ){
+            echo 
+              "<h3>Sorry, you don't have permission to edit video projects. Contact the site administrator.</h3>";
+        }
         require_once dirname( __DIR__ ) . '/admin-pages/main.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-model.php';
         require_once dirname( __DIR__ ) . '/classes-model/class-vps-create.php';
