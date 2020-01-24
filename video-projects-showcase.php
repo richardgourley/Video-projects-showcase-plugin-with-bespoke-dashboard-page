@@ -45,4 +45,3 @@ register_activation_hook( __FILE__, array( $vps_page_initializer, 'create_video_
 
 $vps_plugin_deactivation = new VPS_Plugin_Deactivation();
 register_deactivation_hook( __FILE__, array( $vps_plugin_deactivation, 'remove_cpt_taxonomies' ));
-
