@@ -4,7 +4,7 @@
 @media screen and (max-width: 480px){
   .vps-main-page-div{
     background-color: white; 
-    padding:10px; 
+    padding:17px; 
     margin-right:10px; 
     border-radius:10px; 
     margin-top:6px;
@@ -35,6 +35,19 @@
     padding:9px;
     color:white; 
     background-color: #2e3b48;
+  }
+
+  .vps-buttons-div{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    padding:5px;
+  }
+
+  .vps-buttons-div > div{
+    border:1px solid lightgrey;
+    margin:7px;
+    padding:7px;
   }
 }
 
@@ -78,12 +91,22 @@
     color:white; 
     background-color: #2e3b48;
   }
+
+  .vps-buttons-div{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    padding:10px;
+  }
+
+  .vps-buttons-div > div{
+    border:1px solid lightgrey;
+    margin:7px;
+    padding:7px;
+  }
 }
 
-
-
-
-
+/* DISPLAY PAGE - FRONT END */
 /* IMAGE AND FONTS */
 
 .vps-image-small{
@@ -137,11 +160,7 @@
   height:100%;
 }
 
-/* MEDIA SCREENS GREATER THAN 760PX WIDE */
 
-@media screen and (min-width: 760px){
-  
-}
 
 
 
