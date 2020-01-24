@@ -21,43 +21,42 @@
     </p>
   </div>
 
-  <div class="vps-row">
+  <div class="vps-buttons-div">
 
-  <div class="vps-col-5">
+    <div>
+      <h2>Add video project</h2>
 
-    <h2>Add video project</h2>
-
-    <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
-      <input type="hidden" name="action" value="add-video-project">
-      <input type="hidden" name="add-video-project" value="1">
-      <input type="submit" name="submit" id="submit" value="Add Video Project">
-      <?php wp_nonce_field( 'create-video-project-form-action', 'create-video-project-form-nonce' ); ?>
-    </form>
-
-  </div><!----End column---->
-
-  <div class="vps-col-5">
-    <h2>View all and update video projects</h2>
       <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
-        <input type="hidden" name="action" value="view-all-video-projects">
-        <input type="hidden" name="view-all-video-projects" value="1">
-        <input type="submit" name="submit" id="submit" value="View all Video Projects">
-        <?php wp_nonce_field( 'view-all-video-projects-action', 'view-all-video-projects-nonce' ); ?>
+        <input type="hidden" name="action" value="add-video-project">
+        <input type="hidden" name="add-video-project" value="1">
+        <input type="submit" name="submit" id="submit" value="Add Video Project">
+        <?php wp_nonce_field( 'create-video-project-form-action', 'create-video-project-form-nonce' ); ?>
       </form>
 
-   </div><!----End column---->
+    </div>
 
-   <div class="vps-col-5">
-     <h2>Delete a video project</h2>
-       <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
-         <input type="hidden" name="action" value="delete-video-project">
-         <input type="hidden" name="delete-video-project" value="1">
-         <input type="submit" name="submit" id="submit" value="Choose project to delete">
-         <?php wp_nonce_field( 'delete-video-project-form-action', 'delete-video-project-form-nonce' ); ?>
-       </form>
+    <div>
+      <h2>View all and update video projects</h2>
+        <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
+          <input type="hidden" name="action" value="view-all-video-projects">
+          <input type="hidden" name="view-all-video-projects" value="1">
+          <input type="submit" name="submit" id="submit" value="View all Video Projects">
+          <?php wp_nonce_field( 'view-all-video-projects-action', 'view-all-video-projects-nonce' ); ?>
+        </form>
 
-   </div><!----End column---->
+     </div>
 
-  </div><!----End row--->
+     <div>
+       <h2>Delete a video project</h2>
+         <form action="<?php echo esc_url( admin_url('admin.php?page=video-project')); ?>" method="post">
+           <input type="hidden" name="action" value="delete-video-project">
+           <input type="hidden" name="delete-video-project" value="1">
+           <input type="submit" name="submit" id="submit" value="Choose project to delete">
+           <?php wp_nonce_field( 'delete-video-project-form-action', 'delete-video-project-form-nonce' ); ?>
+         </form>
+
+     </div>
+
+    </div><!--End vps-buttons-div--->
 
 </div><!---End main div--->
