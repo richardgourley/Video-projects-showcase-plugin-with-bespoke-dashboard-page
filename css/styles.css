@@ -15,8 +15,23 @@
     margin-right:13px;
     margin-bottom:5px;
   }
+
+  .vps-main-page-header-font{
+    text-align: center; 
+    color:white; 
+  }
+
+  .vps-main-page-header{
+    text-align: center; 
+    background-color: #2a4d6e; 
+    padding:8px; 
+    color:white; 
+    border-radius:2px;
+    line-height: 180%;
+  }
 }
 
+/* TABLET AND DESKTOP DEVICES */
 @media screen and (min-width: 481px){
   .vps-main-page-div{
     background-color: white; 
@@ -24,6 +39,30 @@
     margin-right:17px; 
     border-radius:10px; 
     margin-top:10px;
+  }
+
+  .vps-main-page-greeting{
+    padding:20px; 
+    margin-right:13px;
+    margin-bottom:5px;
+  }
+
+  .vps-main-page-header-font{
+    text-align: center; 
+    color:white; 
+    font-size:160%;
+  }
+
+  .vps-main-page-header{
+    text-align: center; 
+    background-color: #2a4d6e; 
+    padding:10px; 
+    color:white; 
+    border-radius:2px;
+    margin-left:39px; 
+    margin-right:39px; 
+    margin-top:20px; 
+    margin-bottom: 20px;
   }
 }
 
@@ -33,11 +72,7 @@
 
 
 
-.vps-main-page-greeting{
-	padding:20px; 
-	margin-right:13px;
-	margin-bottom:5px;
-}
+
 
 .vps-username-box{
 	border-radius:3px;
@@ -46,23 +81,9 @@
 	background-color: #2e3b48;
 }
 
-.vps-main-page-header{
-	text-align: center; 
-	background-color: #2a4d6e; 
-	padding:10px; 
-	color:white; 
-	border-radius:2px;
-    margin-left:39px; 
-    margin-right:39px; 
-    margin-top:20px; 
-    margin-bottom: 20px;
-}
 
-.vps-main-page-header-font{
-	text-align: center; 
-	color:white; 
-	font-size:220%;
-}
+
+
 
 .vps-menu-buttons-wrapper{
 	padding:20px;
