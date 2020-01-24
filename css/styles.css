@@ -29,6 +29,13 @@
     border-radius:2px;
     line-height: 180%;
   }
+
+  .vps-username-box{
+    border-radius:3px;
+    padding:9px;
+    color:white; 
+    background-color: #2e3b48;
+  }
 }
 
 /* TABLET AND DESKTOP DEVICES */
@@ -64,30 +71,18 @@
     margin-top:20px; 
     margin-bottom: 20px;
   }
+
+  .vps-username-box{
+    border-radius:3px;
+    padding:9px;
+    color:white; 
+    background-color: #2e3b48;
+  }
 }
 
 
 
 
-
-
-
-
-
-.vps-username-box{
-	border-radius:3px;
-	padding:9px;
-	color:white; 
-	background-color: #2e3b48;
-}
-
-
-
-
-
-.vps-menu-buttons-wrapper{
-	padding:20px;
-}
 
 /* IMAGE AND FONTS */
 
