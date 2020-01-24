@@ -30,8 +30,8 @@ if(document.getElementById("vpsProjectsContainer")){
 
 function vpsSearchPageSetUp(){
     this.setDivs = function(){
-        let content = '<div id="selectBoxDiv" class="vps-select-div">Testing</div>';
-        content += '<div id="projectDisplayDiv">Testing</div>';
+        let content = '<div id="selectBoxDiv" class="vps-select-div"></div>';
+        content += '<div id="projectDisplayDiv"></div>';
         return content;
     }
     this.populateSelectBox = function(){
@@ -58,7 +58,7 @@ function vpsSearchPageSetUp(){
         for(i=0; i<videoProjects.length; i++){
             if(videoProjects[i].country == country){
                 content += '<div class="vps-grid">';
-                content += '<div class="vps-project-info">';
+                content += '<div>';
                 content += '<h2>' + videoProjects[i].title + '</h2>';
                 content += '<p class="vps-noto-sans-font">Category: ' + videoProjects[i].category + '</p>';
                 content += '<p class="vps-noto-sans-font">Location: ' + videoProjects[i].location;
@@ -66,7 +66,7 @@ function vpsSearchPageSetUp(){
                 content += '<p class="vps-noto-sans-font">Date: ' + videoProjects[i].displaydate + '</p>';
                 content += '<p class="vps-noto-sans-font">Duration: ' + videoProjects[i].duration + '</p>';
                 content += '</div>'; //end project info
-                content += '<div class="vps-project-video">';
+                content += '<div>';
                 content += '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
                 content += videoProjects[i].videoid;
                 content += '?color=fdfdfd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
