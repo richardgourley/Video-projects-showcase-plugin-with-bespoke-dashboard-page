@@ -1,19 +1,31 @@
 /*ADMIN HOME PAGE */
+
+/* MOBILE DEVICES */
 @media screen and (max-width: 480px){
+  .vps-main-page-div{
+    background-color: white; 
+    padding:10px; 
+    margin-right:10px; 
+    border-radius:10px; 
+    margin-top:6px;
+  }
+}
 
+@media screen and (min-width: 481px){
+  .vps-main-page-div{
+    background-color: white; 
+    padding:17px; 
+    margin-right:17px; 
+    border-radius:10px; 
+    margin-top:10px;
+  }
 }
 
 
 
 
 
-.vps-main-page-div{
-	background-color: white; 
-	padding:17px; 
-	margin-right:17px; 
-	border-radius:10px; 
-	margin-top:10px;
-}
+
 
 .vps-main-page-greeting{
 	padding:20px; 
