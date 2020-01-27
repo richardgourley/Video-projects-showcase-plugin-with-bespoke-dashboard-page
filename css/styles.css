@@ -3,6 +3,11 @@
 /* MOBILE DEVICES */
 @media screen and (max-width: 480px){
 
+  .vps-project-display-post-div{
+    padding:8px;
+    border:1px solid lightgrey;
+  }
+
   .vps-project-display-admin-div{
     padding:8px;
     border:1px solid lightgrey;
@@ -59,6 +64,11 @@
 
 /* TABLET AND DESKTOP DEVICES */
 @media screen and (min-width: 481px){
+
+  .vps-project-display-post-div{
+    padding:12px;
+    border:1px solid lightgrey;
+  }
 
   .vps-project-display-admin-div{
     padding:12px;
