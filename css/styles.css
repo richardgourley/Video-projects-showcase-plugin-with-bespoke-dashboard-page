@@ -2,6 +2,12 @@
 
 /* MOBILE DEVICES */
 @media screen and (max-width: 480px){
+
+  .vps-project-display-admin-div{
+    padding:10px;
+    border:1px solid lightgrey;
+  }
+
   .vps-main-page-div{
     background-color: white; 
     padding:17px; 
