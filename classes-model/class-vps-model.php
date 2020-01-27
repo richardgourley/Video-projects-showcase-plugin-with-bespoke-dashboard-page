@@ -132,22 +132,14 @@ abstract class VPS_Model{
 
         $html = '';
         
-        $html .= '<div class="vps-col-video-project-fullwidth">';
+        $html .= '<div class="vps-project-display-post-div">';
 
-        $html .= '<div class="vps-col-6">';
-        $html .= '<div class="vps-col-content-inner-text">';
-        $html .= '<p class="vps-patua-font">Category: ' . $this->fields['category_name'] . '</p>';
-        $html .= '<p class="vps-patua-font">Location: ' . $this->fields['location'] . ', ';
+        $html .= '<p class="vps-noto-sans-font">Category: ' . $this->fields['category_name'] . '</p>';
+        $html .= '<p class="vps-noto-sans-font">Location: ' . $this->fields['location'] . ', ';
         $html .= $this->fields['country_name'] . '</p>';
-        $html .= '</div>'; //end inner-text
-        $html .= '</div>'; //end col-6 category and location 
 
-        $html .= '<div class="vps-col-6">';
-        $html .= '<div class="vps-col-content-inner-text">';
-        $html .= '<p class="vps-patua-font">Date: ' . $this->fields['display_date'] . '</p>';
-        $html .= '<p class="vps-patua-font">Duration: ' . $this->fields['duration'] . '</p>';
-        $html .= '</div>'; //end inner-text
-        $html .= '</div>'; //end col-6 date and duration 
+        $html .= '<p class="vps-noto-sans-font">Date: ' . $this->fields['display_date'] . '</p>';
+        $html .= '<p class="vps-noto-sans-font">Duration: ' . $this->fields['duration'] . '</p>';
 
         $html .= '<iframe class="vps-iframe" src="https://player.vimeo.com/video/';
         $html .= $this->fields['video_id'];
