@@ -1,5 +1,17 @@
 <div class="vps-main-page-div">
 
+  <?php
+      //var to count how many video projects exist in the database
+      $video_count = count( $video_projects->posts );
+      if( $video_count == 0 ):
+  ?>
+  <h2>You don't have any video projects saved yet! Click 'Add Video Project' to start adding projects.</h2>
+  <?php 
+      endif;
+      //exit if no video projects exist
+      exit();
+  ?>
+
   <h1>Click the delete button under a project to delete it.</h1>
   <p>CAUTION: This action can't be undone</p>
 
