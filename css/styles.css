@@ -59,6 +59,12 @@
 
 /* TABLET AND DESKTOP DEVICES */
 @media screen and (min-width: 481px){
+
+  .vps-project-display-admin-div{
+    padding:12px;
+    border:1px solid lightgrey;
+  }
+
   .vps-main-page-div{
     background-color: white; 
     padding:17px; 
