@@ -1,5 +1,8 @@
 <div class="vps-main-page-div">
-
+  <?php
+      //var to count how many video projects exist in the database
+      $video_count = count( $video_projects->posts );
+  ?>
   <h1>Click the update button under any project to amend it.</h1>
 
   <div class="vps-row">
