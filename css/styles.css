@@ -3,6 +3,16 @@
 /* MOBILE DEVICES */
 @media screen and (max-width: 480px){
 
+  .vps-display-div-page{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    border:1px solid #e6e3e3;
+    background-color: #fcfcfc;
+    padding:12px;
+    margin-bottom:13px;
+  }
+
   .vps-project-display-post-div{
     padding:8px;
     border:1px solid lightgrey;
@@ -64,6 +74,16 @@
 
 /* TABLET AND DESKTOP DEVICES */
 @media screen and (min-width: 481px){
+
+  .vps-display-div-page{
+    display:grid;
+    grid-template-columns: 40% 55%;
+    grid-template-rows: auto;
+    border:3px solid #e6e3e3;
+    background-color: #fcfcfc;
+    padding:18px;
+    margin-bottom:17px;
+  }
 
   .vps-project-display-post-div{
     padding:12px;
@@ -151,16 +171,6 @@
 }
 
 /* GRID - SEARCH PAGE */
-
-.vps-grid{
-  display:grid;
-  grid-template-columns: 40% 55%;
-  grid-template-rows: auto;
-  border:3px solid #e6e3e3;
-  background-color: #fcfcfc;
-  padding:18px;
-  margin-bottom:17px;
-}
 
 .vps-select-div{
   grid-column-start: 1;
