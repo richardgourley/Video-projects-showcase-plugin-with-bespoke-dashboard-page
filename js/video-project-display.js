@@ -57,7 +57,7 @@ function vpsSearchPageSetUp(){
         let content = '';
         for(i=0; i<videoProjects.length; i++){
             if(videoProjects[i].country == country){
-                content += '<div class="vps-grid">';
+                content += '<div class="vps-display-div-page">';
                 content += '<div>';
                 content += '<h2>' + videoProjects[i].title + '</h2>';
                 content += '<p class="vps-noto-sans-font">Category: ' + videoProjects[i].category + '</p>';
