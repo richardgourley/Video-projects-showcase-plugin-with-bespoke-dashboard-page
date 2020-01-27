@@ -3,11 +3,11 @@
   <h1>Click the delete button under a project to delete it.</h1>
   <p>CAUTION: This action can't be undone</p>
 
-  <div class="vps-row">
+  <div>
     <?php 
     foreach($video_projects->posts as $project):
     ?>
-    <div class="vps-col-11">
+    <div class="vps-project-display-admin-div">
       <?php
           $title = esc_html( $project->post_title );
           $category_name = esc_html( get_post_meta( $project->ID, 'video_project_category_name', true ) );
