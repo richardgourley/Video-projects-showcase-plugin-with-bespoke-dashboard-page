@@ -23,6 +23,13 @@
     border:1px solid lightgrey;
   }
 
+  .vps-select-div{
+    padding:10px;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:90%;
+  }
+
   .vps-main-page-div{
     background-color: white; 
     padding:17px; 
@@ -93,6 +100,13 @@
   .vps-project-display-admin-div{
     padding:12px;
     border:1px solid lightgrey;
+  }
+
+  .vps-select-div{
+    padding:12px;
+    margin-bottom: 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:90%;
   }
 
   .vps-main-page-div{
@@ -168,17 +182,6 @@
   font-family: 'Noto Sans JP', sans-serif;
   font-size:1.4em;
   margin: 0.67em
-}
-
-/* GRID - SEARCH PAGE */
-
-.vps-select-div{
-  grid-column-start: 1;
-  grid-column-end: 3;
-  padding:10px;
-  margin-bottom: 10px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size:90%;
 }
 
 /* DROP DOWN MENU AND IFRAME */
